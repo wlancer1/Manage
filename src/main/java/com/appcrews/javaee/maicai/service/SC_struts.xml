@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+    <package
+        name="SCDL"
+        extends="struts-default"
+        namespace="/SCDL" >
+
+        <action
+            name="*_DLAction"
+            class="com.appcrews.javaee.maicai.service.DLAction"
+            method="{1}" >
+
+            <result name="success" >
+
+                <param name="location" >
+/index.jsp            
+                </param>
+            </result>
+
+            <result name="false" >
+                /login.jsp            
+            </result>
+
+            <result name="input" >
+
+                <param name="location" >
+/login.jsp                
+                </param>
+            </result>
+        </action>
+    </package>
+
+    <package
+        name="SCYH"
+        extends="struts-default"
+        namespace="/SCYH" >
+
+        <action
+            name="*_YHAction"
+            class="com.appcrews.javaee.maicai.service.YHAction"
+            method="{1}" >
+            <result name="success">../users.jsp</result>
+        </action>
+        
+    </package>
+
+    <package
+        name="SCDD"
+        extends="struts-default"
+        namespace="/SCDD" >
+
+        <action
+            name="*_DDAction"
+            class="com.appcrews.javaee.maicai.service.DDAction"
+            method="{1}" >
+
+            <result name="success" >
+                ../order/manageD.jsp
+            </result>
+
+            <result name="detail" >
+                ../order/OD-details.jsp
+            </result>
+             <result name="print" >
+                ../order/OD-print.jsp
+
+            </result>
+
+            <result name="edit" >
+                ../order/OD-edit.jsp
+            </result>
+        </action>
+    </package>
+
+    <package
+        name="SCDC"
+        extends="struts-default"
+        namespace="/SCDC" >
+
+        <action
+            name="*_DCAction"
+            class="com.appcrews.javaee.maicai.service.DCAction"
+            method="{1}" >
+
+            <result
+                name="false"
+                type="redirect" >
+                /login.jsp            
+            </result>
+        </action>
+    </package>
+
+    <package
+        name="SCGL"
+        extends="struts-default"
+        namespace="/" >
+
+        <action
+            name="*_SCAction"
+            class="com.appcrews.javaee.maicai.service.SCAction"
+            method="{1}" >
+
+            <result name="success" >
+                ../shucai/manageS.jsp            
+            </result>
+             <result name="type"  >
+               ../Type.jsp
+            
+            </result>
+            <result name="type1"  >
+               ../addtype.jsp
+            
+            </result>
+            <result name="edit" >
+             ../shucai/SC-edit.jsp            
+            </result>
+
+            <result name="insert" >
+             ../shucai/SC-insert.jsp
+            </result>
+
+            <result
+                name="input"
+                type="redirect" >
+               /error.jsp            
+            </result>
+
+            <result
+                name="input1"
+                type="redirect" >
+               /error1.jsp
+            </result>
+
+            <interceptor-ref name="defaultStack" >
+
+                <param name="fileUpload.maximumSize" >
+1024000                
+                </param>
+
+                <param name="fileUpload.allowedTypes" >
+image/bmp,image/png,image/gif,image/jpeg,image/jpg                 
+                </param>
+
+                <param name="fileUpload.allowedExtensions" >
+  png,bmp,jpg                 
+                </param>
+            </interceptor-ref>
+        </action>
+    </package>
+
+</struts>
