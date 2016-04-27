@@ -11,6 +11,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.appcrews.javaee.maicai.dal.Admin;
 import com.appcrews.javaee.maicai.model.AdminInfo;
+import com.appcrews.javaee.maicai.tool.MD5;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -51,7 +52,9 @@ public class DLAction extends ActionSupport implements ModelDriven<AdminInfo> {
 		String quanxian = null;
 		String account = request.getParameter("account");
 		String password = request.getParameter("password");
-		power = a.panduan(account, password);
+		String ma=MD5.Encrypt(account,account.length());
+		String mp=MD5.Encrypt(password, password.length());
+		power = a.panduan(ma,mp);
 		if (power == -1) {
 			return "false";
 		} else {

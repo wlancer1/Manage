@@ -1,5 +1,5 @@
 /*H-ui.admin.js v2.3.1 date:15:42 2015.08.19 by:guojunhui*/
-/*è·å–é¡¶éƒ¨é€‰é¡¹å¡æ€»é•¿åº¦*/
+/*»ñÈ¡¶¥²¿Ñ¡Ïî¿¨×Ü³¤¶È*/
 function tabNavallwidth(){
 	var taballwidth=0,
 		$tabNav = $(".acrossTab"),
@@ -18,7 +18,7 @@ function tabNavallwidth(){
 		$tabNav.css({left:0})}
 }
 
-/*å·¦ä¾§èœå•å“åº”å¼*/
+/*×ó²à²Ëµ¥ÏìÓ¦Ê½*/
 function Huiasidedisplay(){
 	if($(window).width()>=768){
 		$(".Hui-aside").show()
@@ -51,9 +51,9 @@ $(function(){
 			$(".Hui-aside").slideToggle();
 		}
 	});
-	/*å·¦ä¾§èœå•*/
+	/*×ó²à²Ëµ¥*/
 	$.Huifold(".menu_dropdown dl dt",".menu_dropdown dl dd","fast",1,"click");
-	/*é€‰é¡¹å¡å¯¼èˆª*/
+	/*Ñ¡Ïî¿¨µ¼º½*/
 	
 	$(".Hui-aside").on("click",".menu_dropdown a",function(){
 		if($(this).attr('_href')){
@@ -148,21 +148,21 @@ $(function(){
 		oUl.stop().animate({'left':-num*100},100);
 	}
 	
-	/*æ¢è‚¤*/
+	/*»»·ô*/
 	$("#Hui-skin .dropDown-menu a").click(function(){
 		var v = $(this).attr("data-val");
 		setCookie("Huiskin", v);
 		$("#skin").attr("href","skin/"+v+"/skin.css");
 	});
 }); 
-/*å¼¹å‡ºå±‚*/
+/*µ¯³ö²ã*/
 /*
-	å‚æ•°è§£é‡Šï¼š
-	title	æ ‡é¢˜
-	url		è¯·æ±‚çš„url
-	id		éœ€è¦æ“ä½œçš„æ•°æ®id
-	w		å¼¹å‡ºå±‚å®½åº¦ï¼ˆç¼ºçœè°ƒé»˜è®¤å€¼ï¼‰
-	h		å¼¹å‡ºå±‚é«˜åº¦ï¼ˆç¼ºçœè°ƒé»˜è®¤å€¼ï¼‰
+	²ÎÊı½âÊÍ£º
+	title	±êÌâ
+	url		ÇëÇóµÄurl
+	id		ĞèÒª²Ù×÷µÄÊı¾İid
+	w		µ¯³ö²ã¿í¶È£¨È±Ê¡µ÷Ä¬ÈÏÖµ£©
+	h		µ¯³ö²ã¸ß¶È£¨È±Ê¡µ÷Ä¬ÈÏÖµ£©
 */
 function layer_show(title,url,w,h){
 	if (title == null || title == '') {
@@ -180,14 +180,14 @@ function layer_show(title,url,w,h){
 	layer.open({
 		type: 2,
 		area: [w+'px', h +'px'],
-		fix: false, //ä¸å›ºå®š
+		fix: false, //²»¹Ì¶¨
 		maxmin: true,
 		shade:0.4,
 		title: title,
 		content: url
 	});
 }
-/*å…³é—­å¼¹å‡ºæ¡†å£*/
+/*¹Ø±Õµ¯³ö¿ò¿Ú*/
 function layer_close(){
 	var index = parent.layer.getFrameIndex(window.name);
 	parent.layer.close(index);

@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 
 import com.appcrews.javaee.maicai.model.AdminInfo;
+import com.appcrews.javaee.maicai.tool.MD5;
 
 public class Admin extends JdbcDaoSupport {
 	@SuppressWarnings({ "unchecked", "unused" })
@@ -17,14 +18,18 @@ public class Admin extends JdbcDaoSupport {
 		String sql = "SELECT* FROM admin";
 		list = this.getJdbcTemplate().query(sql, new adminrowMap());
 		for (int i = 0; i < list.size(); i++) {
-			if (list.get(i).getAccount().equals(account)
-					&& list.get(i).getPassword().equals(password)) {
+
+			String am = list.get(i).getAccount();
+			String pm = list.get(i).getPassword();
+			am = MD5.Encrypt(am, am.length());
+			pm = MD5.Encrypt(pm, pm.length());
+			if (am.equals(account) && pm.equals(password)) {
 				return list.get(i).getPower();
-			} 
+			}
 		}
 		return -1;
 	}
-	
+
 	public class adminrowMap implements RowMapper {
 		@Override
 		public Object mapRow(ResultSet rs, int arg1) throws SQLException {
