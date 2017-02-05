@@ -1,6 +1,6 @@
-<%@page import="com.appcrews.javaee.maicai.service.YHAction" %>
-<%@page import="com.appcrews.javaee.maicai.service.DDAction" %>
-<%@page import="com.appcrews.javaee.maicai.service.SCAction" %>
+<%@page import="com.appcrews.javaee.maicai.service.UserAction" %>
+<%@page import="com.appcrews.javaee.maicai.service.OrderAction" %>
+<%@page import="com.appcrews.javaee.maicai.service.ManagerAction" %>
 <%@page import="java.util.List" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="/struts-tags" prefix="s" %>
@@ -32,15 +32,6 @@
     <!--[if lt IE 9]>
     <script src="js/html5.js"></script>
     <![endif]-->
-    <%
-        SCAction S = new SCAction();
-        int size = S.size();
-        DDAction d = new DDAction();
-        int size2 = d.size();
-        YHAction b = new YHAction();
-        int size3 = b.size();
-
-    %>
     <script async="" src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 </head>
 
@@ -79,9 +70,9 @@
             <div class="well sidebar-nav">
                 <ul class="nav nav-list">
                     <li class="nav-header"><i class="icon-wrench"></i>管理</li>
-                    <li><a href="<%=request.getContextPath()%>/SCYH/query_YHAction">用户</a></li>
+                    <li><a href="<%=request.getContextPath()%>/SCYH/query_YHAction.html">用户</a></li>
                     <li><a
-                            href="<%=request.getContextPath()%>/SCGL/query_SCAction">蔬菜</a></li>
+                            href="<%=request.getContextPath()%>/SCGL/query_SCAction.html">蔬菜</a></li>
                     <li><a href="<%=request.getContextPath()%>/SCDD/query_DDAction">订单</a></li>
                     <li class="nav-header"><i class="icon-signal"></i> Statistics</li>
                     <li><a href="<%=request.getContextPath()%>/SCGL/querytype_SCAction">添加蔬菜类型</a></li>
@@ -91,7 +82,7 @@
                     <li class="nav-header"><i class="icon-user"></i> Profile</li>
                     <li><a href="<%=request.getContextPath()%>/myprofile.jsp">个人中心</a></li>
                     <li><a href="#">设置</a></li>
-                    <li><a href="<%=request.getContextPath()%>/SCDC/logout_DCAction">退出登陆</a></li>
+                    <li><a href="<%=request.getContextPath()%>/SCDC/logout_DCAction.html">退出登陆</a></li>
                 </ul>
             </div>
         </div>
@@ -102,7 +93,7 @@
                     <s:property value="#session.myname"/>
                 </h1>
                 <p>
-                    <a class="btn btn-success btn-large" href="<%=request.getContextPath()%>/SCYH/query_YHAction">Manage
+                    <a class="btn btn-success btn-large" href="<%=request.getContextPath()%>/SCYH/query_YHAction.html">Manage
                         Users &raquo;</a>
                 </p>
             </div>
@@ -118,24 +109,24 @@
                     <div class="span3">
                         <h3>用户数量</h3>
                         <p>
-                            <a href="<%=request.getContextPath()%>/SCYH/query_YHAction"
-                               class="badge badge-inverse"><%=size3%>
+                            <a href="<%=request.getContextPath()%>/SCYH/query_YHAction.html.html"
+                               class="badge badge-inverse">${sizelist[0]}
                             </a>
                         </p>
                     </div>
                     <div class="span3">
                         <h3>蔬菜数量</h3>
                         <p>
-                            <a href="<%=request.getContextPath()%>/SCGL/query_SCAction"
-                               class="badge badge-inverse"><%=size%>
+                            <a href="<%=request.getContextPath()%>/SCGL/query_SCAction.html.html"
+                               class="badge badge-inverse">${sizelist[1]}
                             </a>
                         </p>
                     </div>
                     <div class="span3">
                         <h3>订单</h3>
                         <p>
-                            <a href="<%=request.getContextPath()%>/SCDD/query_DDAction"
-                               class="badge badge-inverse"><%=size2%>
+                            <a href="<%=request.getContextPath()%>/SCDD/query_DDAction.html"
+                               class="badge badge-inverse">${sizelist[2]}
                             </a>
                         </p>
                     </div>

@@ -65,7 +65,9 @@ var _hmt = _hmt || [];
 			<div class="kuang"><img
 						src="<%=request.getContextPath()%>/img/ziti.png" style="width: 300px"></div>
 <script>
-
+if(getCookie("loginInfo")!=null){
+	window.location.href="<%=request.getContextPath()%>/SCDL/login_DLAction.html";
+}
 			$("#login").click(function () {
 				var myArray=new Array();
 				var password=document.getElementById("password").value;

@@ -13,7 +13,7 @@ import java.io.IOException;
 public class LoginFilter implements Filter{
     public Cookie[] cookies ;
     public FilterConfig config;
-    private boolean flag=true;
+    private boolean flag;
     @Override
     public void destroy() {
         this.config=null;
@@ -22,7 +22,7 @@ public class LoginFilter implements Filter{
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        flag=false;
+        flag=true;
                 config=filterConfig;
     }
 

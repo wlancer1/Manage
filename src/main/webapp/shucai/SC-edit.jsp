@@ -69,7 +69,7 @@
 						<li class="nav-header"><i class="icon-user"></i> Profile</li>
 						<li><a href="my-profile.html">个人中心</a></li>
 						<li><a href="#">设置</a></li>
-						<li><a href="<%=request.getContextPath()%>/SCDC/logout_DCAction">退出登陆</a></li>
+						<li><a href="<%=request.getContextPath()%>/SCDC/logout_LogoutAction.html">退出登陆</a></li>
 					</ul>
 				</div>
 			</div>
