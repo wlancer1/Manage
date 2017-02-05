@@ -3,11 +3,15 @@ package com.appcrews.javaee.maicai.service;
 import java.awt.Window;
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
@@ -27,6 +31,7 @@ public class SCAction extends ActionSupport implements ModelDriven<ShucaiInfo> {
 	int index, allpage;
 	List<ShucaiInfo> info1;
 	List<TypeInfo> info2;
+    HttpServletResponse response;
 	HttpServletRequest request = ServletActionContext.getRequest();
 
 	public List<ShucaiInfo> getInfo1() {
@@ -159,11 +164,14 @@ public String inserttype(){
 	public String delet() throws SQLException {
 		de = Integer.parseInt(ServletActionContext.getRequest().getParameter(
 				"de"));
+        System.out.println(de);
+        response=ServletActionContext.getResponse();
 		if ((s.delete(de)).equals("success")) {
-			s.delete(de);
-			query();
+            s.delete(de);
+			renderData(response,"success");
 			return "success";
 		} else {
+            renderData(response,"error");
 			return "input1";
 		}
 	}
@@ -210,5 +218,20 @@ public String inserttype(){
 		query();
 		return "success";
 	}
+    private void renderData(HttpServletResponse response, String data) {
+        PrintWriter printWriter = null;
+        response.setContentType("text/html;charset=utf-8");
+        try {
+            printWriter = response.getWriter();
+            printWriter.print(data);
+        } catch (IOException ex) {
+            Logger.getLogger("ajax").log(Level.SEVERE, null, ex);
+        } finally {
+            if (null != printWriter) {
+                printWriter.flush();
+                printWriter.close();
+            }
+        }
+    }
 
 }

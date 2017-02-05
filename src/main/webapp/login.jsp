@@ -21,7 +21,7 @@ var _hmt = _hmt || [];
 <link href='http://fonts.googleapis.com/css?family=Oleo+Script'
 	rel='stylesheet' type='text/css'>
 <script type="text/javascript"
-	src="<%=request.getContextPath()%>/js/jquery.js"></script>
+	src="/js/jquery-3.1.1.js"></script>
 <script type="text/javascript">
 	
 </script>
@@ -32,7 +32,7 @@ var _hmt = _hmt || [];
 	<div class="lg-container">
 		<h1>Admin Area</h1>
 		<s:fielderror />
-		<form action="<%=request.getContextPath()%>/SCDL/login_DLAction"
+		<form action="<%=request.getContextPath()%>/SCDL/login_DLAction.html"
 			id="lg-form" method="post">
 
 			<div>
@@ -45,7 +45,7 @@ var _hmt = _hmt || [];
 					name="password" id="password" placeholder="password" />
 			</div>
 			<div>
-				<button type="submit" id="login">Login</button>
+				<button  id="login">Login</button>
 			</div>
 			
 		</form>
@@ -64,5 +64,35 @@ var _hmt = _hmt || [];
 			</div>
 			<div class="kuang"><img
 						src="<%=request.getContextPath()%>/img/ziti.png" style="width: 300px"></div>
+<script>
+
+			$("#login").click(function () {
+				var myArray=new Array();
+				var password=document.getElementById("password").value;
+				var username=document.getElementById("username").value;
+				myArray[0]=username;
+				myArray[1]=password;
+				if(password!=null&&username!=null&&getCookie("loginInfo")==null){
+					SetCookie("loginInfo",myArray);
+					$("#lg-form").submit();
+				}else{
+					alert("账号密码不能为空！！");
+				}
+
+		})
+
+		function getCookie(name)//取cookies函数
+		{
+			var arr = document.cookie.match(new RegExp("(^| )"+name+"=([^;]*)(;|$)"));
+			if(arr != null) return (arr[2]); return null;
+		}
+	function SetCookie(name,value)//两个参数，一个是cookie的名子，一个是值
+	{
+		var Days = 300; //此 cookie 将被保存 30 天
+		var exp  = new Date();    //new Date("December 31, 9998");
+		exp.setTime(exp.getTime() + Days*24*60*60*1000);
+		document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
+	}
+</script>
 </body>
 </html>

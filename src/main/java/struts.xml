@@ -3,7 +3,8 @@
 	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
-<constant name="struts.devMode" value="true"></constant>
+	<constant name="struts.action.extension" value="html" />
+	<constant name="struts.devMode" value="true"></constant>
 <constant name="struts.custom.i18n.resources" value="/fileupload"></constant>
   <include file="com/appcrews/javaee/maicai/service/SC_struts.xml"></include>
    

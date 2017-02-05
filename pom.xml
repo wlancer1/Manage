@@ -6,6 +6,15 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 		<build>
+			<resources>
+				<resource>
+					<directory>src/main/java</directory>
+					<includes>
+						<include>**/*.xml</include>
+					</includes>
+					<filtering>true</filtering>
+				</resource>
+			</resources>
 		<pluginManagement>
 	      <plugins>
 	  <plugin>  
@@ -77,8 +86,8 @@
 	            <dependencies>   
 	                <!-- 使用4.8版本来混淆 -->  
 	                <dependency>  
-	                    <groupId>net.sf.proguard</groupId>  
-	                    <artifactId>proguard</artifactId>  
+	                    <groupId>ne.sf.proguard</groupId>
+						<artifactId>progutard</artifactId>
 	                    <version>4.8</version>  
 	                    <scope>runtime</scope>  
 	                </dependency>  

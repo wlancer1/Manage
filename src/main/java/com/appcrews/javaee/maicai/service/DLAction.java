@@ -3,7 +3,9 @@ package com.appcrews.javaee.maicai.service;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.ServletActionContext;
 import org.springframework.context.ApplicationContext;
@@ -18,10 +20,12 @@ import com.opensymphony.xwork2.ModelDriven;
 @SuppressWarnings("serial")
 public class DLAction extends ActionSupport implements ModelDriven<AdminInfo> {
 	List<AdminInfo> info;
+	public Cookie[] cookies ;
+HttpServletResponse response;
 	HttpServletRequest request = ServletActionContext.getRequest();
 	ApplicationContext context = new ClassPathXmlApplicationContext(
 			"/applicationContext.xml");
-	String account, password;
+	private String account, password;
 
 	public String getAccount() {
 		return account;
@@ -50,15 +54,32 @@ public class DLAction extends ActionSupport implements ModelDriven<AdminInfo> {
 	public String login() throws UnsupportedEncodingException {
 		int power;
 		String quanxian = null;
-		String account = request.getParameter("account");
-		String password = request.getParameter("password");
+        response=ServletActionContext.getResponse();
+		cookies = request.getCookies();
+		for(Cookie cookie : cookies){
+			if(cookie.getName().equals("loginInfo")){
+				String loginInfo = cookie.getValue();
+				this.account= loginInfo.split("%2C")[0];
+				this.password = loginInfo.split("%2C")[1];
+
+			}
+		}
+
 		String ma=MD5.Encrypt(account,account.length());
 		String mp=MD5.Encrypt(password, password.length());
 		power = a.panduan(ma,mp);
 		if (power == -1) {
+			for(Cookie cookie : cookies){
+				if(cookie.getName().equals("loginInfo")){
+                    Cookie delCookie = new Cookie("loginInfo", null);
+                    delCookie.setMaxAge(0);
+                    delCookie.setPath("/");
+                    response.addCookie(delCookie);
+                    break;
+				}
+			}
 			return "false";
 		} else {
-			request.getSession().setAttribute("myname", account);
 			switch (power) {
 			case 0:
 				quanxian = "管理员";
@@ -70,6 +91,7 @@ public class DLAction extends ActionSupport implements ModelDriven<AdminInfo> {
 				break;
 			}
 			request.getSession().setAttribute("power", quanxian);
+            request.getSession().setAttribute("myname", this.account);
 			return "success";
 		}
 
