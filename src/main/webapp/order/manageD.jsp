@@ -1,6 +1,5 @@
 <%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%@ taglib uri="/struts-tags" prefix="s"%>
 
@@ -58,26 +57,7 @@
 
 	<div class="container-fluid">
 		<div class="row-fluid">
-			<div class="span3">
-				<div class="well sidebar-nav">
-					<ul class="nav nav-list">
-						<li class="nav-header"><i class="icon-wrench"></i> 管理</li>
-						<li><a href="<%=request.getContextPath()%>/SCYH/query_YHAction">用户</a></li>
-						<li ><a
-							href="<%=request.getContextPath()%>/SCGL/query_SCAction">蔬菜</a></li>
-						<li class="active"><a href="<%=request.getContextPath()%>/SCDD/query_DDAction">订单</a></li>
-						<li class="nav-header"><i class="icon-signal"></i> Statistics</li>
-							<li><a href="<%=request.getContextPath()%>/SCGL/querytype_SCAction">添加蔬菜类型</a></li>
-						<li><a href="#">Users</a></li>
-					<li><a href="http://tongji.baidu.com/web/welcome/ico?s=bd50a33cf40f3755ca12255e905848cb" target="view_window">站长统计</a></li>
-						<li class="nav-header"><i class="icon-user"></i> Profile</li>
-						<li><a href="<%=request.getContextPath()%>/myprofile.jsp">个人中心</a></li>
-						<li><a href="#">设置</a></li>
-						<li><a
-							href="<%=request.getContextPath()%>/SCDC/logout_DCAction.html">退出登陆</a></li>
-					</ul>
-				</div>
-			</div>
+			<%@ include file="/bar.jsp"%>
 			<div class="span9">
 				<div class="row-fluid">
 					<div class="page-header">
@@ -141,11 +121,7 @@
 		</div>
 		<hr>
 
-				<footer class="well" id="gh"> &copy; <a target="_blank">浙江商业职业技术学院</a>
-		<span id="busuanzi_container_site_pv" style="display: inline;">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
-		<span id="busuanzi_container_site_uv" style="display: inline;">
-    访客数<span id="busuanzi_value_site_uv"></span>人次</span>
-		</footer>
+	<%@ include file="/footer.jsp"%>
 	</div>
 
 	<script src="js/jquery.js"></script>
