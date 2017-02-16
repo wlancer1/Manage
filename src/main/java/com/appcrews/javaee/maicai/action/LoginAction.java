@@ -1,4 +1,4 @@
-package com.appcrews.javaee.maicai.service;
+package com.appcrews.javaee.maicai.action;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -11,12 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
 import com.appcrews.javaee.maicai.dal.Adminimpl;
 import com.appcrews.javaee.maicai.model.AdminInfo;
 import com.appcrews.javaee.maicai.tool.MD5;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
+import com.appcrews.javaee.maicai.service.adminService;
 
 @SuppressWarnings("serial")
 public class LoginAction extends ActionSupport implements ModelDriven<AdminInfo> {
@@ -25,8 +25,18 @@ public class LoginAction extends ActionSupport implements ModelDriven<AdminInfo>
 	private Cookie[] cookies ;
 	private HttpServletResponse response;
 	private HttpServletRequest request = ServletActionContext.getRequest();
-	ApplicationContext context = new ClassPathXmlApplicationContext(
-			"/applicationContext.xml");
+	private adminService adminService;
+
+	public void setAdminService(adminService adminService) {
+		this.adminService = adminService;
+	}
+
+	public adminService getAdminService() {
+		return adminService;
+	}
+
+	//	ApplicationContext context = new ClassPathXmlApplicationContext(
+//			"/applicationContext.xml");
 	private String account, password;
 
 	public String getAccount() {
@@ -53,7 +63,7 @@ public class LoginAction extends ActionSupport implements ModelDriven<AdminInfo>
 		return size;
 	}
 
-	Adminimpl a = (Adminimpl) context.getBean("adminaction");
+//	Adminimpl a = (Adminimpl) context.getBean("adminaction");
 
 	@Override
 	public AdminInfo getModel() {
@@ -77,7 +87,7 @@ public class LoginAction extends ActionSupport implements ModelDriven<AdminInfo>
 
 		String ma=MD5.Encrypt(account,account.length());
 		String mp=MD5.Encrypt(password, password.length());
-		power = a.panduan(ma,mp);
+		power = this.adminService.panduan(ma,mp);
 		if (power == -1) {
 			for(Cookie cookie : cookies){
 				if(cookie.getName().equals("loginInfo")){
@@ -109,7 +119,7 @@ public class LoginAction extends ActionSupport implements ModelDriven<AdminInfo>
 	}
 	public List size(){
 		size=new ArrayList<Integer>();
-		size=a.sizeList();
+		size=this.adminService.sizeList();
 		return size;
 	}
 }

@@ -1,4 +1,4 @@
-package com.appcrews.javaee.maicai.service;
+package com.appcrews.javaee.maicai.action;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;

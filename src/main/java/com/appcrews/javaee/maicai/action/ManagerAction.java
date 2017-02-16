@@ -1,4 +1,4 @@
-package com.appcrews.javaee.maicai.service;
+package com.appcrews.javaee.maicai.action;
 
 import java.io.File;
 import java.io.IOException;
