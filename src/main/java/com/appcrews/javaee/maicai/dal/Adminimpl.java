@@ -6,30 +6,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.appcrews.javaee.maicai.model.ShucaiInfo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 
 import com.appcrews.javaee.maicai.model.AdminInfo;
 import com.appcrews.javaee.maicai.tool.MD5;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+
+import javax.annotation.Resource;
 
 public class Adminimpl extends JdbcDaoSupport implements Admin{
 	@SuppressWarnings({ "unchecked", "unused" })
 	private List<Integer> sizeList;
-	public int panduan(String account, String password) {
+
+
+	@Override
+	public List<AdminInfo> getList() {
 		List<AdminInfo> list = new ArrayList<AdminInfo>();
 		String sql = "SELECT* FROM admin";
 		list = this.getJdbcTemplate().query(sql, new adminrowMap());
-		for (int i = 0; i < list.size(); i++) {
-
-			String am = list.get(i).getAccount();
-			String pm = list.get(i).getPassword();
-			am = MD5.Encrypt(am, am.length());
-			pm = MD5.Encrypt(pm, pm.length());
-			if (am.equals(account) && pm.equals(password)) {
-				return list.get(i).getPower();
-			}
-		}
-		return -1;
+		return list;
 	}
 
 	@Override

@@ -12,9 +12,12 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.appcrews.javaee.maicai.service.dataService;
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Scope;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.appcrews.javaee.maicai.dal.Dataimpl;
@@ -22,9 +25,14 @@ import com.appcrews.javaee.maicai.model.ShucaiInfo;
 import com.appcrews.javaee.maicai.model.TypeInfo;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
+import org.springframework.stereotype.Controller;
 
 @SuppressWarnings("serial")
+@Scope("prototype")
+@Controller
 public class ManagerAction extends ActionSupport implements ModelDriven<ShucaiInfo> {
+	@Autowired
+	private dataService dataService; 
 	private ShucaiInfo info = new ShucaiInfo();
 	int de, ts;
 	int index, allpage;
@@ -41,10 +49,7 @@ public class ManagerAction extends ActionSupport implements ModelDriven<ShucaiIn
 		this.info1 = info1;
 	}
 
-	ApplicationContext context = new ClassPathXmlApplicationContext(
-			"/applicationContext.xml");
-
-	Dataimpl s = (Dataimpl) context.getBean("shucaiaction");
+	
 
 	public ShucaiInfo getModel() {
 		// TODO Auto-generated method stub
@@ -59,7 +64,7 @@ public class ManagerAction extends ActionSupport implements ModelDriven<ShucaiIn
 			pagenow = 1;
 		}
 
-		allpage = ((s.getListshucai().size() / 5) + 1);
+		allpage = ((dataService.getListshucai().size() / 5) + 1);
 		if (request.getParameter("flag") != null) {
 			if (request.getParameter("flag").equals("0")) {
 				if (pagenow != 1) {
@@ -81,7 +86,7 @@ public class ManagerAction extends ActionSupport implements ModelDriven<ShucaiIn
 		index = (pagenow - 1) * 5;
 		String key = request.getParameter("key");
 		request.setAttribute("moren", key);
-		info1 = s.getListsearch(key);
+		info1 = dataService.getListsearch(key);
 		request.setAttribute("shucaiinfo", info1);
 		return "success";
 
@@ -94,9 +99,9 @@ public class ManagerAction extends ActionSupport implements ModelDriven<ShucaiIn
 		index = (pagenow - 1) * 5;
 		String target = request.getParameter("target");
 		if (target.equals("up")) {
-			info1 = s.getListshucaisort(pagenow, 1);
+			info1 = dataService.getListshucaisort(pagenow, 1);
 		} else {
-			info1 = s.getListshucaisort(pagenow, 0);
+			info1 = dataService.getListshucaisort(pagenow, 0);
 		}
 		request.setAttribute("shucaiinfo", info1);
 		return "success";
@@ -109,7 +114,7 @@ public class ManagerAction extends ActionSupport implements ModelDriven<ShucaiIn
 		request.setAttribute("pagenow", pagenow);
 		index = (pagenow - 1) * 5;
 		// 现在要查询的
-		info1 = s.getList(index);
+		info1 = dataService.getList(index);
 		request.setAttribute("shucaiinfo", info1);
 		return "success";
 
@@ -118,9 +123,9 @@ public class ManagerAction extends ActionSupport implements ModelDriven<ShucaiIn
 	public String queryedit() {
 		ts = Integer.parseInt(ServletActionContext.getRequest().getParameter(
 				"ts"));
-		info = s.getShucaiInfo(ts);
+		info = dataService.getShucaiInfo(ts);
 		String type = info.getType();
-		info2 = s.getType(type);
+		info2 = dataService.getType(type);
 		request.setAttribute("ts", ts);
 		request.setAttribute("typeinfo", info2);
 		request.setAttribute("shucaiinfo", info);
@@ -128,14 +133,14 @@ public class ManagerAction extends ActionSupport implements ModelDriven<ShucaiIn
 
 	}
 public String querytype(){
-	info2 = s.gettype();
+	info2 = dataService.gettype();
 	request.setAttribute("typeinfo", info2);
 	return "type";
 	
 }
 public String inserttype(){
 	String type=request.getParameter("type");
-	s.inserttype(type);
+	dataService.inserttype(type);
 	request.setAttribute("flag", 1);
 	return "type1";
 }//插入类型
@@ -154,7 +159,7 @@ public String inserttype(){
 			e.printStackTrace();
 		}
 		info.setImg(Name);
-		s.insert(info);
+		dataService.insert(info);
 		query();
 		return "success";
 
@@ -165,8 +170,8 @@ public String inserttype(){
 				"de"));
         System.out.println(de);
         response=ServletActionContext.getResponse();
-		if ((s.delete(de)).equals("success")) {
-            s.delete(de);
+		if ((dataService.delete(de)).equals("success")) {
+            dataService.delete(de);
 			renderData(response,"success");
 			return "success";
 		} else {
@@ -176,12 +181,12 @@ public String inserttype(){
 	}
 
 	public int size() {
-		int size = s.getListshucai().size();
+		int size = dataService.getListshucai().size();
 		return size;
 	}
 
 	public String insert() {
-		info2 = s.gettype();
+		info2 = dataService.gettype();
 		request.setAttribute("typeinfo", info2);
 		return "insert";
 
@@ -204,9 +209,9 @@ public String inserttype(){
 					e.printStackTrace();
 				}
 				info.setImg(Name);
-				s.update(ts, info);
+				dataService.update(ts, info);
 			} else {
-				s.update1(ts, info);
+				dataService.update(ts, info);
 				query();
 			}
 		} catch (SQLException e) {

@@ -1,39 +1,44 @@
 package com.appcrews.javaee.maicai.action;
 
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.List;
+
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.ServletActionContext;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import com.appcrews.javaee.maicai.dal.Adminimpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import com.appcrews.javaee.maicai.model.AdminInfo;
 import com.appcrews.javaee.maicai.tool.MD5;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.appcrews.javaee.maicai.service.adminService;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
+
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
 
 @SuppressWarnings("serial")
+@Controller
+@Scope("prototype")
 public class LoginAction extends ActionSupport implements ModelDriven<AdminInfo> {
 	private List<AdminInfo> info;
 	private List<Integer> size;
 	private Cookie[] cookies ;
 	private HttpServletResponse response;
 	private HttpServletRequest request = ServletActionContext.getRequest();
+	@Autowired
 	private adminService adminService;
 
-	public void setAdminService(adminService adminService) {
-		this.adminService = adminService;
-	}
-
-	public adminService getAdminService() {
-		return adminService;
-	}
+//	public void setAdminService(adminService adminService) {
+//		this.adminService = adminService;
+//	}
+//
+//	public adminService getAdminService() {
+//		return adminService;
+//	}
 
 	//	ApplicationContext context = new ClassPathXmlApplicationContext(
 //			"/applicationContext.xml");
@@ -110,7 +115,7 @@ public class LoginAction extends ActionSupport implements ModelDriven<AdminInfo>
 			default:
 				break;
 			}
-			request.setAttribute("sizelist",size());
+			request.getSession().setAttribute("sizelist",size());
 			request.getSession().setAttribute("power", quanxian);
             request.getSession().setAttribute("myname", this.account);
 			return "success";

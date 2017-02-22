@@ -122,14 +122,6 @@ public class Dataimpl extends JdbcDaoSupport implements Data{
 
 	}
 
-	public void update1(int id, ShucaiInfo info) throws SQLException {
-		String sql = "update shucai set" + " fName='" + info.getName()
-				+ "',fPrice='" + info.getPrice() + "'," + "fType='"
-				+ info.getType() + "',fRemark='" + info.getRemark()
-				+ "' where fid=" + id + "";
-
-		this.getJdbcTemplate().execute(sql);
-	}
 
 	public String delete(int id) throws SQLException {
 		try {
