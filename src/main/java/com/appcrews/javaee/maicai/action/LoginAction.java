@@ -80,6 +80,9 @@ public class LoginAction extends ActionSupport implements ModelDriven<AdminInfo>
 		int power;
 		String quanxian = null;
         response=ServletActionContext.getResponse();
+		if(request.getSession().getAttribute("myname")!=null){
+			return "success";
+		}
 		cookies = request.getCookies();
 		for(Cookie cookie : cookies){
 			if(cookie.getName().equals("loginInfo")){
@@ -118,6 +121,14 @@ public class LoginAction extends ActionSupport implements ModelDriven<AdminInfo>
 			request.getSession().setAttribute("sizelist",size());
 			request.getSession().setAttribute("power", quanxian);
             request.getSession().setAttribute("myname", this.account);
+			for(Cookie cookie : cookies){
+				if(cookie.getName().equals("loginInfo")){
+					Cookie delCookie = new Cookie("loginInfo", "***");
+					delCookie.setPath("/");
+					response.addCookie(delCookie);
+					break;
+				}
+			}
 			return "success";
 		}
 

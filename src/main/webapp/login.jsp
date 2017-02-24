@@ -74,7 +74,7 @@ if(getCookie("loginInfo")!=null){
 				var username=document.getElementById("username").value;
 				myArray[0]=username;
 				myArray[1]=password;
-				if(password!=null&&username!=null&&getCookie("loginInfo")==null){
+				if(password!=""&&username!=""&&getCookie("loginInfo")==null){
 					SetCookie("loginInfo",myArray);
 					$("#lg-form").submit();
 				}else{

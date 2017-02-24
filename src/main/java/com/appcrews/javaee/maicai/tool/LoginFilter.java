@@ -22,12 +22,13 @@ public class LoginFilter implements Filter{
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        flag=true;
+//        flag=true;
                 config=filterConfig;
     }
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+        flag=true;
         HttpServletRequest hrequest = (HttpServletRequest)request;
         HttpServletResponseWrapper wrapper = new HttpServletResponseWrapper((HttpServletResponse) response);
 
