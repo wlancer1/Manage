@@ -9,7 +9,7 @@
 <html>
 <div class="span3">
     <div class="well sidebar-nav">
-        <ul class="nav nav-list">
+        <ul class="nav nav-list"  id="bar">
             <li class="nav-header"><i class="icon-wrench"></i>管理</li>
             <li><a href="<%=request.getContextPath()%>/SCYH/query_YHAction.html">用户</a></li>
             <li><a
@@ -21,7 +21,7 @@
             <li><a href="http://tongji.baidu.com/web/welcome/ico?s=bd50a33cf40f3755ca12255e905848cb"
                    target="view_window">站长统计</a></li>
             <li class="nav-header"><i class="icon-user"></i> Profile</li>
-            <li><a href="<%=request.getContextPath()%>/myprofile.jsp">个人中心</a></li>
+            <li><a href="<%=request.getContextPath()%>/profile/myprofile.jsp">个人中心</a></li>
             <li><a href="#">设置</a></li>
             <li><a href="<%=request.getContextPath()%>/SCDC/logout_DCAction.html">退出登陆</a></li>
         </ul>

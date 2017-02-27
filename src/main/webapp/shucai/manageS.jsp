@@ -22,42 +22,16 @@
     <script src="js/html5.js"></script>
     <![endif]-->
     <script type="text/javascript" src="/js/jquery-3.1.1.js"></script>
+    <script type="text/javascript" src="/js/arttemp.js"></script>
     <script async="" src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 </head>
 
 <body>
-<div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container-fluid">
-            <a class="btn btn-navbar" data-toggle="collapse"
-               data-target=".nav-collapse"> <span class="icon-bar"></span> <span
-                    class="icon-bar"></span> <span class="icon-bar"></span>
-            </a> <a class="brand" href="#">Strass Administration</a>
-            <div class="btn-group pull-right">
-                <a class="btn" href="#"><i class="icon-user"></i> <s:property
-                        value="#session.power"></s:property>: <s:property
-                        value="#session.myname"></s:property></a>
 
-            </div>
-            <div class="nav-collapse">
-                <ul class="nav">
-                    <li><a href="../index.jsp">主页</a></li>
-                    <li class="dropdown"><a href="#" class="dropdown-toggle"
-                                            data-toggle="dropdown">用户 <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="new-user.html">New User</a></li>
-                            <li class="divider"></li>
-                            <li><a href="users.jsp">Manage Users</a></li>
-                        </ul>
-                    </li>
-            </div>
-        </div>
-    </div>
-</div>
-
+<%@ include file="/head.jsp" %>
 <div class="container-fluid">
     <div class="row-fluid">
-        <%@ include file="/bar.jsp"%>
+        <%@ include file="/bar.jsp" %>
         <div class="span9">
             <div class="row-fluid">
                 <div class="page-header">
@@ -68,7 +42,7 @@
                 </div>
                 <table class="table table-striped table-bordered table-condensed">
                     <div class="search">
-                        <form action="<%=request.getContextPath()%>/SCGL/search_SCAction.action?pagenow=<s:property value="#request.pagenow"/>"
+                        <form action="<%=request.getContextPath()%>/SCGL/search_SCAction.html?pagenow=<s:property value="#request.pagenow"/>"
                               method="post">
                             <input type="text" class="search_key" name="key" placeholder="菜名搜索"
                                    target="_blank" value="<s:property value="#request.moren"/>"><input type="submit"
@@ -81,9 +55,9 @@
                         <th>ID</th>
                         <th>菜名</th>
                         <th>
-                            <a href="<%=request.getContextPath()%>/SCGL/sort_SCAction.action?pagenow=<s:property value="#request.pagenow"/>&&target=up"><i
+                            <a href="<%=request.getContextPath()%>/SCGL/sort_SCAction.html?pagenow=<s:property value="#request.pagenow"/>&&target=up"><i
                                     class="icon-arrow-up"></i> </a> <a
-                                href="<%=request.getContextPath()%>/SCGL/sort_SCAction.action?pagenow=<s:property value="#request.pagenow"/>&&target=down"><i
+                                href="<%=request.getContextPath()%>/SCGL/sort_SCAction.html?pagenow=<s:property value="#request.pagenow"/>&&target=down"><i
                                 class="icon-arrow-down icon-blue"></i> </a>价格
                         </th>
                         <th>图片</th>
@@ -93,26 +67,9 @@
                     </tr>
                     </thead>
                     <tbody id="box">
-                    <s:iterator value="#request.shucaiinfo" status="index">
-                        <tr class="middle-demo-1">
+                    <%--<s:iterator value="#request.shucaiinfo" status="index">--%>
 
-                            <td><s:property value="id"/></td>
-                            <td><s:property value="name"/></td>
-                            <td><s:property value="price"/>RMB</td>
-                            <td>
-                                <div>
-                                    <img height="100" width="200"
-                                         src="<%=request.getContextPath()%>/fileupload/<s:property value="img"/>"></img>
-                                </div>
-                            </td>
-                            <td><s:property value="type"/></td>
-                            <td><s:property value="remark"/></td>
-                            <td><a data-val="bj" data-index="${index.index}" data-id="<s:property value="id"/>"><i
-                                    class="icon-pencil"></i> 编辑</a>
-                                <a data-val="sc" data-index="${index.index}" data-id="<s:property value="id"/>"><i
-                                        class="icon-trash"></i> 删除</a></td>
-                        </tr>
-                    </s:iterator>
+                    <%--</s:iterator>--%>
                     </tbody>
                 </table>
                 <div class="pagination">
@@ -121,15 +78,15 @@
                     %>
                     <ul>
                         <li><a
-                                href="<%=request.getContextPath()%>/SCGL/query_SCAction.html?pagenow=<s:property value="#request.pagenow"/>&&flag=0">Prev</a>
+                                 id="pr">Prev</a>
                         </li>
-                        <s:iterator value="new int[#request.page]">
+                        <s:iterator value="new int[#request.allpage]">
                             <li><a
-                                    href="<%=request.getContextPath()%>/SCGL/query_SCAction.html?pagenow=<%=i%>"><%=i++%>
+                                    href="#"><%=i++%>
                             </a></li>
                         </s:iterator>
                         <li><a
-                                href="<%=request.getContextPath()%>/SCGL/query_SCAction.html?pagenow=<s:property value="#request.pagenow"/>&&flag=1">Next</a>
+                                id="ne">Next</a>
                         </li>
                     </ul>
                 </div>
@@ -142,9 +99,12 @@
     </div>
     <hr>
 
-<%@ include file="/footer.jsp"%>
+    <%@ include file="/footer.jsp" %>
 </div>
 <script>
+    var bar = document.getElementById("bar");
+    var list = bar.getElementsByTagName("li");
+    list[2].setAttribute("class", "active");
     $(document).ready(function () {
         $('.dropdown-menu li a').hover(function () {
             $(this).children('i').addClass('icon-white');
@@ -158,22 +118,76 @@
     });
 </script>
 <script type="application/javascript">
+    var page=1;
+    var all=${allpage};
+    $("#pr").click(function () {
+        if(page<=1)
+        return;
+        $.ajax({
+            url:"/SCGL/fanye_SCAction.html",
+            type:"post",
+            data:{pageNo:--page},
+            success: function (data) {
+                console.log(data);
+                var data1 = {dataList: data}
+                var Str = template("dataTemplate", data1);
+                console.log(Str);
+                $("#box").html(Str);
+
+            }
+        })
+        });
+    $("#ne").click(function () {
+        if(all<=page)
+            return;
+        $.ajax({
+            url:"/SCGL/fanye_SCAction.html",
+            type:"post",
+            data:{pageNo:--page},
+            success: function (data) {
+                console.log(data);
+                var data1 = {dataList: data}
+                var Str = template("dataTemplate", data1);
+                $("#box").html(Str);
+
+            }
+        })
+
+    })
+    init();
+    function init() {
+        $.ajax({
+            url: "/SCGL/initquery_SCAction.html",
+            type: "post",
+            data: {pageNo: page},
+            success: function (data) {
+
+                var jsdata=JSON.parse(data);
+                var data1 = {dataList: jsdata.datalist}
+
+                var Str = template("dataTemplate", data1);
+                $("#box").html(Str);
+
+            }
+        })
+
+    }
     $("#box").on("click", "a", function () {
 
-        var box=document.getElementById("box");
-        var trlist=box.getElementsByTagName("tr");
+        var box = document.getElementById("box");
+        var trlist = box.getElementsByTagName("tr");
         var alist;
-        for(var i=0;i<trlist.length;i++){
-            alist= trlist[i].getElementsByTagName("a");
-            for(var j=0;j<alist.length;j++){
-                alist[j].setAttribute("data-index",""+i);
+        for (var i = 0; i < trlist.length; i++) {
+            alist = trlist[i].getElementsByTagName("a");
+            for (var j = 0; j < alist.length; j++) {
+                alist[j].setAttribute("data-index", "" + i);
             }
         }
         var choose = $(this).attr('data-val');
         var id = parseInt($(this).attr('data-id'));
-        var index=parseInt($(this).attr('data-index'));
+        var index = parseInt($(this).attr('data-index'));
 
-        console.log(index+"========="+j);
+        console.log(index + "=========" + j);
         if (choose == "bj") {
 
         } else {
@@ -181,13 +195,12 @@
             $.ajax({
                 url: "/SCGL/delet_SCAction.html",
                 type: "post",
-                data: {de:id},
+                data: {de: id},
                 success: function (data) {
                     console.log(data);
-                    if (data=="success"){
+                    if (data == "success") {
                         document.getElementById('box').deleteRow(index);
-                    }else
-                    {
+                    } else {
                         alert("删除失败,你的蔬菜在订单中");
                     }
 
@@ -196,6 +209,28 @@
         }
 
     })
+</script>
+<script type="text/html" id="dataTemplate">
+    {{each dataList as data index}}
+    <tr class="middle-demo-1">
+
+        <td>{{data.id}}</td>
+        <td>{{data.name}}</td>
+        <td>{{data.price}}RMB</td>
+        <td>
+            <div>
+                <img height="100" width="200"
+                     src="<%=request.getContextPath()%>/fileupload/{{data.img}}" onerror="this.src='<%=request.getContextPath()%>/fileupload/default.png'"/>
+            </div>
+        </td>
+        <td>{{data.type}}</td>
+        <td>{{data.remark}}</td>
+        <td><a data-val="bj" data-index="{{index}}" data-id="{{data.id}}"><i
+                class="icon-pencil"></i> 编辑</a>
+            <a data-val="sc" data-index="{{index}}" data-id="{{data.id}}"><i
+                    class="icon-trash"></i> 删除</a></td>
+    </tr>
+    {{/each }}
 </script>
 </body>
 </html>

@@ -92,20 +92,20 @@ public class LoginAction extends ActionSupport implements ModelDriven<AdminInfo>
 
 			}
 		}
-
+		for(Cookie cookie : cookies){
+			if(cookie.getName().equals("loginInfo")){
+				Cookie delCookie = new Cookie("loginInfo", null);
+				delCookie.setMaxAge(0);
+				delCookie.setPath("/");
+				response.addCookie(delCookie);
+				break;
+			}
+		}
 		String ma=MD5.Encrypt(account,account.length());
 		String mp=MD5.Encrypt(password, password.length());
 		power = this.adminService.panduan(ma,mp);
 		if (power == -1) {
-			for(Cookie cookie : cookies){
-				if(cookie.getName().equals("loginInfo")){
-                    Cookie delCookie = new Cookie("loginInfo", null);
-                    delCookie.setMaxAge(0);
-                    delCookie.setPath("/");
-                    response.addCookie(delCookie);
-                    break;
-				}
-			}
+
 			return "false";
 		} else {
 			switch (power) {
@@ -121,14 +121,6 @@ public class LoginAction extends ActionSupport implements ModelDriven<AdminInfo>
 			request.getSession().setAttribute("sizelist",size());
 			request.getSession().setAttribute("power", quanxian);
             request.getSession().setAttribute("myname", this.account);
-			for(Cookie cookie : cookies){
-				if(cookie.getName().equals("loginInfo")){
-					Cookie delCookie = new Cookie("loginInfo", "***");
-					delCookie.setPath("/");
-					response.addCookie(delCookie);
-					break;
-				}
-			}
 			return "success";
 		}
 

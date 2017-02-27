@@ -27,34 +27,7 @@
 </head>
 
 <body>
-	<div class="navbar navbar-fixed-top">
-		<div class="navbar-inner">
-			<div class="container-fluid">
-				<a class="btn btn-navbar" data-toggle="collapse"
-					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span>
-				</a> <a class="brand" href="#">Strass Administration</a>
-				<div class="btn-group pull-right">
-					<a class="btn" href="#"><i class="icon-user"></i> <s:property
-							value="#session.power"></s:property>: <s:property
-							value="#session.myname"></s:property></a>
-
-				</div>
-				<div class="nav-collapse">
-					<ul class="nav">
-						<li><a href="../index.jsp">主页</a></li>
-						<li class="dropdown"><a href="<%=request.getContextPath()%>/SCYH/query_YHAction" class="dropdown-toggle"
-							data-toggle="dropdown">用户 <b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li><a href="new-user.html">New User</a></li>
-								<li class="divider"></li>
-								<li><a href="users.jsp">Manage Users</a></li>
-							</ul></li>
-				</div>
-			</div>
-		</div>
-	</div>
-
+<%@ include file="/head.jsp"%>
 	<div class="container-fluid">
 		<div class="row-fluid">
 			<%@ include file="/bar.jsp"%>
@@ -86,15 +59,15 @@
 									<td><s:property value="Stime"/></td>
 									<td><s:property value="oremark"/></td>
 									<td><a
-										href="<%=request.getContextPath()%>/SCDD/detailquery_DDAction.action?ts=<s:property
+										href="<%=request.getContextPath()%>/SCDD/detailquery_DDAction.html?ts=<s:property
 												value="onum" />"><i
 											class="icon-book"></i> 详情</a> 
 											<a
-										href="<%=request.getContextPath()%>/SCDD/print_DDAction?ts=<s:property
+										href="<%=request.getContextPath()%>/SCDD/print_DDAction.html?ts=<s:property
 												value="onum" />"><i
 											class="icon-print"></i>打印订单</a> 
 											<a
-										href="<%=request.getContextPath()%>/SCDD/deletorder_DDAction.action?de=<s:property value="onum"/>"><i
+										href="<%=request.getContextPath()%>/SCDD/deletorder_DDAction.html?de=<s:property value="onum"/>"><i
 											class="icon-trash"></i> 删除</a></td>
 								</tr>
 								</s:iterator>
@@ -106,13 +79,13 @@
 						%>
 						<ul>
 							<li><a
-								href="<%=request.getContextPath()%>/SCDD/query_DDAction.action?pagenow=<s:property value="#request.pagenow"/>&&flag=0">Prev</a></li>
+								href="<%=request.getContextPath()%>/SCDD/query_DDAction.html?pagenow=<s:property value="#request.pagenow"/>&&flag=0">Prev</a></li>
 							<s:iterator value="new int[#request.page]">
 								<li><a
-									href="<%=request.getContextPath()%>/SCDD/query_DDAction.action?pagenow=<%=i%>"><%=i++%></a></li>
+									href="<%=request.getContextPath()%>/SCDD/query_DDAction.html?pagenow=<%=i%>"><%=i++%></a></li>
 							</s:iterator>
 							<li><a
-								href="<%=request.getContextPath()%>/SCDD/query_DDAction.action?pagenow=<s:property value="#request.pagenow"/>&&flag=1">Next</a></li>
+								href="<%=request.getContextPath()%>/SCDD/query_DDAction.html?pagenow=<s:property value="#request.pagenow"/>&&flag=1">Next</a></li>
 						</ul>
 					</div>
 					</div>
@@ -127,6 +100,9 @@
 	<script src="js/jquery.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script>
+		var bar =document.getElementById("bar");
+		var list=bar.getElementsByTagName("li");
+		list[3].setAttribute("class","active");
 		$(document).ready(function() {
 			$('.dropdown-menu li a').hover(function() {
 				$(this).children('i').addClass('icon-white');

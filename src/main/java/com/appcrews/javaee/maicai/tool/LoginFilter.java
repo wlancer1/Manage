@@ -59,7 +59,11 @@ public class LoginFilter implements Filter{
                flag=false;
             }
         }
-//        String user = ( String ) hrequest.getSession().getAttribute("myname");//判断用户是否登录
+        String user = ( String ) hrequest.getSession().getAttribute("myname");//判断用户是否登录
+        if(user!=null){
+            flag=false;
+
+        }
         if (flag) {
             wrapper.sendRedirect(redirectPath);
             return;

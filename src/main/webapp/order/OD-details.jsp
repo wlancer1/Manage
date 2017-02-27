@@ -26,34 +26,7 @@
 </head>
 
 <body>
-	<div class="navbar navbar-fixed-top">
-		<div class="navbar-inner">
-			<div class="container-fluid">
-				<a class="btn btn-navbar" data-toggle="collapse"
-					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span>
-				</a> <a class="brand" href="#">Strass Administration</a>
-				<div class="btn-group pull-right">
-					<a class="btn" href="#"><i class="icon-user"></i> <s:property
-							value="#session.power"></s:property>: <s:property
-							value="#session.myname"></s:property></a>
-
-				</div>
-				<div class="nav-collapse">
-					<ul class="nav">
-						<li><a href="../index.jsp">主页</a></li>
-						<li class="dropdown"><a href="<%=request.getContextPath()%>/SCYH/query_YHAction" class="dropdown-toggle"
-							data-toggle="dropdown">用户 <b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li><a href="new-user.html">New User</a></li>
-								<li class="divider"></li>
-								<li><a href="users.jsp">Manage Users</a></li>
-							</ul></li>
-				</div>
-			</div>
-		</div>
-	</div>
-
+<%@ include file="/head.jsp"%>
 	<div class="container-fluid">
 		<div class="row-fluid">
 			<div class="span3">

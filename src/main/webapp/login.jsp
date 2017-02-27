@@ -65,9 +65,13 @@ var _hmt = _hmt || [];
 			<div class="kuang"><img
 						src="<%=request.getContextPath()%>/img/ziti.png" style="width: 300px"></div>
 <script>
-if(getCookie("loginInfo")!=null){
+
+if(!${empty myname}){
 	window.location.href="<%=request.getContextPath()%>/SCDL/login_DLAction.html";
 }
+<%--if(getCookie("loginInfo")!=null){--%>
+	<%--window.location.href="<%=request.getContextPath()%>/SCDL/login_DLAction.html";--%>
+<%--}--%>
 			$("#login").click(function () {
 				var myArray=new Array();
 				var password=document.getElementById("password").value;
@@ -90,9 +94,8 @@ if(getCookie("loginInfo")!=null){
 		}
 	function SetCookie(name,value)//两个参数，一个是cookie的名子，一个是值
 	{
-		var Days = 5; //此 cookie 将被保存 30 天
 		var exp  = new Date();    //new Date("December 31, 9998");
-		exp.setTime(exp.getTime() + Days*24*60*60*1000);
+		exp.setTime(exp.getTime() + 900000);
 		document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
 	}
 </script>
