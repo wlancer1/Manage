@@ -67,24 +67,14 @@
                     </tr>
                     </thead>
                     <tbody id="box">
-                    <%--<s:iterator value="#request.shucaiinfo" status="index">--%>
-
-                    <%--</s:iterator>--%>
                     </tbody>
                 </table>
                 <div class="pagination">
-                    <%
-                        int i = 1;
-                    %>
-                    <ul>
+
+                    <ul id="ys">
                         <li><a
                                  id="pr">Prev</a>
                         </li>
-                        <s:iterator value="new int[#request.allpage]">
-                            <li><a
-                                    href="#"><%=i++%>
-                            </a></li>
-                        </s:iterator>
                         <li><a
                                 id="ne">Next</a>
                         </li>
@@ -120,95 +110,9 @@
 <script type="application/javascript">
     var page=1;
     var all=${allpage};
-    $("#pr").click(function () {
-        if(page<=1)
-        return;
-        $.ajax({
-            url:"/SCGL/fanye_SCAction.html",
-            type:"post",
-            data:{pageNo:--page},
-            success: function (data) {
-                console.log(data);
-                var data1 = {dataList: data}
-                var Str = template("dataTemplate", data1);
-                console.log(Str);
-                $("#box").html(Str);
+</script>
+<script src="/js/manage.js">
 
-            }
-        })
-        });
-    $("#ne").click(function () {
-        if(all<=page)
-            return;
-        $.ajax({
-            url:"/SCGL/fanye_SCAction.html",
-            type:"post",
-            data:{pageNo:--page},
-            success: function (data) {
-                console.log(data);
-                var data1 = {dataList: data}
-                var Str = template("dataTemplate", data1);
-                $("#box").html(Str);
-
-            }
-        })
-
-    })
-    init();
-    function init() {
-        $.ajax({
-            url: "/SCGL/initquery_SCAction.html",
-            type: "post",
-            data: {pageNo: page},
-            success: function (data) {
-
-                var jsdata=JSON.parse(data);
-                var data1 = {dataList: jsdata.datalist}
-
-                var Str = template("dataTemplate", data1);
-                $("#box").html(Str);
-
-            }
-        })
-
-    }
-    $("#box").on("click", "a", function () {
-
-        var box = document.getElementById("box");
-        var trlist = box.getElementsByTagName("tr");
-        var alist;
-        for (var i = 0; i < trlist.length; i++) {
-            alist = trlist[i].getElementsByTagName("a");
-            for (var j = 0; j < alist.length; j++) {
-                alist[j].setAttribute("data-index", "" + i);
-            }
-        }
-        var choose = $(this).attr('data-val');
-        var id = parseInt($(this).attr('data-id'));
-        var index = parseInt($(this).attr('data-index'));
-
-        console.log(index + "=========" + j);
-        if (choose == "bj") {
-
-        } else {
-
-            $.ajax({
-                url: "/SCGL/delet_SCAction.html",
-                type: "post",
-                data: {de: id},
-                success: function (data) {
-                    console.log(data);
-                    if (data == "success") {
-                        document.getElementById('box').deleteRow(index);
-                    } else {
-                        alert("删除失败,你的蔬菜在订单中");
-                    }
-
-                }
-            })
-        }
-
-    })
 </script>
 <script type="text/html" id="dataTemplate">
     {{each dataList as data index}}

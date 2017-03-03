@@ -71,31 +71,8 @@ public class ManagerAction extends ActionSupport implements ModelDriven<ShucaiIn
         return info;
     }
 
-//	public int fenye() {
-//		intpageNo = 0;
-//		if (request.getParameter("pageNo") != null) {
-//			pageNo = Integer.parseInt(request.getParameter("pageNo"));
-//		} else {
-//			pageNo = 1;
-//		}
-//
-//		allpage = ((dataService.getListshucai().size() / 5) + 1);
-//		if (request.getParameter("flag") != null) {
-//			if (request.getParameter("flag").equals("0")) {
-//				if (pageNo != 1) {
-//					pageNo--;
-//				}
-//			} else if (request.getParameter("flag").equals("1")) {
-//				if (pageNo != allpage) {
-//					pageNo++;
-//				}
-//			}
-//		}
-//		returnpageNo;
-//	}
 
     public String search() {
-//		intpageNo = fenye();
         request.setAttribute("page", allpage);// 总页数
         request.setAttribute("pageNo", pageNo);
         index = (pageNo - 1) * 5;
@@ -108,9 +85,6 @@ public class ManagerAction extends ActionSupport implements ModelDriven<ShucaiIn
     }
 
     public String sort() {
-//		intpageNo = fenye();
-//		request.setAttribute("page", allpage);// 总页数
-//		request.setAttribute("pageNo",pageNo);
         index = (pageNo - 1) * 5;
         String target = request.getParameter("target");
         if (target.equals("up")) {
@@ -120,7 +94,6 @@ public class ManagerAction extends ActionSupport implements ModelDriven<ShucaiIn
         }
         request.setAttribute("shucaiinfo", info1);
         return "success";
-
     }
 
     public void initquery() {
@@ -131,11 +104,7 @@ public class ManagerAction extends ActionSupport implements ModelDriven<ShucaiIn
         info1 = dataService.getList(index);
         map.put("datalist", info1);
         map.put("allpage", allpage);
-//        JSONArray jsonArray =JSONArray.fromObject(map);
         JSONObject jsonObject = JSONObject.fromObject(map);
-//		request.setAttribute("page", allpage);// 总页数
-//		request.setAttribute("pageNo",pageNo);
-        System.out.println(jsonObject);
         renderData(response, jsonObject);
     }
 
@@ -210,7 +179,6 @@ public class ManagerAction extends ActionSupport implements ModelDriven<ShucaiIn
     public String delet() throws SQLException {
         de = Integer.parseInt(ServletActionContext.getRequest().getParameter(
                 "de"));
-        System.out.println(de);
         response = ServletActionContext.getResponse();
         if ((dataService.delete(de)).equals("success")) {
             dataService.delete(de);
@@ -270,7 +238,6 @@ public class ManagerAction extends ActionSupport implements ModelDriven<ShucaiIn
             printWriter = response.getWriter();
             printWriter.print(data);
         } catch (IOException ex) {
-            System.out.print(ex);
             Logger.getLogger("ajax").log(Level.SEVERE, null, ex);
         } finally {
             if (null != printWriter) {

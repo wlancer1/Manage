@@ -54,14 +54,7 @@ var _hmt = _hmt || [];
 		</div>
 		
 	</div>
-	<div class="qrcode_panel">
-				<dt>
-					<img
-						src="<%=request.getContextPath()%>/img/erweima.png" style="width: 100px">
-				</dt>
-				<div>
-                            扫一扫<br>安装软件 </div>
-			</div>
+
 			<div class="kuang"><img
 						src="<%=request.getContextPath()%>/img/ziti.png" style="width: 300px"></div>
 <script>
