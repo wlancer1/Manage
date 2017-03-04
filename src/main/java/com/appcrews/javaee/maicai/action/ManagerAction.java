@@ -36,7 +36,8 @@ public class ManagerAction extends ActionSupport implements ModelDriven<ShucaiIn
     private ShucaiInfo info = new ShucaiInfo();
     private Map map;
     private int de, ts;
-    private int index, allpage, pageNo;
+    private int index, allpage, pageNo, pageSize = 5;
+    private String key;
     List<ShucaiInfo> info1;
     List<TypeInfo> info2;
     HttpServletResponse response;
@@ -71,21 +72,42 @@ public class ManagerAction extends ActionSupport implements ModelDriven<ShucaiIn
         return info;
     }
 
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public String getKey() {
+        return key;
+    }
 
     public String search() {
-        request.setAttribute("page", allpage);// 总页数
-        request.setAttribute("pageNo", pageNo);
-        index = (pageNo - 1) * 5;
-        String key = request.getParameter("key");
-        request.setAttribute("moren", key);
+//        request.setAttribute("page", allpage);// 总页数
+//        request.setAttribute("pageNo", pageNo);
+//        index = (pageNo - 1) * this.pageSize;
+//        String key = request.getParameter("key");
+//        request.setAttribute("moren", key);
+        map = new HashMap();
+        this.response = ServletActionContext.getResponse();
         info1 = dataService.getListsearch(key);
-        request.setAttribute("shucaiinfo", info1);
+
+        if(info1==null){
+            map.put("datalist", "null");
+            allpage=0;
+          }
+        else{
+            map.put("datalist", info1);
+            allpage = (((info1.size()-1) / this.pageSize) + 1);
+        }
+
+        map.put("allpage", allpage);
+        JSONObject jsonObject = JSONObject.fromObject(map);
+        renderData(this.response, jsonObject);
         return "success";
 
     }
 
     public String sort() {
-        index = (pageNo - 1) * 5;
+        index = (pageNo - 1) * this.pageSize;
         String target = request.getParameter("target");
         if (target.equals("up")) {
             info1 = dataService.getListshucaisort(pageNo, 1);
@@ -98,9 +120,9 @@ public class ManagerAction extends ActionSupport implements ModelDriven<ShucaiIn
 
     public void initquery() {
         response = ServletActionContext.getResponse();
-        allpage = ((dataService.getListshucai().size() / 5) + 1);
+        allpage = (((dataService.getListshucai().size() -1)/ this.pageSize) + 1);
         map = new HashMap();
-        index = (pageNo - 1) * 5;
+        index = (pageNo - 1) * this.pageSize;
         info1 = dataService.getList(index);
         map.put("datalist", info1);
         map.put("allpage", allpage);
@@ -110,14 +132,14 @@ public class ManagerAction extends ActionSupport implements ModelDriven<ShucaiIn
 
     public String query() {
 
-        allpage = ((dataService.getListshucai().size() / 5) + 1);
+        allpage = (((dataService.getListshucai().size() -1)/ this.pageSize) + 1);
         return "success";
 
     }
 
     public void fanye() {
         response = ServletActionContext.getResponse();
-        index = (pageNo - 1) * 5;
+        index = (pageNo - 1) * this.pageSize;
         info1 = dataService.getList(index);
         JSONArray jsonArray = JSONArray.fromObject(info1);
         renderData(response, jsonArray);

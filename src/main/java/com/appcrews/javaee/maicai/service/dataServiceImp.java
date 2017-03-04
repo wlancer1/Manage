@@ -23,6 +23,9 @@ public class dataServiceImp implements dataService {
 
     @Override
     public List<ShucaiInfo> getListsearch(String key) {
+        if (data.getListsearch(key).size()==0)
+            return null;
+        else
         return this.data.getListsearch(key);
     }
 

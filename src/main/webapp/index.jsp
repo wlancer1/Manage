@@ -34,34 +34,7 @@
 
 <body>
 
-<div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container-fluid">
-            <a class="btn btn-navbar" data-toggle="collapse"
-               data-target=".nav-collapse"> <span class="icon-bar"></span> <span
-                    class="icon-bar"></span> <span class="icon-bar"></span>
-            </a> <a class="brand" href="#">Strass Administration</a>
-            <div class="btn-group pull-right">
-                <a class="btn" href="#"><i class="icon-user"></i> <s:property
-                        value="#session.power"></s:property>:
-                    <s:property value="#session.myname"></s:property></a>
-
-            </div>
-            <div class="nav-collapse">
-                <ul class="nav">
-                    <li><a href="#">主页</a></li>
-                    <li class="dropdown"><a href="#" class="dropdown-toggle"
-                                            data-toggle="dropdown">用户 <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="new-user.html">New User</a></li>
-                            <li class="divider"></li>
-                            <li><a href="users.jsp">Manage Users</a></li>
-                        </ul>
-                    </li>
-            </div>
-        </div>
-    </div>
-</div>
+<%@ include file="/head.jsp"%>
 <div class="container-fluid">
     <div class="row-fluid">
         <%@ include file="/bar.jsp"%>
@@ -72,8 +45,7 @@
                     <s:property value="#session.myname"/>
                 </h1>
                 <p>
-                    <a class="btn btn-success btn-large" href="<%=request.getContextPath()%>/SCYH/query_YHAction.html">Manage
-                        Users &raquo;</a>
+                    <a class="btn btn-success btn-large" href="<%=request.getContextPath()%>/SCYH/query_YHAction.html">管理用户 &raquo;</a>
                 </p>
             </div>
 

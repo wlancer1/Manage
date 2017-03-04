@@ -42,13 +42,8 @@
                 </div>
                 <table class="table table-striped table-bordered table-condensed">
                     <div class="search">
-                        <form action="<%=request.getContextPath()%>/SCGL/search_SCAction.html?pagenow=<s:property value="#request.pagenow"/>"
-                              method="post">
                             <input type="text" class="search_key" name="key" placeholder="菜名搜索"
-                                   target="_blank" value="<s:property value="#request.moren"/>"><input type="submit"
-                                                                                                       class="search_key2"
-                                                                                                       value="搜索">
-                        </form>
+                                   target="_blank"  ><button class="search_key2" >搜索</button>
                     </div>
                     <thead>
                     <tr>
@@ -110,8 +105,71 @@
 <script type="application/javascript">
     var page=1;
     var all=${allpage};
+    init();
+  function init() {
+
+        $.ajax({
+            url: "/SCGL/initquery_SCAction.html",
+            type: "post",
+            data: {pageNo: page},
+            success: function (data) {
+
+                var jsdata=JSON.parse(data);
+                var data1 = {dataList: jsdata.datalist}
+
+                var Str = template("dataTemplate", data1);
+                $("#box").html(Str);
+                var temp="";
+                all=parseInt(jsdata.allpage);
+                for(var i=1;i<=all;i++){
+                    temp=temp+" <li><a onclick='choose("+i+")'>"+i
+                            +"</a></li>";
+                }
+                $("#ys li").eq(0).append(temp);
+
+            }
+        })
+
+    }
+
 </script>
-<script src="/js/manage.js">
+<script src="/js/manage.js" >
+
+</script>
+<script type="application/javascript">//search
+    var search=document.getElementsByClassName('search_key2')[0];
+    search.onclick=function () {
+        var detail=$(".search_key").val();
+        console.log(detail);
+        if(detail!="")
+        {
+            $.ajax({
+                url:"/SCGL/search_SCAction.html",
+                type:"post",
+                data:{key:detail},
+                success: function (data) {
+                    console.log(data);
+                    var temp="";
+                    var jsdata=JSON.parse(data);
+
+                    if(jsdata.datalist==null)
+                        alert("没有该名称的数据");
+                    else{
+                        var data1 = {dataList: jsdata.datalist}
+                        var Str = template("dataTemplate", data1);
+                        $("#box").html(Str);
+                    }
+                }
+            })
+
+        }else
+        {
+            for(var i=1;i<=all;i++){
+                $("#ys li").eq(1).remove();
+            }
+            init();
+        }
+    }
 
 </script>
 <script type="text/html" id="dataTemplate">
