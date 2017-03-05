@@ -36,7 +36,7 @@ public class ManagerAction extends ActionSupport implements ModelDriven<ShucaiIn
     private ShucaiInfo info = new ShucaiInfo();
     private Map map;
     private int de, ts;
-    private int index, allpage, pageNo, pageSize = 5;
+    private int index, allpage, pageNo, pageSize = 5,sort;
     private String key;
     List<ShucaiInfo> info1;
     List<TypeInfo> info2;
@@ -80,12 +80,15 @@ public class ManagerAction extends ActionSupport implements ModelDriven<ShucaiIn
         return key;
     }
 
+    public void setSort(int sort) {
+        this.sort = sort;
+    }
+
+    public int getSort() {
+        return sort;
+    }
+
     public String search() {
-//        request.setAttribute("page", allpage);// 总页数
-//        request.setAttribute("pageNo", pageNo);
-//        index = (pageNo - 1) * this.pageSize;
-//        String key = request.getParameter("key");
-//        request.setAttribute("moren", key);
         map = new HashMap();
         this.response = ServletActionContext.getResponse();
         info1 = dataService.getListsearch(key);
@@ -107,14 +110,16 @@ public class ManagerAction extends ActionSupport implements ModelDriven<ShucaiIn
     }
 
     public String sort() {
+        response=ServletActionContext.getResponse();
         index = (pageNo - 1) * this.pageSize;
-        String target = request.getParameter("target");
-        if (target.equals("up")) {
-            info1 = dataService.getListshucaisort(pageNo, 1);
+        if (this.sort==1) {
+            info1 = dataService.getListshucaisort(pageNo, 1,this.pageSize);
         } else {
-            info1 = dataService.getListshucaisort(pageNo, 0);
+            info1 = dataService.getListshucaisort(pageNo, 0,this.pageSize);
         }
-        request.setAttribute("shucaiinfo", info1);
+        JSONArray jsonArray = JSONArray.fromObject(info1);
+        System.out.print(jsonArray);
+        renderData(response, jsonArray);
         return "success";
     }
 

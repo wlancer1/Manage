@@ -48,7 +48,7 @@ $("#box").on("click", "a", function () {
     var index = parseInt($(this).attr('data-index'));
 
     if (choose == "bj") {
-
+       window.location.href="/SCGL/queryedit_SCAction.html?ts="+id;
     } else {
 
         $.ajax({

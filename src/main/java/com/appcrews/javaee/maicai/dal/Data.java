@@ -14,7 +14,7 @@ public interface Data {
     List<ShucaiInfo> getListsearch(String key);
     List<ShucaiInfo> getListsort(String name);
     ShucaiInfo getShucaiInfo(int id);
-    List<ShucaiInfo> getListshucaisort(int index, int flag);
+    List<ShucaiInfo> getListshucaisort(int index, int flag,int pageSize);
     List<ShucaiInfo> getListshucai();
     int getSCid(String name);
     List<TypeInfo> getType(String TYPE);

@@ -1,4 +1,5 @@
-<%@page import="java.util.List"%>
+
+<%@ page import="com.appcrews.javaee.maicai.util.BaseConfig" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%@ taglib uri="/struts-tags" prefix="s"%>
@@ -7,7 +8,7 @@
 <html lang="en">
 <head>
 
-<title>Users | Strass</title>
+    <title><%=BaseConfig.getProjectName()%></title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description"
 	content="Admin panel developed with the Bootstrap from Twitter.">
@@ -71,7 +72,7 @@
 						</div>
 					</div>
 					<div class="control-group">
-						<label class="control-label" for="pnohe">Phone</label>
+						<label class="control-label">Phone</label>
 						<div class="controls">
 							<input type="text" class="input-xlarge" id="phone" value="xxx-xxx-xxxx" />
 						</div>

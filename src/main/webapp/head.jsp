@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+<script async="" src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container-fluid">
@@ -31,6 +32,7 @@
                             <li><a href="users.jsp">Manage Users</a></li>
                         </ul>
                     </li>
+                    </ul>
             </div>
         </div>
     </div>

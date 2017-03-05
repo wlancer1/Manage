@@ -20,9 +20,7 @@
                 /
             </result>
             <result name="input">
-                <!--<param name="location">-->
                     /login.jsp
-                <!--</param>-->
             </result>
         </action>
     </package>
@@ -57,16 +55,16 @@
             </result>
 
             <result name="detail">
-                ../order/OD-details.jsp
+                ../order/ord_details.jsp
 
             </result>
             <result name="print">
-                ../order/OD-print.jsp
+                ../order/ord_print.jsp
 
             </result>
 
             <result name="edit">
-                ../order/OD-edit.jsp
+                ../order/ord_edit.jsp
 
             </result>
         </action>
@@ -113,12 +111,12 @@
 
             </result>
             <result name="edit">
-                ../shucai/SC-edit.jsp
+                ../shucai/sdat_edit.jsp
 
             </result>
 
             <result name="insert">
-                ../shucai/SC-insert.jsp
+                ../shucai/sdat_insert.jsp
 
             </result>
 

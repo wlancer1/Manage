@@ -52,17 +52,17 @@ public class Dataimpl extends JdbcDaoSupport implements Data{
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<ShucaiInfo> getListshucaisort(int index, int flag) {
+	public List<ShucaiInfo>  getListshucaisort(int index, int flag,int pageSize) {
 		List<ShucaiInfo> list = new ArrayList<ShucaiInfo>();
 		if (flag == 0) {
-//			String sql1 = "SELECT* FROM shucai ORDER BY fPrice DESC LIMIT "
-//					+ index + ",5 ";
-			String sql1 = "SELECT* FROM shucai ORDER BY fPrice DESC ";
+			String sql1 = "SELECT* FROM shucai ORDER BY fPrice DESC LIMIT "
+					+ index + ","+pageSize+ "";
+//			String sql1 = "SELECT* FROM shucai ORDER BY fPrice DESC ";
 			list = this.getJdbcTemplate().query(sql1, new ShuCairowMap());
 		} else {
-//			String sql2 = "SELECT* FROM shucai ORDER BY fPrice asc LIMIT "
-//					+ index + ",5 ";
-			String sql2 = "SELECT* FROM shucai ORDER BY fPrice asc ";
+			String sql2 = "SELECT* FROM shucai ORDER BY fPrice asc LIMIT "
+					+ index + ","+pageSize+ "";
+//			String sql2 = "SELECT* FROM shucai ORDER BY fPrice asc ";
 			list = this.getJdbcTemplate().query(sql2, new ShuCairowMap());
 		}
 		return list;

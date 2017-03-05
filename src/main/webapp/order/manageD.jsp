@@ -1,4 +1,5 @@
-<%@page import="java.util.List"%>
+
+<%@ page import="com.appcrews.javaee.maicai.util.BaseConfig" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%@ taglib uri="/struts-tags" prefix="s"%>
@@ -7,7 +8,7 @@
 <html lang="en">
 <head>
 
-<title>Users | Strass</title>
+    <title><%=BaseConfig.getProjectName()%></title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description"
 	content="Admin panel developed with the Bootstrap from Twitter.">
@@ -23,7 +24,7 @@
 <!--[if lt IE 9]>
       <script src="js/html5.js"></script>
     <![endif]-->
-
+<script src="/js/jquery-3.1.1.js"></script>
 </head>
 
 <body>

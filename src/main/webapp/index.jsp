@@ -1,4 +1,4 @@
-
+<%@ page import="com.appcrews.javaee.maicai.util.BaseConfig" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="/struts-tags" prefix="s" %>
 
@@ -17,7 +17,7 @@
     </script>
 
     <meta charset="utf-8">
-    <title>Admin | Strass</title>
+    <title><%=BaseConfig.getProjectName()%></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
           content="Admin panel developed with the Bootstrap from Twitter.">

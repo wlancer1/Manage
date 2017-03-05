@@ -13,8 +13,8 @@
     <span id="busuanzi_container_site_uv" style="display: inline;">
     访客数<span id="busuanzi_value_site_uv"></span>人次</span>
 </footer>
-<script type="application/javascript">
-    document.title="企业管理";
-</script>
+<%--<script type="application/javascript">--%>
+    <%--document.title="企业管理";--%>
+<%--</script>--%>
 </body>
 </html>

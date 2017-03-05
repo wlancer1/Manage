@@ -40,8 +40,8 @@ public class dataServiceImp implements dataService {
     }
 
     @Override
-    public List<ShucaiInfo> getListshucaisort(int index, int flag) {
-        return this.getListshucaisort(index,flag);
+    public List<ShucaiInfo> getListshucaisort(int index, int flag,int pageSize) {
+        return this.data.getListshucaisort(index,flag,pageSize);
     }
 
     @Override

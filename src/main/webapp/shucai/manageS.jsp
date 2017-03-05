@@ -1,4 +1,4 @@
-<%@page import="java.util.List" %>
+<%@page import="com.appcrews.javaee.maicai.util.BaseConfig" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%@ taglib uri="/struts-tags" prefix="s" %>
@@ -7,7 +7,7 @@
 <html lang="en">
 <head>
 
-    <title>Users | Strass</title>
+    <title><%=BaseConfig.getProjectName()%></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
           content="Admin panel developed with the Bootstrap from Twitter.">
@@ -50,9 +50,9 @@
                         <th>ID</th>
                         <th>菜名</th>
                         <th>
-                            <a href="<%=request.getContextPath()%>/SCGL/sort_SCAction.html?pagenow=<s:property value="#request.pagenow"/>&&target=up"><i
+                            <a  onclick="sort(1)"><i
                                     class="icon-arrow-up"></i> </a> <a
-                                href="<%=request.getContextPath()%>/SCGL/sort_SCAction.html?pagenow=<s:property value="#request.pagenow"/>&&target=down"><i
+                                onclick="sort(0)"><i
                                 class="icon-arrow-down icon-blue"></i> </a>价格
                         </th>
                         <th>图片</th>
@@ -105,6 +105,20 @@
 <script type="application/javascript">
     var page=1;
     var all=${allpage};
+    function sort(way) {
+        $.ajax({
+            url: "/SCGL/sort_SCAction.html",
+            type: "post",
+            data: {sort: way,pageNo:page},
+            success: function (data) {
+                console.log(data);
+                var jsdata=JSON.parse(data);
+                var data1 = {dataList: jsdata}
+                var Str = template("dataTemplate", data1);
+                $("#box").html(Str);
+            }
+        })
+    }
     init();
   function init() {
 
@@ -170,6 +184,8 @@
             init();
         }
     }
+    //sort
+
 
 </script>
 <script type="text/html" id="dataTemplate">

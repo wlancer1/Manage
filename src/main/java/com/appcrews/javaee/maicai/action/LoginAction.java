@@ -32,16 +32,6 @@ public class LoginAction extends ActionSupport implements ModelDriven<AdminInfo>
 	@Autowired
 	private adminService adminService;
 
-//	public void setAdminService(adminService adminService) {
-//		this.adminService = adminService;
-//	}
-//
-//	public adminService getAdminService() {
-//		return adminService;
-//	}
-
-	//	ApplicationContext context = new ClassPathXmlApplicationContext(
-//			"/applicationContext.xml");
 	private String account, password;
 
 	public String getAccount() {
@@ -126,7 +116,6 @@ public class LoginAction extends ActionSupport implements ModelDriven<AdminInfo>
 
 	}
 	public List size(){
-		size=new ArrayList<Integer>();
 		size=this.adminService.sizeList();
 		return size;
 	}
