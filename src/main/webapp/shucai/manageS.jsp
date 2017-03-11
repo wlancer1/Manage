@@ -162,10 +162,7 @@
                 type:"post",
                 data:{key:detail},
                 success: function (data) {
-                    console.log(data);
-                    var temp="";
                     var jsdata=JSON.parse(data);
-
                     if(jsdata.datalist==null)
                         alert("没有该名称的数据");
                     else{
@@ -184,8 +181,6 @@
             init();
         }
     }
-    //sort
-
 
 </script>
 <script type="text/html" id="dataTemplate">

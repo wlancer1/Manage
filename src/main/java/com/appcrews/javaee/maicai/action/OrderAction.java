@@ -146,9 +146,9 @@ public class OrderAction extends ActionSupport {
 		float sum = 0;
 		int onum = Integer.parseInt(request.getParameter("ts"));
 		info2 = orderService.getListdetailorder(onum);
+		System.out.println(info2);
 		request.setAttribute("num", onum);
 		request.setAttribute("detailinfo", info2);
-		request.setAttribute("sum", sum);
 		return "detail";
 
 	}

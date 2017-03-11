@@ -9,6 +9,7 @@ import com.appcrews.javaee.maicai.model.ShucaiInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,6 +23,9 @@ public class orderServiceImp implements orderService {
     private Data data;
     @Autowired
     private User user;
+     private DetailInfo detailInfo,tempInfo;
+    private  ShucaiInfo shucaiInfo;
+    private List<DetailInfo> detList;
     @Override
     public List<OrderInfo> getList(int index) {
         return this.order.getList(index);
@@ -35,7 +39,17 @@ public class orderServiceImp implements orderService {
 
     @Override
     public List<DetailInfo> getListdetailorder(int ounm) {
-        return this.order.getListdetailorder(ounm);
+
+        detList=this.order.getListdetailorder(ounm);
+        for(int i=0;i<detList.size();i++){
+            detailInfo =detList.get(i);
+           shucaiInfo=data.getShucaiInfo(detList.get(i).getSCid());
+            detailInfo.setImg(shucaiInfo.getImg());
+            detailInfo.setID(shucaiInfo.getId());
+            detailInfo.setName(shucaiInfo.getName());
+            detailInfo.setPrice(shucaiInfo.getPrice());
+        }
+        return detList;
     }
 
     @Override

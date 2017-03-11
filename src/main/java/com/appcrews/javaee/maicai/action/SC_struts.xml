@@ -53,7 +53,7 @@
             </result>
 
             <result name="detail">
-                ../order/ord_details.jsp
+                ../order/ord_detail.jsp
 
             </result>
             <result name="print">

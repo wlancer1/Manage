@@ -16,7 +16,7 @@ choose(++page);
         $("#ys li").eq(page).removeClass("active");
         page=pa;
         $.ajax({
-            url:"/SCGL/fanye_SCAction.html",
+            url:"/data/fanye_manage.html",
             type:"post",
             data:{pageNo:page},
             success: function (data) {
@@ -48,11 +48,11 @@ $("#box").on("click", "a", function () {
     var index = parseInt($(this).attr('data-index'));
 
     if (choose == "bj") {
-       window.location.href="/SCGL/queryedit_SCAction.html?ts="+id;
+       window.location.href="/data/queryedit_manage.html?ts="+id;
     } else {
 
         $.ajax({
-            url: "/SCGL/delet_SCAction.html",
+            url: "/data/delet_manage.html",
             type: "post",
             data: {de: id},
             success: function (data) {

@@ -23,6 +23,7 @@
 <!--[if lt IE 9]>
       <script src="js/html5.js"></script>
     <![endif]-->
+	<script type="text/javascript" src="/js/jquery-3.1.1.js"></script>
 <script async="" src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 </head>
 
@@ -38,7 +39,7 @@
 							订单修改<small>订单号：<s:property value="#request.num" /></small>
 						</h1>
 					</div>
-					<form action="<%=request.getContextPath()%>/SCDD/save_DDAction?onum=<s:property value="#request.num"/>" method="post">
+					<form action="<%=request.getContextPath()%>/order/save_order?onum=<s:property value="#request.num"/>" method="post">
 					<div class="well-content"></div>
 					<table
 						class="table table-striped table-bordered table-hover datatable">
@@ -79,7 +80,7 @@
 											</s:iterator>
 									</select>
 									<td><a
-										href="<%=request.getContextPath()%>/SCDD/delet_DDAction.html.html?de=<s:property value="onum"/>&&scid=<s:property value="SCid"/>"><i
+										href="<%=request.getContextPath()%>/order/delet_order.html.html?de=<s:property value="onum"/>&&scid=<s:property value="SCid"/>"><i
 											class="icon-trash"></i>删除</a></td>
 								</tr>
 							</s:iterator>
@@ -92,7 +93,7 @@
 						<div class="ab">
 							<input type="submit" class="btn btn-success btn-large"
 									value="保存">
-									<a href="<%=request.getContextPath()%>/SCDD/query_DDAction" >返回</a>
+									<a href="<%=request.getContextPath()%>/order/query_order" >返回</a>
 						</div>
 					</div>
 </form>
@@ -106,7 +107,7 @@
 	<%@ include file="/footer.jsp"%>
 	</div>
 
-	<script src="js/jquery.js"></script>
+
 	<script src="js/bootstrap.min.js"></script>
 	<script>
 		$(document).ready(function() {

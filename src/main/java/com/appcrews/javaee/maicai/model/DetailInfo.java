@@ -7,7 +7,11 @@ public class DetailInfo {
 	private float price;
 	private float sum;
 	private String img = "";
-
+	public DetailInfo (int ounm,int SCid,int SCnum){
+			this.onum=ounm;
+			this.SCid=SCid;
+			this.SCnum=SCnum;
+	}
 	public int getID() {
 		return ID;
 	}

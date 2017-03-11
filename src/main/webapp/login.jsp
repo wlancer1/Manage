@@ -62,9 +62,6 @@ var _hmt = _hmt || [];
 if(!${empty myname}){
 	window.location.href="<%=request.getContextPath()%>/login/login_index.html";
 }
-<%--if(getCookie("loginInfo")!=null){--%>
-	<%--window.location.href="<%=request.getContextPath()%>/SCDL/login_DLAction.html";--%>
-<%--}--%>
 			$("#login").click(function () {
 				var myArray=new Array();
 				var password=document.getElementById("password").value;

@@ -60,15 +60,15 @@
 									<td><s:property value="Stime"/></td>
 									<td><s:property value="oremark"/></td>
 									<td><a
-										href="<%=request.getContextPath()%>/SCDD/detailquery_DDAction.html?ts=<s:property
+										href="<%=request.getContextPath()%>/order/detailquery_order.html?ts=<s:property
 												value="onum" />"><i
 											class="icon-book"></i> 详情</a> 
 											<a
-										href="<%=request.getContextPath()%>/SCDD/print_DDAction.html?ts=<s:property
+										href="<%=request.getContextPath()%>/order/print_order.html?ts=<s:property
 												value="onum" />"><i
 											class="icon-print"></i>打印订单</a> 
 											<a
-										href="<%=request.getContextPath()%>/SCDD/deletorder_DDAction.html?de=<s:property value="onum"/>"><i
+										href="<%=request.getContextPath()%>/order/deletorder_order.html?de=<s:property value="onum"/>"><i
 											class="icon-trash"></i> 删除</a></td>
 								</tr>
 								</s:iterator>
@@ -80,13 +80,13 @@
 						%>
 						<ul>
 							<li><a
-								href="<%=request.getContextPath()%>/SCDD/query_DDAction.html?pagenow=<s:property value="#request.pagenow"/>&&flag=0">Prev</a></li>
+								href="<%=request.getContextPath()%>/order/query_order.html?pagenow=<s:property value="#request.pagenow"/>&&flag=0">Prev</a></li>
 							<s:iterator value="new int[#request.page]">
 								<li><a
-									href="<%=request.getContextPath()%>/SCDD/query_DDAction.html?pagenow=<%=i%>"><%=i++%></a></li>
+									href="<%=request.getContextPath()%>/order/query_order.html?pagenow=<%=i%>"><%=i++%></a></li>
 							</s:iterator>
 							<li><a
-								href="<%=request.getContextPath()%>/SCDD/query_DDAction.html?pagenow=<s:property value="#request.pagenow"/>&&flag=1">Next</a></li>
+								href="<%=request.getContextPath()%>/order/query_order.html?pagenow=<s:property value="#request.pagenow"/>&&flag=1">Next</a></li>
 						</ul>
 					</div>
 					</div>

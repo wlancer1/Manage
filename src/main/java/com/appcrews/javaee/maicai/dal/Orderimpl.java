@@ -91,10 +91,7 @@ public class Orderimpl extends JdbcDaoSupport implements Order {
 		@Override
 		public Object mapRow(ResultSet rs, int arg1) throws SQLException {
 			// TODO Auto-generated method stub
-			DetailInfo info = new DetailInfo();
-			info.setOnum(rs.getInt("onum"));
-			info.setSCid(rs.getInt("SCid"));
-			info.setSCnum(rs.getInt("SCnum"));
+			DetailInfo info = new DetailInfo(rs.getInt("onum"),rs.getInt("SCid"),rs.getInt("SCnum"));
 			return info;
 		}
 	}
