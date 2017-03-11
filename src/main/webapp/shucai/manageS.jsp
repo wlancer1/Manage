@@ -77,7 +77,7 @@
                 </div>
                 <div class="form-actions">
                     <a type="submit" class="btn btn-success btn-large"
-                       href="<%=request.getContextPath()%>/SCGL/insert_SCAction.html">添加</a>
+                       href="<%=request.getContextPath()%>/data/insert_manage.html">添加</a>
                 </div>
             </div>
         </div>
@@ -107,7 +107,7 @@
     var all=${allpage};
     function sort(way) {
         $.ajax({
-            url: "/SCGL/sort_SCAction.html",
+            url: "/data/sort_manage.html",
             type: "post",
             data: {sort: way,pageNo:page},
             success: function (data) {
@@ -123,7 +123,7 @@
   function init() {
 
         $.ajax({
-            url: "/SCGL/initquery_SCAction.html",
+            url: "/data/initquery_manage.html",
             type: "post",
             data: {pageNo: page},
             success: function (data) {
@@ -158,7 +158,7 @@
         if(detail!="")
         {
             $.ajax({
-                url:"/SCGL/search_SCAction.html",
+                url:"/data/search_manage.html",
                 type:"post",
                 data:{key:detail},
                 success: function (data) {

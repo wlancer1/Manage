@@ -38,7 +38,7 @@
 						</h1>
 					</div>
 					<form class="form-horizontal"
-						action="<%=request.getContextPath()%>/SCGL/save_SCAction.html"
+						action="<%=request.getContextPath()%>/data/save_manage.html"
 						method="post" enctype="multipart/form-data">
 						<fieldset>
 							<div class="control-group">

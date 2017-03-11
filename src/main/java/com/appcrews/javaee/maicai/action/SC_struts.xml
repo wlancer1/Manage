@@ -5,15 +5,13 @@
 <struts>
 
     <package
-            name="SCDL"
+            name="login"
             extends="struts-default"
-            namespace="/SCDL">
+            namespace="/login">
 
-        <action name="*_DLAction" class="loginAction" method="{1}">
+        <action name="*_index" class="loginAction" method="{1}">
             <result name="success">
-                <!--<param name="location">-->
                     /index.jsp
-                <!--</param>-->
             </result>
 
             <result name="false" type="redirect">
@@ -26,9 +24,9 @@
     </package>
 
     <package
-            name="SCYH"
+            name="user"
             extends="struts-default"
-            namespace="/SCYH">
+            namespace="/user">
 
         <action
                 name="*_YHAction"
@@ -40,12 +38,12 @@
     </package>
 
     <package
-            name="SCDD"
+            name="order"
             extends="struts-default"
-            namespace="/SCDD">
+            namespace="/order">
 
         <action
-                name="*_DDAction"
+                name="*_order"
                 class="com.appcrews.javaee.maicai.action.OrderAction"
                 method="{1}">
 
@@ -71,12 +69,12 @@
     </package>
 
     <package
-            name="SCDC"
+            name="logout"
             extends="struts-default"
-            namespace="/SCDC">
+            namespace="/logout">
 
         <action
-                name="*_DCAction"
+                name="*_logout"
                 class="com.appcrews.javaee.maicai.action.LogoutAction"
                 method="{1}">
 
@@ -89,12 +87,12 @@
     </package>
 
     <package
-            name="SCGL"
+            name="data"
             extends="struts-default"
-            namespace="/">
+            namespace="/data">
 
         <action
-                name="*_SCAction"
+                name="*_manage"
                 class="com.appcrews.javaee.maicai.action.ManagerAction"
                 method="{1}">
 

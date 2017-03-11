@@ -37,7 +37,7 @@
 						</h1>
 					</div>
 					<form class="form-horizontal"
-						action="<%=request.getContextPath()%>/SCGL/edit_SCAction.html?ts=<s:property value="#request.ts"/>"
+						action="<%=request.getContextPath()%>/data/edit_manage.html?ts=<s:property value="#request.ts"/>"
 						method="post" enctype="multipart/form-data">
 						<fieldset>
 							<div class="control-group">

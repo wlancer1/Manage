@@ -32,7 +32,7 @@ var _hmt = _hmt || [];
 	<div class="lg-container">
 		<h1>Admin Area</h1>
 		<s:fielderror />
-		<form action="<%=request.getContextPath()%>/SCDL/login_DLAction.html"
+		<form action="<%=request.getContextPath()%>/login/login_index.html"
 			id="lg-form" method="post">
 
 			<div>
@@ -60,7 +60,7 @@ var _hmt = _hmt || [];
 <script>
 
 if(!${empty myname}){
-	window.location.href="<%=request.getContextPath()%>/SCDL/login_DLAction.html";
+	window.location.href="<%=request.getContextPath()%>/login/login_index.html";
 }
 <%--if(getCookie("loginInfo")!=null){--%>
 	<%--window.location.href="<%=request.getContextPath()%>/SCDL/login_DLAction.html";--%>
