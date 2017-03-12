@@ -63,17 +63,9 @@ if(!${empty myname}){
 	window.location.href="<%=request.getContextPath()%>/login/login_index.html";
 }
 			$("#login").click(function () {
-				var myArray=new Array();
-				var password=document.getElementById("password").value;
-				var username=document.getElementById("username").value;
-				myArray[0]=username;
-				myArray[1]=password;
-				if(password!=""&&username!=""&&getCookie("loginInfo")==null){
-					SetCookie("loginInfo",myArray);
+
+					SetCookie("loginInfo",1);
 					$("#lg-form").submit();
-				}else{
-					alert("账号密码不能为空！！");
-				}
 
 		})
 

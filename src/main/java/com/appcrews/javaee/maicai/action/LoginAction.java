@@ -58,7 +58,6 @@ public class LoginAction extends ActionSupport implements ModelDriven<AdminInfo>
 		return size;
 	}
 
-//	Adminimpl a = (Adminimpl) context.getBean("adminaction");
 
 	@Override
 	public AdminInfo getModel() {
@@ -73,24 +72,9 @@ public class LoginAction extends ActionSupport implements ModelDriven<AdminInfo>
 		if(request.getSession().getAttribute("myname")!=null){
 			return "success";
 		}
-		cookies = request.getCookies();
-		for(Cookie cookie : cookies){
-			if(cookie.getName().equals("loginInfo")){
-				String loginInfo = cookie.getValue();
-				this.account= loginInfo.split("%2C")[0];
-				this.password = loginInfo.split("%2C")[1];
+		if(this.account==null||this.password==null)
+			return "false";
 
-			}
-		}
-		for(Cookie cookie : cookies){
-			if(cookie.getName().equals("loginInfo")){
-				Cookie delCookie = new Cookie("loginInfo", null);
-				delCookie.setMaxAge(0);
-				delCookie.setPath("/");
-				response.addCookie(delCookie);
-				break;
-			}
-		}
 		String ma=MD5.Encrypt(account,account.length());
 		String mp=MD5.Encrypt(password, password.length());
 		power = this.adminService.panduan(ma,mp);
@@ -115,6 +99,7 @@ public class LoginAction extends ActionSupport implements ModelDriven<AdminInfo>
 		}
 
 	}
+
 	public List size(){
 		size=this.adminService.sizeList();
 		return size;
