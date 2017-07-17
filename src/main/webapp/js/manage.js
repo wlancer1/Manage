@@ -63,7 +63,7 @@ $("#box").on("click", "a", function () {
                     }
                     init();
                 } else {
-                    alert("删除失败,你的蔬菜在订单中");
+                    alert("删除失败,你的商品在订单中");
                 }
 
             }

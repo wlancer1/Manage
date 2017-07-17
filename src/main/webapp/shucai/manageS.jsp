@@ -36,8 +36,8 @@
             <div class="row-fluid">
                 <div class="page-header">
                     <h1>
-                        蔬菜
-                        <small>所有蔬菜</small>
+                        商品
+                        <small>所有商品</small>
                     </h1>
                 </div>
                 <table class="table table-striped table-bordered table-condensed">

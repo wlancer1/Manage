@@ -37,11 +37,11 @@
 						<li><a
 							href="<%=request.getContextPath()%>/SCYH/query_YHAction.html">用户</a></li>
 						<li ><a
-							href="<%=request.getContextPath()%>/SCGL/query_SCAction.html">蔬菜</a></li>
+							href="<%=request.getContextPath()%>/SCGL/query_SCAction.html">商品</a></li>
 						<li><a
 							href="<%=request.getContextPath()%>/SCDD/query_DDAction.html">订单</a></li>
 						<li class="nav-header"><i class="icon-signal"></i> Statistics</li>
-						<li><a href="<%=request.getContextPath()%>/SCGL/querytype_SCAction">添加蔬菜类型</a></li>
+						<li><a href="<%=request.getContextPath()%>/SCGL/querytype_SCAction">添加商品类型</a></li>
 						<li><a href="#">Users</a></li>
 					<li><a href="http://tongji.baidu.com/web/welcome/ico?s=bd50a33cf40f3755ca12255e905848cb" target="view_window">站长统计</a></li>
 						<li class="nav-header"><i class="icon-user"></i> Profile</li>

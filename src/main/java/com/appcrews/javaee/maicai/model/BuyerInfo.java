@@ -13,13 +13,13 @@ public void setBemail(String bemail) {
 	this.bemail = bemail;
 }
 String bemail;
- public String getPower() {
+ public int getPower() {
 	return power;
 }
-public void setPower(String power) {
+public void setPower(int power) {
 	this.power = power;
 }
-String power;
+int power;
 public int getId() {
 	return id;
 }

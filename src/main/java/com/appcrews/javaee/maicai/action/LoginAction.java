@@ -17,7 +17,6 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings("serial")
@@ -26,7 +25,6 @@ import java.util.List;
 public class LoginAction extends ActionSupport implements ModelDriven<AdminInfo> {
 	private List<AdminInfo> info;
 	private List<Integer> size;
-	private Cookie[] cookies ;
 	private HttpServletResponse response;
 	private HttpServletRequest request = ServletActionContext.getRequest();
 	@Autowired

@@ -32,7 +32,7 @@
                 name="*_YHAction"
                 class="com.appcrews.javaee.maicai.action.UserAction"
                 method="{1}">
-            <result name="success">../users.jsp</result>
+            <result name="success">../user/users.jsp</result>
         </action>
 
     </package>

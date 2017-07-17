@@ -11,7 +11,6 @@ import java.io.IOException;
  * Created by micheal on 2017/1/21.
  */
 public class LoginFilter implements Filter{
-    public Cookie[] cookies ;
     public FilterConfig config;
     private boolean flag;
     @Override
@@ -53,13 +52,10 @@ public class LoginFilter implements Filter{
             chain.doFilter(request, response);
             return;
         }
-        cookies = hrequest.getCookies();
-        for(Cookie cookie : cookies){
-            if(cookie.getName().equals("loginInfo")){
-               flag=false;
-            }
-        }
+        String name= (String) hrequest.getAttribute("account");
         String user = ( String ) hrequest.getSession().getAttribute("myname");//判断用户是否登录
+        if (name!=null)
+              flag=false;
         if(user!=null){
             flag=false;
 

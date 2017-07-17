@@ -55,7 +55,7 @@ public class SalerowMap implements RowMapper {
 		info.setEmail(rs.getString("email"));
 		info.setUserid(rs.getInt("userID"));
 		info.setUsername(rs.getString("username"));
-		info.setPower("卖家");
+		info.setPower(rs.getInt("power"));
 		info.setTele(rs.getInt("tele"));
 		info.setSaddress(rs.getString("saddress"));
 		return info;
@@ -74,7 +74,7 @@ public class SalerowMap implements RowMapper {
 			info.setId(rs.getInt("ID"));
 			info.setBemail(rs.getString("email"));
 			info.setBremark(rs.getString("bremark"));
-			info.setPower("买家");
+			info.setPower(rs.getInt("power"));
 			return info;
 		}
 

@@ -34,7 +34,7 @@
 				<div class="row-fluid">
 					<div class="page-header">
 						<h1>
-							添加蔬菜 <small></small>
+							添加商品 <small></small>
 						</h1>
 					</div>
 					<form class="form-horizontal"

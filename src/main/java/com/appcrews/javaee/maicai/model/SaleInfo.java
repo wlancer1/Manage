@@ -4,6 +4,7 @@ public class SaleInfo {
 	int userid;
 	String username;
 	String email;
+	int power;
 	public int getTele() {
 		return tele;
 	}
@@ -23,15 +24,15 @@ public class SaleInfo {
 
 	String saddress;
 
-	public String getPower() {
+	public int getPower() {
 		return power;
 	}
 
-	public void setPower(String power) {
+	public void setPower(int power) {
 		this.power = power;
 	}
 
-	String power;
+
 
 	public int getUserid() {
 		return userid;

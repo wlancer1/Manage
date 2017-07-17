@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<p>订单中有该蔬菜，不能删除！！</p>
+	<p>订单中有该商品，不能删除！！</p>
 	<a href="<%=request.getContextPath()%>/SCGL/query_SCAction">返回</a>
 </body>
 </html>

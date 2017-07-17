@@ -45,7 +45,7 @@
                     <s:property value="#session.myname"/>
                 </h1>
                 <p>
-                    <a class="btn btn-success btn-large" href="<%=request.getContextPath()%>/SCYH/query_YHAction.html">管理用户 &raquo;</a>
+                    <a class="btn btn-success btn-large" href="<%=request.getContextPath()%>/user/query_YHAction.html">管理用户 &raquo;</a>
                 </p>
             </div>
 
@@ -60,15 +60,15 @@
                     <div class="span3">
                         <h3>用户数量</h3>
                         <p>
-                            <a href="<%=request.getContextPath()%>/SCYH/query_YHAction.html.html"
+                            <a href="<%=request.getContextPath()%>/user/query_YHAction.html"
                                class="badge badge-inverse">${sizelist[0]}
                             </a>
                         </p>
                     </div>
                     <div class="span3">
-                        <h3>蔬菜数量</h3>
+                        <h3>商品数量</h3>
                         <p>
-                            <a href="<%=request.getContextPath()%>/SCGL/query_SCAction.html.html"
+                            <a href="<%=request.getContextPath()%>/data/query_manage.html"
                                class="badge badge-inverse">${sizelist[1]}
                             </a>
                         </p>
@@ -76,7 +76,7 @@
                     <div class="span3">
                         <h3>订单</h3>
                         <p>
-                            <a href="<%=request.getContextPath()%>/SCDD/query_DDAction.html"
+                            <a href="<%=request.getContextPath()%>/order/query_order.html"
                                class="badge badge-inverse">${sizelist[2]}
                             </a>
                         </p>

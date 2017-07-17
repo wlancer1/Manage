@@ -1,7 +1,10 @@
 package com.appcrews.javaee.maicai.model;
 
 public class UserInfo {
-int id;
+	private int id;
+private String name;
+	private String email;
+	private int power;
 public int getId() {
 	return id;
 }
@@ -20,13 +23,11 @@ public String getEmail() {
 public void setEmail(String email) {
 	this.email = email;
 }
-public String getPower() {
+public int  getPower() {
 	return power;
 }
-public void setPower(String power) {
+public void setPower(int power) {
 	this.power = power;
 }
-String name;
-String email;
-String power;
+
 }

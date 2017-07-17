@@ -33,7 +33,7 @@
 				<div class="row-fluid">
 					<div class="page-header">
 						<h1>
-							编辑蔬菜 <small></small>
+							编辑商品 <small></small>
 						</h1>
 					</div>
 					<form class="form-horizontal"

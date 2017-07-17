@@ -88,7 +88,7 @@ public class OrderAction extends ActionSupport {
 	public String edit() {
 		float sum = 0;
 		int onum = Integer.parseInt(request.getParameter("ts"));// 得到订单号
-		info2 = orderService.getListdetailorder(onum);// 向defaultinfo中输入蔬菜数量和蔬菜id
+		info2 = orderService.getListdetailorder(onum);// 向defaultinfo中输入商品数量和商品id
 		request.setAttribute("nameinfo", info3);
 		request.setAttribute("num", onum);
 		request.setAttribute("detailinfo", info2);
@@ -133,7 +133,7 @@ public class OrderAction extends ActionSupport {
 	public String edit1(String num) {
 		float sum=0;
 		int onum = Integer.parseInt(num);// 得到订单号
-		info2 = orderService.getListdetailorder(onum);// 向defaultinfo中输入蔬菜数量和蔬菜id
+		info2 = orderService.getListdetailorder(onum);// 向defaultinfo中输入商品数量和商品id
 		request.setAttribute("nameinfo", info3);
 		request.setAttribute("num", onum);
 		request.setAttribute("detailinfo", info2);

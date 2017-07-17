@@ -23,7 +23,7 @@ public class orderServiceImp implements orderService {
     private Data data;
     @Autowired
     private User user;
-     private DetailInfo detailInfo,tempInfo;
+     private DetailInfo detailInfo;
     private  ShucaiInfo shucaiInfo;
     private List<DetailInfo> detList;
     @Override

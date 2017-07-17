@@ -2,7 +2,8 @@
 SQLyog v10.2 
 MySQL - 5.5.30 : Database - shujub
 *********************************************************************
-*/
+*/
+
 
 /*!40101 SET NAMES utf8 */;
 
@@ -126,7 +127,7 @@ CREATE TABLE `shucai` (
 
 /*Data for the table `shucai` */
 
-insert  into `shucai`(`fId`,`fName`,`fPrice`,`fImg`,`fType`,`fRemark`) values (2,'白菜',23,'icon_car1.png','花类','你知道的'),(3,'苹果',2,'icon_price.png','水果','陕西产'),(4,'茄子',232,'mn.jpg','花类','2323'),(6,'芹菜',1.45,'0c2cab1cf1884ce4bee83487e98e71c9.jpg','双子类',''),(9,'蔬菜',3.23,'BMA-038.jpg','双子类',''),(10,'大白菜',2.51,'mn.jpg','双子类','');
+insert  into `shucai`(`fId`,`fName`,`fPrice`,`fImg`,`fType`,`fRemark`) values (2,'白菜',23,'icon_car1.png','花类','你知道的'),(3,'苹果',2,'icon_price.png','水果','陕西产'),(4,'茄子',232,'mn.jpg','花类','2323'),(6,'芹菜',1.45,'0c2cab1cf1884ce4bee83487e98e71c9.jpg','双子类',''),(9,'商品',3.23,'BMA-038.jpg','双子类',''),(10,'大白菜',2.51,'mn.jpg','双子类','');
 
 /*Table structure for table `type` */
 

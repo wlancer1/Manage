@@ -15,6 +15,7 @@ var _hmt = _hmt || [];
 </script>
 
 <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>登录</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/style.css" />
@@ -64,22 +65,22 @@ if(!${empty myname}){
 }
 			$("#login").click(function () {
 
-					SetCookie("loginInfo",1);
+//					SetCookie("loginInfo",1);
 					$("#lg-form").submit();
 
 		})
 
-		function getCookie(name)//取cookies函数
-		{
-			var arr = document.cookie.match(new RegExp("(^| )"+name+"=([^;]*)(;|$)"));
-			if(arr != null) return (arr[2]); return null;
-		}
-	function SetCookie(name,value)//两个参数，一个是cookie的名子，一个是值
-	{
-		var exp  = new Date();    //new Date("December 31, 9998");
-		exp.setTime(exp.getTime() + 900000);
-		document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
-	}
+//		function getCookie(name)//取cookies函数
+//		{
+//			var arr = document.cookie.match(new RegExp("(^| )"+name+"=([^;]*)(;|$)"));
+//			if(arr != null) return (arr[2]); return null;
+//		}
+//	function SetCookie(name,value)//两个参数，一个是cookie的名子，一个是值
+//	{
+//		var exp  = new Date();    //new Date("December 31, 9998");
+//		exp.setTime(exp.getTime() + 900000);
+//		document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
+//	}
 </script>
 </body>
 </html>
