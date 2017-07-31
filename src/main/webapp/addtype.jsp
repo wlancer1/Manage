@@ -21,10 +21,11 @@
  <script>   
  alert("保存成功");
 this.window.opener = null;   
-window.close();   
-</script>
+window.close();
+ history.go(0);
+ </script>
 </s:if>
-<form action="<%=request.getContextPath()%>/SCGL/inserttype_SCAction"
+<form action="<%=request.getContextPath()%>/data/inserttype_manage.html"
 			id="lg-form" method="post">
 <div>
 				<label for="username">类别:</label> <input type="text"

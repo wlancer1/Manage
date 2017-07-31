@@ -18,5 +18,6 @@ import java.util.List;
      List<OrderInfo> getListorder();
      List<OrderInfo> getList(int index);
     List<DetailInfo> getListdetailorder(int ounm);
+    int count(int ounm);
 
 }

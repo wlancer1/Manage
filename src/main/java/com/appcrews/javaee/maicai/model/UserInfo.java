@@ -5,7 +5,18 @@ public class UserInfo {
 private String name;
 	private String email;
 	private int power;
-public int getId() {
+	private int phone;
+	private int status;
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+	public int getId() {
 	return id;
 }
 public void setId(int id) {
@@ -30,4 +41,12 @@ public void setPower(int power) {
 	this.power = power;
 }
 
+	public void setPhone(int phone) {
+		this.phone = phone;
+	}
+
+	public int getPhone() {
+		return phone;
+	}
 }
+

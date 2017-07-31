@@ -9,4 +9,7 @@ import java.util.List;
  */
 public interface userService {
     List<UserInfo> query();
+    UserInfo query(int uid);//按uid查询
+    int update(UserInfo u);
+
 }

@@ -1,4 +1,4 @@
-<%@ page import="com.appcrews.javaee.maicai.util.BaseConfig" %>
+<%@ page import="com.appcrews.javaee.maicai.tool.BaseConfig" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="/struts-tags" prefix="s" %>
 

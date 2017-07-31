@@ -1,25 +1,39 @@
 package com.appcrews.javaee.maicai.model;
 
 public class BuyerInfo {
- int id;
- String bname;
- int number;
- String baddress;
- String bremark;
- public String getBemail() {
+ private int id;
+	private String bname;
+
+	private String baddress;
+	private String bremark;
+	private String bemail;
+	private int btele;
+	private int power;
+	private  int status;
+	private  String password;
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getBemail() {
 	return bemail;
 }
 public void setBemail(String bemail) {
 	this.bemail = bemail;
 }
-String bemail;
+
  public int getPower() {
 	return power;
 }
 public void setPower(int power) {
 	this.power = power;
 }
-int power;
+
 public int getId() {
 	return id;
 }
@@ -31,12 +45,6 @@ public String getBname() {
 }
 public void setBname(String bname) {
 	this.bname = bname;
-}
-public int getNumber() {
-	return number;
-}
-public void setNumber(int number) {
-	this.number = number;
 }
 public String getBaddress() {
 	return baddress;
@@ -50,5 +58,20 @@ public String getBremark() {
 public void setBremark(String bremark) {
 	this.bremark = bremark;
 }
- 
+
+	public void setBtele(int btele) {
+		this.btele = btele;
+	}
+
+	public int getBtele() {
+		return btele;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
 }

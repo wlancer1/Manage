@@ -1,10 +1,21 @@
 package com.appcrews.javaee.maicai.model;
 
 public class SaleInfo {
-	int userid;
-	String username;
-	String email;
-	int power;
+	private int userid;
+	private String username;
+	private String email;
+	private int power;
+	private  int status;
+	private String password;
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	public int getTele() {
 		return tele;
 	}
@@ -56,5 +67,13 @@ public class SaleInfo {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
 	}
 }

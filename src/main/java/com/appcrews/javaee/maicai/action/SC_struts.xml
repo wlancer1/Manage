@@ -29,10 +29,12 @@
             namespace="/user">
 
         <action
-                name="*_YHAction"
+                name="*_user"
                 class="com.appcrews.javaee.maicai.action.UserAction"
                 method="{1}">
             <result name="success">../user/users.jsp</result>
+            <result name="edit">../user/users_edit.jsp </result>
+
         </action>
 
     </package>
@@ -97,7 +99,7 @@
                 method="{1}">
 
             <result name="success">
-                ../shucai/manageS.jsp
+                ../goods/manageS.jsp
 
             </result>
             <result name="type">
@@ -109,12 +111,12 @@
 
             </result>
             <result name="edit">
-                ../shucai/sdat_edit.jsp
+                ../goods/sdat_edit.jsp
 
             </result>
 
             <result name="insert">
-                ../shucai/sdat_insert.jsp
+                ../goods/sdat_insert.jsp
 
             </result>
 

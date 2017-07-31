@@ -1,7 +1,6 @@
 
-<%@ page import="com.appcrews.javaee.maicai.util.BaseConfig" %>
+<%@ page import="com.appcrews.javaee.maicai.tool.BaseConfig" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <%@ taglib uri="/struts-tags" prefix="s"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -15,13 +14,15 @@
 	content="Admin panel developed with the Bootstrap from Twitter.">
 <meta name="author" content="travis">
 
-<link href="<%=request.getContextPath()%>/css/bootstrap.css" rel="stylesheet">
+<link href="<%=request.getContextPath()%>/css/bootstrap.css"
+	rel="stylesheet">
 <link href="<%=request.getContextPath()%>/css/site.css" rel="stylesheet">
-<link href="<%=request.getContextPath()%>/css/bootstrap-responsive.css" rel="stylesheet">
+<link href="<%=request.getContextPath()%>/css/bootstrap-responsive.css"
+	rel="stylesheet">
+	<script async="" src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <!--[if lt IE 9]>
       <script src="js/html5.js"></script>
     <![endif]-->
-
 </head>
 <body>
 <%@ include file="/head.jsp"%>
@@ -33,46 +34,50 @@
 				<div class="row-fluid">
 					<div class="page-header">
 						<h1>
-							编辑商品 <small></small>
+							添加商品 <small></small>
 						</h1>
 					</div>
 					<form class="form-horizontal"
-						action="<%=request.getContextPath()%>/data/edit_manage.html?ts=<s:property value="#request.ts"/>"
+						action="<%=request.getContextPath()%>/data/save_manage.html"
 						method="post" enctype="multipart/form-data">
 						<fieldset>
 							<div class="control-group">
 								<label class="control-label">菜名:</label>
 								<div class="controls">
 									<input class="input-xlarge" id="username" name="name"
-										type="text" value="<s:property value="#request.shucaiinfo.name"/>" />
+										type="text" />
 								</div>
 							</div>
 							<div class="control-group">
 								<label class="control-label">价格:</label>
 								<div class="controls">
-									<input  id="pass" name="price" type="text" value="<s:property value="#request.shucaiinfo.price"/>"/>
+									<input id="pass" name="price" type="text" />
 								</div>
 							</div>
 							<div class="control-group">
 								<label class="control-label">上传图片:</label>
 								<div class="controls">
-									<input id="file" name="uploadImage" type="file" class="input-xlarge"  value="<s:property value="#request.shucaiinfo.img"/>"/>
+									<input id="file" name="uploadImage" type="file"
+										class="input-xlarge" />
 								</div>
 							</div>
 							<div class="control-group">
-									<label class="control-label">类型:</label><div class="controls">
-									<select  onchange="showtable()" name="type">
-									<s:iterator value="#request.typeinfo" status="index">
-									<option  ><s:property value="type"/></option>
-									</s:iterator>
+								<label class="control-label">类型:</label>
+								<div class="controls">
+									<select onchange="showtable()" name="type">
+										<s:iterator value="#request.typeinfo" status="index">
+											<option>
+												<s:property value="type" />
+											</option>
+										</s:iterator>
 									</select>
 								</div>
 							</div>
-							
+
 							<div class="control-group">
 								<label class="control-label">标注:</label>
 								<div class="controls">
-									<input name="remark" class="input-xlarge" type="text" value="<s:property value="#request.shucaiinfo.remark"/>"/>
+									<input name="remark" class="input-xlarge" type="text" />
 								</div>
 							</div>
 							<div class="control-group"></div>
@@ -90,11 +95,8 @@
 		<hr>
 		<div>
 			<%@ include file="/footer.jsp"%>
-
 		</div>
-
 		<script src="js/jquery.js"></script>
 		<script src="js/bootstrap.min.js"></script>
-		
 </body>
 </html>

@@ -1,4 +1,4 @@
-package com.appcrews.javaee.maicai.util;
+package com.appcrews.javaee.maicai.tool;
 
 /**
  * Created by micheal on 2017/3/5.

@@ -2,19 +2,18 @@ package com.appcrews.javaee.maicai.action;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.appcrews.javaee.maicai.service.dataService;
+import com.appcrews.javaee.maicai.tool.Util;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.commons.io.FileUtils;
@@ -104,7 +103,7 @@ public class ManagerAction extends ActionSupport implements ModelDriven<ShucaiIn
 
         map.put("allpage", allpage);
         JSONObject jsonObject = JSONObject.fromObject(map);
-        renderData(this.response, jsonObject);
+         Util.renderData(this.response, jsonObject);
         return "success";
 
     }
@@ -119,7 +118,7 @@ public class ManagerAction extends ActionSupport implements ModelDriven<ShucaiIn
         }
         JSONArray jsonArray = JSONArray.fromObject(info1);
         System.out.print(jsonArray);
-        renderData(response, jsonArray);
+         Util.renderData(response, jsonArray);
         return "success";
     }
 
@@ -132,7 +131,7 @@ public class ManagerAction extends ActionSupport implements ModelDriven<ShucaiIn
         map.put("datalist", info1);
         map.put("allpage", allpage);
         JSONObject jsonObject = JSONObject.fromObject(map);
-        renderData(response, jsonObject);
+         Util.renderData(response, jsonObject);
     }
 
     public String query() {
@@ -147,7 +146,7 @@ public class ManagerAction extends ActionSupport implements ModelDriven<ShucaiIn
         index = (pageNo - 1) * this.pageSize;
         info1 = dataService.getList(index);
         JSONArray jsonArray = JSONArray.fromObject(info1);
-        renderData(response, jsonArray);
+         Util.renderData(response, jsonArray);
 
     }
 
@@ -209,10 +208,10 @@ public class ManagerAction extends ActionSupport implements ModelDriven<ShucaiIn
         response = ServletActionContext.getResponse();
         if ((dataService.delete(de)).equals("success")) {
             dataService.delete(de);
-            renderData(response, "success");
+            Util.renderData(response, "success");
             return "success";
         } else {
-            renderData(response, "error");
+           Util.renderData(response, "error");
             return "input1";
         }
     }
@@ -258,20 +257,6 @@ public class ManagerAction extends ActionSupport implements ModelDriven<ShucaiIn
         return "success";
     }
 
-    private <T> void renderData(HttpServletResponse response, T data) {
-        PrintWriter printWriter = null;
-        response.setContentType("text/html;charset=utf-8");
-        try {
-            printWriter = response.getWriter();
-            printWriter.print(data);
-        } catch (IOException ex) {
-            Logger.getLogger("ajax").log(Level.SEVERE, null, ex);
-        } finally {
-            if (null != printWriter) {
-                printWriter.flush();
-                printWriter.close();
-            }
-        }
-    }
+
 
 }

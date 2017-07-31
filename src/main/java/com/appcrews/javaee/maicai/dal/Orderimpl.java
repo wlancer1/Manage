@@ -52,6 +52,16 @@ public class Orderimpl extends JdbcDaoSupport implements Order {
 
 	}
 
+	@Override
+	public int count(int ounm) {
+		String sql;
+		if(ounm<2000000)
+		sql="select count(*) from order1 where salerID ='"+ounm+"'";
+		else
+			sql="select count(*) from order1 where salerID ='"+ounm+"'";
+			return this.getJdbcTemplate().queryForInt(sql);
+	}
+
 	@SuppressWarnings("unchecked")
 	public List<DetailInfo> getListdetailorder(int ounm) {
 		List<DetailInfo> list = new ArrayList<DetailInfo>();
@@ -77,7 +87,7 @@ public class Orderimpl extends JdbcDaoSupport implements Order {
 			// TODO Auto-generated method stub
 			OrderInfo info = new OrderInfo();
 			info.setBuyerID(rs.getInt("buyerID"));
-			info.setUserID(rs.getInt("userID"));
+			info.setUserID(rs.getInt("salerID"));
 			info.setOnum(rs.getInt("onum"));
 			info.setOremark(rs.getString("oremark"));
 			info.setStime(rs.getTimestamp("Stime"));

@@ -76,7 +76,7 @@ public class dataServiceImp implements dataService {
 
     @Override
     public void update(int id, ShucaiInfo info) throws SQLException {
-    this.update(id,info);
+    this.data.update(id,info);
     }
 
 

@@ -58,7 +58,7 @@ public class orderServiceImp implements orderService {
     }
     @Override
     public OrderInfo getOrderInfo(int id){
-        return this.getOrderInfo(id);
+        return this.order.getOrderInfo(id);
     }
 
     @Override
@@ -69,6 +69,14 @@ public class orderServiceImp implements orderService {
     @Override
     public void update(int number, int SCid, int onum, int index) {
         this.order.update(number,SCid,onum,index);
+    }
+
+    @Override
+    public boolean query(int id) {
+        if(this.order.count(id)==0)
+            return false;
+        else
+            return  true;
     }
 
     @Override

@@ -18,5 +18,6 @@ public interface orderService {
      OrderInfo getOrderInfo(int id);
     void deleteorder(String onum);
     SaleInfo getsaleinfo(int index);
-    void update(int number, int SCid, int onum, int index);//编辑
+    void update(int number, int SCid, int onum, int index);//
+    boolean query(int id);
 }
