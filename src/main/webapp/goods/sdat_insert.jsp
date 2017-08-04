@@ -40,6 +40,7 @@
 					<form class="form-horizontal"
 						action="<%=request.getContextPath()%>/data/save_manage.html"
 						method="post" enctype="multipart/form-data">
+						<s:token></s:token>
 						<fieldset>
 							<div class="control-group">
 								<label class="control-label">菜名:</label>

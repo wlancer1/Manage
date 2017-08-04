@@ -39,6 +39,7 @@
 					<form class="form-horizontal"
 						action="<%=request.getContextPath()%>/data/edit_manage.html?ts=<s:property value="#request.ts"/>"
 						method="post" enctype="multipart/form-data">
+						<s:token></s:token>
 						<fieldset>
 							<div class="control-group">
 								<label class="control-label">商品名:</label>

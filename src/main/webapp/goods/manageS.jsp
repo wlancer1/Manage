@@ -201,7 +201,7 @@
         <td><a data-val="bj" data-index="{{index}}" data-id="{{data.id}}"><i
                 class="icon-pencil"></i> 编辑</a>
             <a data-val="sc" data-index="{{index}}" data-id="{{data.id}}"><i
-                    class="icon-trash"></i> 删除</a></td>
+                    class="icon-trash"><s:token></s:token></i> 删除</a></td>
     </tr>
     {{/each }}
 </script>

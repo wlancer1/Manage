@@ -78,7 +78,6 @@ private userService userService;
 		response=ServletActionContext.getResponse();
 		uid=Integer.parseInt(request.getParameter("uid"));
 		userInfo.setId(uid);
-
 		if (userService.update(userInfo)==1){
 			Util.renderData(this.response,"success");
 		}else if (userService.update(userInfo)==-1){
@@ -86,6 +85,7 @@ private userService userService;
 		}else {
 			Util.renderData(this.response,"error2");
 		}
+
 
 	}
 	public String querydetail() {

@@ -45,6 +45,7 @@
             <h1>编辑 <small>用户资料 修改</small></h1>
         </div>
         <form class="form-horizontal" method="post" enctype="multipart/form-data" id="myform">
+            <s:token></s:token>
             <fieldset>
                 <div class="control-group">
                     <label class="control-label" for="name">姓名</label>
@@ -85,6 +86,7 @@
                     <input type="submit" class="btn btn-success btn-large" value="保存修改" /> <div id="btn-dialogBox" style="display:none;"></div>
                     <a class="btn" href="history.go(-1)">取消</a>
                 </div>
+                <div id="btn-dialogBox2" style="display:none;"></div>
             </fieldset>
         </form>
     </div>
@@ -100,34 +102,50 @@
             hasBtn: true,
             confirmValue: '确定',
             confirm: function(){
+
                 $.ajax({
                     cache: true,
                     type: "POST",
                     url:"/user/update_user.html?uid=${uid}",
                     data:$('#myform').serialize(),// 你的formid
                     async: false,
+//                    headers: {
+//                        Token:
+//            },
                     success: function(data) {
-                        var jsdata=JSON.parse(data);
-                        if(jsdata=="success")
+<%--//                        var jsdata=JSON.parse(data);--%>
+                        console.log(data);
+                        if(data=="success")
                         {
-                            
+                            console.log(12323);
+                            $('#btn-dialogBox2').dialogBox({
+                                content:'用户修改成功！',
+                                confirmValue: '确定', hasBtn: true
+                                ,confirm:function () {
+                                    window.location.href="<%=request.getContextPath()%>/user/query_user.html";
+                                }
+                            })
+                        }else if(data=="error1"){
+                            $('#btn-dialogBox2').dialogBox({
+                                content:'用户修改失败！',
+                                confirmValue: '确定', hasBtn: true
+                                ,confirm:function () {
+                                    window.location.href="<%=request.getContextPath()%>/user/query_user.html";
+                                }
+                            })
+                        }else if(data=="error2"){
+                            $('#btn-dialogBox2').dialogBox({
+                                content:'订单中有该用户，无法修改身份！',
+                                confirmValue: '确定', hasBtn: true
+                                ,confirm:function () {
+                                    window.location.href="<%=request.getContextPath()%>/user/query_user.html";
+                                }
+                            })
                         }
-//                        $("#commonLayout_appcreshi").parent().html(data);
+<%--//                        $("#commonLayout_appcreshi").parent().html(data);--%>
                     }
                 });
-                <%--$.ajax({--%>
-                <%--url:"/user/update_user.html",--%>
-                <%--type:"post",--%>
-                    <%--async: false,--%>
-                <%--data:{uid:,$('#myform').serialize(),--%>
-                <%--success: function (data) {--%>
-                <%--console.log(1232);--%>
-<%--//                var jsdata=JSON.parse(data);--%>
-<%--//                if(jsdata=="success"){--%>
-<%--//--%>
-<%--//                }--%>
-                <%--}}--%>
-                <%--})--%>
+
             },
             cancelValue: '取消',
             title: '提示',
@@ -135,32 +153,7 @@
             });
             return false;
         });
-        <%--ta.onclick=function () {--%>
-            <%--console.log(12322);--%>
-            <%--$('#btn-dialogBox').dialogBox({--%>
-                <%--hasClose: true,--%>
-                <%--hasBtn: true,--%>
-                <%--confirmValue: 'I am sure',--%>
-                <%--confirm: function(){--%>
-                    <%--alert('this is callback function');--%>
-                <%--},--%>
-                <%--cancelValue: 'I will cancel',--%>
-                <%--title: 'title text',--%>
-                <%--content: 'dialog content text,image,html file'--%>
-            <%--});--%>
-            <%--$.ajax({--%>
-                <%--url:"/user/update_manage.html",--%>
-                <%--type:"post",--%>
-                <%--data:{uid:${uid}},--%>
-                <%--success: function (data) {--%>
-                    <%--console.log()--%>
-                    <%--var jsdata=JSON.parse(data);--%>
-                    <%--if(jsdata=="success"){--%>
 
-                    <%--}--%>
-                <%--}--%>
-            <%--})--%>
-        <%--}--%>
 </script>
 </body>
 </html>

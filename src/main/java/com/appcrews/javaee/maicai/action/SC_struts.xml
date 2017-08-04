@@ -15,7 +15,7 @@
             </result>
 
             <result name="false" type="redirect">
-                /
+
             </result>
             <result name="input">
                     /login.jsp
@@ -32,13 +32,19 @@
                 name="*_user"
                 class="com.appcrews.javaee.maicai.action.UserAction"
                 method="{1}">
-            <result name="success">../user/users.jsp</result>
+            <result name="success" >../user/users.jsp</result>
+            <interceptor-ref name="defaultStack" />
+            <interceptor-ref name="token">
+                <param name="includeMethods">update</param>
+            </interceptor-ref>
+            <result name="invalid.token">../user/users.jsp</result>
             <result name="edit">../user/users_edit.jsp </result>
 
         </action>
 
-    </package>
 
+    </package>
+<!--订单-->
     <package
             name="order"
             extends="struts-default"
@@ -69,7 +75,7 @@
             </result>
         </action>
     </package>
-
+<!--//登出-->
     <package
             name="logout"
             extends="struts-default"
@@ -87,7 +93,7 @@
             </result>
         </action>
     </package>
-
+    <!--//商品数据-->
     <package
             name="data"
             extends="struts-default"
@@ -97,7 +103,14 @@
                 name="*_manage"
                 class="com.appcrews.javaee.maicai.action.ManagerAction"
                 method="{1}">
-
+            <interceptor-ref name="defaultStack" />
+            <interceptor-ref name="token">
+                <param name="includeMethods">save</param>
+                <param name="includeMethods">delet</param>
+                <param name="includeMethods">insert</param>
+                <param name="includeMethods">edit</param>
+            </interceptor-ref>
+            <result name="invalid.token">../error2.jsp</result>
             <result name="success">
                 ../goods/manageS.jsp
 

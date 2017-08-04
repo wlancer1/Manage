@@ -45,7 +45,7 @@
                     <s:property value="#session.myname"/>
                 </h1>
                 <p>
-                    <a class="btn btn-success btn-large" href="<%=request.getContextPath()%>/user/query_YHAction.html">管理用户 &raquo;</a>
+                    <a class="btn btn-success btn-large" href="<%=request.getContextPath()%>/user/query_user.html">管理用户 &raquo;</a>
                 </p>
             </div>
 

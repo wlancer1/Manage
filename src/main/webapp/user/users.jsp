@@ -72,7 +72,6 @@
 											<li><a  data-val="sc"  data-id="${id}"  ><i class="icon-trash"></i> 删除</a></li>
 											<li><a data-val="xq"  data-id="${id}"  ><i class="icon-user"></i> 详情</a></li>
 											<li class="nav-header">Permissions</li>
-											<li><a data-val="up_manger"  data-id="${id}"  ><i class="icon-lock"></i> 成为 <strong>管理</strong></a></li>
 											<li><a data-val="up_saler"  data-id="${id}"  ><i class="icon-lock"></i> 成为 <strong>买家</strong></a></li>
 											<li><a data-val="up_buyer"  data-id="${id}"  ><i class="icon-lock"></i> 成为 <strong>卖家</strong></a></li>
 										</ul>
