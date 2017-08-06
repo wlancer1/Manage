@@ -3,7 +3,7 @@
         "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
-
+    <!--//登录-->
     <package
             name="login"
             extends="struts-default"
@@ -22,7 +22,7 @@
             </result>
         </action>
     </package>
-
+    <!--//使用者数据-->
     <package
             name="user"
             extends="struts-default"
@@ -44,7 +44,7 @@
 
 
     </package>
-<!--订单-->
+<!--订单数据-->
     <package
             name="order"
             extends="struts-default"

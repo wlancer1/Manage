@@ -4,13 +4,15 @@
   <welcome-file-list>
     <welcome-file>login.jsp</welcome-file>
   </welcome-file-list>
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+	<param-value>classpath:/applicationContext.xml</param-value>
+</context-param>
   <listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-	<context-param>
-		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:/applicationContext.xml</param-value>
-	</context-param>
+
 	<filter>
 		<filter-name>SessionFilter</filter-name>
 		<filter-class>com.appcrews.javaee.maicai.tool.LoginFilter</filter-class>
