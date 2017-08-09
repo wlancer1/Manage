@@ -1,7 +1,7 @@
 package com.appcrews.javaee.maicai.service;
 
 import com.appcrews.javaee.maicai.dal.Data;
-import com.appcrews.javaee.maicai.model.ShucaiInfo;
+import com.appcrews.javaee.maicai.model.WareInfo;
 import com.appcrews.javaee.maicai.model.TypeInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,12 +17,12 @@ public class dataServiceImp implements dataService {
 @Autowired
     private Data data;
     @Override
-    public List<ShucaiInfo> getList(int index) {
+    public List<WareInfo> getList(int index) {
         return data.getList(index);
     }
 
     @Override
-    public List<ShucaiInfo> getListsearch(String key) {
+    public List<WareInfo> getListsearch(String key) {
         if (data.getListsearch(key).size()==0)
             return null;
         else
@@ -30,22 +30,22 @@ public class dataServiceImp implements dataService {
     }
 
     @Override
-    public List<ShucaiInfo> getListsort(String name) {
+    public List<WareInfo> getListsort(String name) {
         return null;
     }
 
     @Override
-    public ShucaiInfo getShucaiInfo(int id) {
+    public WareInfo getShucaiInfo(int id) {
         return this.data.getShucaiInfo(id);
     }
 
     @Override
-    public List<ShucaiInfo> getListshucaisort(int index, int flag,int pageSize) {
+    public List<WareInfo> getListshucaisort(int index, int flag, int pageSize) {
         return this.data.getListshucaisort(index,flag,pageSize);
     }
 
     @Override
-    public List<ShucaiInfo> getListshucai() {
+    public List<WareInfo> getListshucai() {
         return data.getListshucai();
     }
 
@@ -70,12 +70,12 @@ public class dataServiceImp implements dataService {
     }
 
     @Override
-    public void insert(ShucaiInfo info) {
+    public void insert(WareInfo info) {
         this.data.insert(info);
     }
 
     @Override
-    public void update(int id, ShucaiInfo info) throws SQLException {
+    public void update(int id, WareInfo info) throws SQLException {
     this.data.update(id,info);
     }
 

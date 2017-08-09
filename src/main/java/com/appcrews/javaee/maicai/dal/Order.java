@@ -2,9 +2,7 @@ package com.appcrews.javaee.maicai.dal;
 
 import com.appcrews.javaee.maicai.model.DetailInfo;
 import com.appcrews.javaee.maicai.model.OrderInfo;
-import com.appcrews.javaee.maicai.model.ShucaiInfo;
 
-import java.sql.SQLException;
 import java.util.List;
 
 /**

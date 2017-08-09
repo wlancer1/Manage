@@ -1,7 +1,12 @@
 package com.appcrews.javaee.maicai.model;
 
+
+import javax.validation.constraints.NotNull;
+
 public class AdminInfo {
+	@NotNull(message = "账号不能为空！")
 	String account;
+	@NotNull(message = "密码不能为空！")
 	String password;
 	int power;
 

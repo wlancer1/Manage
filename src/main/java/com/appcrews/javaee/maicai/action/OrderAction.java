@@ -7,17 +7,12 @@ import javax.servlet.http.HttpServletRequest;
 import com.appcrews.javaee.maicai.service.orderService;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Scope;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.appcrews.javaee.maicai.dal.Orderimpl;
-import com.appcrews.javaee.maicai.dal.Dataimpl;
-import com.appcrews.javaee.maicai.dal.Userimpl;
 import com.appcrews.javaee.maicai.model.DetailInfo;
 import com.appcrews.javaee.maicai.model.OrderInfo;
 import com.appcrews.javaee.maicai.model.SaleInfo;
-import com.appcrews.javaee.maicai.model.ShucaiInfo;
+import com.appcrews.javaee.maicai.model.WareInfo;
 import com.opensymphony.xwork2.ActionSupport;
 import org.springframework.stereotype.Controller;
 
@@ -31,7 +26,7 @@ public class OrderAction extends ActionSupport {
 	int allpage, index = 0;
 	List<OrderInfo> info1;
 	List<DetailInfo> info2;
-	List<ShucaiInfo> info3;
+	List<WareInfo> info3;
 	List<String> namelist;
 
 

@@ -20,7 +20,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
-import com.appcrews.javaee.maicai.model.ShucaiInfo;
+import com.appcrews.javaee.maicai.model.WareInfo;
 import com.appcrews.javaee.maicai.model.TypeInfo;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -29,24 +29,24 @@ import org.springframework.stereotype.Controller;
 @SuppressWarnings("serial")
 @Scope("prototype")
 @Controller
-public class ManagerAction extends ActionSupport implements ModelDriven<ShucaiInfo> {
+public class ManagerAction extends ActionSupport implements ModelDriven<WareInfo> {
     @Autowired
     private dataService dataService;
-    private ShucaiInfo info = new ShucaiInfo();
+    private WareInfo info = new WareInfo();
     private Map map;
     private int de, ts;
     private int index, allpage, pageNo, pageSize = 5,sort;
     private String key;
-    List<ShucaiInfo> info1;
+    List<WareInfo> info1;
     List<TypeInfo> info2;
     HttpServletResponse response;
     HttpServletRequest request = ServletActionContext.getRequest();
 
-    public List<ShucaiInfo> getInfo1() {
+    public List<WareInfo> getInfo1() {
         return info1;
     }
 
-    public void setInfo1(List<ShucaiInfo> info1) {
+    public void setInfo1(List<WareInfo> info1) {
         this.info1 = info1;
     }
 
@@ -66,7 +66,7 @@ public class ManagerAction extends ActionSupport implements ModelDriven<ShucaiIn
         this.allpage = allpage;
     }
 
-    public ShucaiInfo getModel() {
+    public WareInfo getModel() {
         // TODO Auto-generated method stub
         return info;
     }

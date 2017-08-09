@@ -2,9 +2,11 @@ package com.appcrews.javaee.maicai.action;
 
 
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
 
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,35 +20,18 @@ import org.springframework.stereotype.Controller;
 
 import java.io.UnsupportedEncodingException;
 import java.util.List;
+import java.util.Set;
 
 @SuppressWarnings("serial")
 @Controller
 @Scope("prototype")
 public class LoginAction extends ActionSupport implements ModelDriven<AdminInfo> {
-	private List<AdminInfo> info;
 	private List<Integer> size;
-	private HttpServletResponse response;
 	private HttpServletRequest request = ServletActionContext.getRequest();
+	private AdminInfo adminInfo=new AdminInfo();
 	@Autowired
 	private adminService adminService;
 
-	private String account, password;
-
-	public String getAccount() {
-		return account;
-	}
-
-	public void setAccount(String account) {
-		this.account = account;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
 
 	public void setSize(List<Integer> size) {
 		this.size = size;
@@ -60,24 +45,27 @@ public class LoginAction extends ActionSupport implements ModelDriven<AdminInfo>
 	@Override
 	public AdminInfo getModel() {
 		// TODO Auto-generated method stub
-		return (AdminInfo) info;
+		return adminInfo;
 	}
+
 
 	public String login() throws UnsupportedEncodingException {
 		int power;
 		String quanxian = null;
-        response=ServletActionContext.getResponse();
+
+		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+		Validator validator = factory.getValidator();
+		Set<ConstraintViolation<AdminInfo>> constraintViolations= validator.validate(adminInfo);
+
+		if(constraintViolations.size()!=0)
+				return "false";
 		if(request.getSession().getAttribute("myname")!=null){
 			return "success";
 		}
-		if(this.account==null||this.password==null)
-			return "false";
-
-		String ma=MD5.Encrypt(account,account.length());
-		String mp=MD5.Encrypt(password, password.length());
+		String ma=MD5.Encrypt(this.adminInfo.getAccount(),this.adminInfo.getAccount().length());
+		String mp=MD5.Encrypt(this.adminInfo.getPassword(), this.adminInfo.getPassword().length());
 		power = this.adminService.panduan(ma,mp);
 		if (power == -1) {
-
 			return "false";
 		} else {
 			switch (power) {
@@ -92,7 +80,7 @@ public class LoginAction extends ActionSupport implements ModelDriven<AdminInfo>
 			}
 			request.getSession().setAttribute("sizelist",size());
 			request.getSession().setAttribute("power", quanxian);
-            request.getSession().setAttribute("myname", this.account);
+            request.getSession().setAttribute("myname", this.adminInfo.getAccount());
 			return "success";
 		}
 

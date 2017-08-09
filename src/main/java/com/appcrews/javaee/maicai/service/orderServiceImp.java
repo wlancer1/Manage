@@ -5,11 +5,10 @@ import com.appcrews.javaee.maicai.dal.User;
 import com.appcrews.javaee.maicai.model.DetailInfo;
 import com.appcrews.javaee.maicai.model.OrderInfo;
 import com.appcrews.javaee.maicai.model.SaleInfo;
-import com.appcrews.javaee.maicai.model.ShucaiInfo;
+import com.appcrews.javaee.maicai.model.WareInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,7 +23,7 @@ public class orderServiceImp implements orderService {
     @Autowired
     private User user;
      private DetailInfo detailInfo;
-    private  ShucaiInfo shucaiInfo;
+    private WareInfo wareInfo;
     private List<DetailInfo> detList;
     @Override
     public List<OrderInfo> getList(int index) {
@@ -43,11 +42,11 @@ public class orderServiceImp implements orderService {
         detList=this.order.getListdetailorder(ounm);
         for(int i=0;i<detList.size();i++){
             detailInfo =detList.get(i);
-           shucaiInfo=data.getShucaiInfo(detList.get(i).getSCid());
-            detailInfo.setImg(shucaiInfo.getImg());
-            detailInfo.setID(shucaiInfo.getId());
-            detailInfo.setName(shucaiInfo.getName());
-            detailInfo.setPrice(shucaiInfo.getPrice());
+           wareInfo =data.getShucaiInfo(detList.get(i).getSCid());
+            detailInfo.setImg(wareInfo.getImg());
+            detailInfo.setID(wareInfo.getId());
+            detailInfo.setName(wareInfo.getName());
+            detailInfo.setPrice(wareInfo.getPrice());
         }
         return detList;
     }

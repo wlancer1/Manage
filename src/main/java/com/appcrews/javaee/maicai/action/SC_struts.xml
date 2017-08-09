@@ -15,7 +15,7 @@
             </result>
 
             <result name="false" type="redirect">
-
+                /login.jsp
             </result>
             <result name="input">
                     /login.jsp

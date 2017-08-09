@@ -3,7 +3,6 @@ package com.appcrews.javaee.maicai.service;
 import com.appcrews.javaee.maicai.model.DetailInfo;
 import com.appcrews.javaee.maicai.model.OrderInfo;
 import com.appcrews.javaee.maicai.model.SaleInfo;
-import com.appcrews.javaee.maicai.model.ShucaiInfo;
 
 import java.util.List;
 

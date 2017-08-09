@@ -5,28 +5,24 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.print.attribute.Size2DSyntax;
-
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 
-import com.appcrews.javaee.maicai.model.ShucaiInfo;
+import com.appcrews.javaee.maicai.model.WareInfo;
 import com.appcrews.javaee.maicai.model.TypeInfo;
-import com.opensymphony.xwork2.util.finder.ClassFinder.Info;
 
 public class Dataimpl extends JdbcDaoSupport implements Data{
 
 	@SuppressWarnings("unchecked")
-	public List<ShucaiInfo> getList(int index) {
-		List<ShucaiInfo> list = new ArrayList<ShucaiInfo>();
+	public List<WareInfo> getList(int index) {
+		List<WareInfo> list = new ArrayList<WareInfo>();
 		String sql = "SELECT* FROM shucai LIMIT " + index + ",5";
 		list = this.getJdbcTemplate().query(sql, new ShuCairowMap());
 		return list;
 	}
 	@SuppressWarnings( "unchecked")
-	public List<ShucaiInfo> getListsearch(String key){
-		List<ShucaiInfo> list = new ArrayList<ShucaiInfo>();
+	public List<WareInfo> getListsearch(String key){
+		List<WareInfo> list = new ArrayList<WareInfo>();
 		String sql="SELECT * FROM shucai WHERE fName LIKE '%"+key+"%'LIMIT 0,5";
 		list=this.getJdbcTemplate().query(sql, new ShuCairowMap());
 		return list;
@@ -34,26 +30,26 @@ public class Dataimpl extends JdbcDaoSupport implements Data{
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<ShucaiInfo> getListsort(String name) {
-		List<ShucaiInfo> list = new ArrayList<ShucaiInfo>();
+	public List<WareInfo> getListsort(String name) {
+		List<WareInfo> list = new ArrayList<WareInfo>();
 		String sql = "SELECT * FROM `shucai` ORDER BY (CASE WHEN fName='"
 				+ name + "' THEN 1 ELSE 4 END),fName DESC";
 		list = this.getJdbcTemplate().query(sql, new ShuCairowMap());
 		return list;
 	}
 
-	public ShucaiInfo getShucaiInfo(int id) {
+	public WareInfo getShucaiInfo(int id) {
 		String sql = "select * from shucai where fId=" + id + "";
 		System.out.println(sql);
-		ShucaiInfo info = (ShucaiInfo) this.getJdbcTemplate().queryForObject(
+		WareInfo info = (WareInfo) this.getJdbcTemplate().queryForObject(
 				sql, new ShuCairowMap());
 		return info;
 
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<ShucaiInfo>  getListshucaisort(int index, int flag,int pageSize) {
-		List<ShucaiInfo> list = new ArrayList<ShucaiInfo>();
+	public List<WareInfo>  getListshucaisort(int index, int flag, int pageSize) {
+		List<WareInfo> list = new ArrayList<WareInfo>();
 		if (flag == 0) {
 			String sql1 = "SELECT* FROM shucai ORDER BY fPrice DESC LIMIT "
 					+ index + ","+pageSize+ "";
@@ -69,8 +65,8 @@ public class Dataimpl extends JdbcDaoSupport implements Data{
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<ShucaiInfo> getListshucai() {
-		List<ShucaiInfo> list = new ArrayList<ShucaiInfo>();
+	public List<WareInfo> getListshucai() {
+		List<WareInfo> list = new ArrayList<WareInfo>();
 		String sql = "SELECT* FROM shucai";
 		list = this.getJdbcTemplate().query(sql, new ShuCairowMap());
 		return list;
@@ -105,7 +101,7 @@ public class Dataimpl extends JdbcDaoSupport implements Data{
 		this.getJdbcTemplate().execute(sql);
 		
 	}
-	public void insert(ShucaiInfo info) {
+	public void insert(WareInfo info) {
 		String sql = "insert into shucai(fName,fPrice,fImg,fType,fRemark) values ";
 		sql = sql + " ('" + info.getName() + "','" + info.getPrice() + "','"
 				+ info.getImg() + "','" + info.getType() + "','"
@@ -113,7 +109,7 @@ public class Dataimpl extends JdbcDaoSupport implements Data{
 		this.getJdbcTemplate().execute(sql);
 	}
 
-	public void update(int id, ShucaiInfo info) throws SQLException {
+	public void update(int id, WareInfo info) throws SQLException {
 		String sql = "update shucai set" + " fName='" + info.getName()
 				+ "',fPrice='" + info.getPrice() + "',fImg='" + info.getImg()
 				+ "',fType='" + info.getType() + "',fRemark='"
@@ -139,7 +135,7 @@ public class Dataimpl extends JdbcDaoSupport implements Data{
 		@Override
 		public Object mapRow(ResultSet rs, int arg1) throws SQLException {
 			// TODO Auto-generated method stub
-			ShucaiInfo info = new ShucaiInfo();
+			WareInfo info = new WareInfo();
 			info.setId(rs.getInt("fId"));
 			info.setName(rs.getString("fName"));
 			info.setPrice(rs.getFloat(("fPrice")));

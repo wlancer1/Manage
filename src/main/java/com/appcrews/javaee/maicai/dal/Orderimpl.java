@@ -10,7 +10,6 @@ import org.springframework.jdbc.core.support.JdbcDaoSupport;
 
 import com.appcrews.javaee.maicai.model.DetailInfo;
 import com.appcrews.javaee.maicai.model.OrderInfo;
-import com.appcrews.javaee.maicai.model.ShucaiInfo;
 
 public class Orderimpl extends JdbcDaoSupport implements Order {
 	@SuppressWarnings("unchecked")
