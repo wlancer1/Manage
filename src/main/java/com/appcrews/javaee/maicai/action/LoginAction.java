@@ -3,11 +3,8 @@ package com.appcrews.javaee.maicai.action;
 
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
 
+import com.appcrews.javaee.maicai.validation.BaseValidator;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.appcrews.javaee.maicai.model.AdminInfo;
@@ -20,7 +17,7 @@ import org.springframework.stereotype.Controller;
 
 import java.io.UnsupportedEncodingException;
 import java.util.List;
-import java.util.Set;
+import java.util.Map;
 
 @SuppressWarnings("serial")
 @Controller
@@ -31,6 +28,9 @@ public class LoginAction extends ActionSupport implements ModelDriven<AdminInfo>
 	private AdminInfo adminInfo=new AdminInfo();
 	@Autowired
 	private adminService adminService;
+	@Autowired
+	private BaseValidator baseValidator;
+	private Map Result;
 
 
 	public void setSize(List<Integer> size) {
@@ -48,24 +48,29 @@ public class LoginAction extends ActionSupport implements ModelDriven<AdminInfo>
 		return adminInfo;
 	}
 
+	public Map getResult() {
+		return Result;
+	}
+
+	public void setResult(Map result) {
+		Result = result;
+	}
 
 	public String login() throws UnsupportedEncodingException {
 		int power;
 		String quanxian = null;
-
-		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-		Validator validator = factory.getValidator();
-		Set<ConstraintViolation<AdminInfo>> constraintViolations= validator.validate(adminInfo);
-
-		if(constraintViolations.size()!=0)
-				return "false";
 		if(request.getSession().getAttribute("myname")!=null){
 			return "success";
 		}
+	Result= baseValidator.validateModel(adminInfo);
+		if(Result.size()!=0)
+				return "false";
+
 		String ma=MD5.Encrypt(this.adminInfo.getAccount(),this.adminInfo.getAccount().length());
 		String mp=MD5.Encrypt(this.adminInfo.getPassword(), this.adminInfo.getPassword().length());
 		power = this.adminService.panduan(ma,mp);
 		if (power == -1) {
+			Result.put("fail","账号或者密码错误，请重新输入！");
 			return "false";
 		} else {
 			switch (power) {

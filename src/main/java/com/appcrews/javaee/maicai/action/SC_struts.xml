@@ -14,7 +14,7 @@
                     /index.jsp
             </result>
 
-            <result name="false" type="redirect">
+            <result name="false"  >
                 /login.jsp
             </result>
             <result name="input">

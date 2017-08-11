@@ -27,7 +27,7 @@ public class Adminimpl extends JdbcDaoSupport implements Admin{
 	@Override
 	public List<Integer> sizeList() {
 		sizeList=new ArrayList<Integer>();
-		String sql="SELECT COUNT(*) FROM admin;";
+		String sql="SELECT COUNT(*) FROM saler , buyer;";
 		int size=this.getJdbcTemplate().queryForInt(sql);
 		sizeList.add(size);
 		sql="SELECT COUNT(*) FROM shucai;";

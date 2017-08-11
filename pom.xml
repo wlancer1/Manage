@@ -152,8 +152,12 @@
 			<artifactId>validation-api</artifactId>
 			<version>1.1.0.Final</version>
 		</dependency>
+		<dependency>
+			<groupId>com.chhliu.common</groupId>
+			<artifactId>validate</artifactId>
+		</dependency>
 
-<!-- struts2 core 	struts2-spring-->
+		<!-- struts2 core 	struts2-spring-->
 		<dependency>
 			<groupId>org.apache.struts</groupId>
 			<artifactId>struts2-spring-plugin</artifactId>

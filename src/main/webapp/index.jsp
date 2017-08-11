@@ -60,7 +60,7 @@
                     <div class="span3">
                         <h3>用户数量</h3>
                         <p>
-                            <a href="<%=request.getContextPath()%>/user/query_YHAction.html"
+                            <a href="<%=request.getContextPath()%>/user/query_user.html"
                                class="badge badge-inverse">${sizelist[0]}
                             </a>
                         </p>
