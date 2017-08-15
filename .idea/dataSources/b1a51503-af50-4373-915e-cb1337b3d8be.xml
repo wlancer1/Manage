@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="shujub@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.2">
+    <root id="1"/>
+    <schema id="2" parent="1" name="shujub">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="information_schema"/>
+    <schema id="4" parent="1" name="mysql"/>
+    <schema id="5" parent="1" name="performance_schema"/>
+    <schema id="6" parent="1" name="test"/>
+    <table id="7" parent="2" name="admin"/>
+    <table id="8" parent="2" name="buyer"/>
+    <table id="9" parent="2" name="detailorder"/>
+    <table id="10" parent="2" name="order1"/>
+    <table id="11" parent="2" name="saler"/>
+    <table id="12" parent="2" name="type"/>
+    <table id="13" parent="2" name="ware"/>
+    <column id="14" parent="7" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="15" parent="7" name="account">
+      <Position>2</Position>
+      <DataType>char(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="16" parent="7" name="password">
+      <Position>3</Position>
+      <DataType>char(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="17" parent="7" name="power">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <key id="18" parent="7" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="19" parent="8" name="ID">
+      <Position>1</Position>
+      <Comment>买家的id</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="20" parent="8" name="bname">
+      <Position>2</Position>
+      <Comment>姓名</Comment>
+      <DataType>varbinary(80)|0</DataType>
+    </column>
+    <column id="21" parent="8" name="bpassword">
+      <Position>3</Position>
+      <DataType>varbinary(80)|0</DataType>
+    </column>
+    <column id="22" parent="8" name="btele">
+      <Position>4</Position>
+      <Comment>联系方式</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="23" parent="8" name="baddress">
+      <Position>5</Position>
+      <Comment>地址ID</Comment>
+      <DataType>varbinary(80)|0</DataType>
+    </column>
+    <column id="24" parent="8" name="bremark">
+      <Position>6</Position>
+      <Comment>备注</Comment>
+      <DataType>varbinary(80)|0</DataType>
+    </column>
+    <column id="25" parent="8" name="email">
+      <Position>7</Position>
+      <DataType>varbinary(20)|0</DataType>
+    </column>
+    <column id="26" parent="8" name="power">
+      <Position>8</Position>
+      <Comment>权限</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;2&apos;</DefaultExpression>
+    </column>
+    <column id="27" parent="8" name="status">
+      <Position>9</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <key id="28" parent="8" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="29" parent="9" name="onum">
+      <Position>1</Position>
+      <Comment>消费记录ID</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="30" parent="9" name="wareid">
+      <Position>2</Position>
+      <Comment>时间</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="31" parent="9" name="warenum">
+      <Position>3</Position>
+      <Comment>数量</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="32" parent="9" name="SCid">
+      <ColNames>wareid</ColNames>
+    </index>
+    <key id="33" parent="9" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>onum
+wareid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="34" parent="9" name="detailorder_ibfk_4">
+      <ColNames>onum</ColNames>
+      <RefSchemaName>shujub</RefSchemaName>
+      <RefTableName>order1</RefTableName>
+      <RefColNames>onum</RefColNames>
+    </foreign-key>
+    <foreign-key id="35" parent="9" name="detailorder_ibfk_5">
+      <ColNames>wareid</ColNames>
+      <RefSchemaName>shujub</RefSchemaName>
+      <RefTableName>ware</RefTableName>
+      <RefColNames>fId</RefColNames>
+    </foreign-key>
+    <column id="36" parent="10" name="onum">
+      <Position>1</Position>
+      <Comment>订单号</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="37" parent="10" name="otime">
+      <Position>2</Position>
+      <Comment>订单时间</Comment>
+      <DataType>timestamp|0</DataType>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <column id="38" parent="10" name="salerID">
+      <Position>3</Position>
+      <Comment>卖家ID</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="39" parent="10" name="Stime">
+      <Position>4</Position>
+      <Comment>发货时间</Comment>
+      <DataType>timestamp|0</DataType>
+      <DefaultExpression>&apos;0000-00-00 00:00:00&apos;</DefaultExpression>
+    </column>
+    <column id="40" parent="10" name="oremark">
+      <Position>5</Position>
+      <Comment>订单备注</Comment>
+      <DataType>varbinary(80)|0</DataType>
+    </column>
+    <column id="41" parent="10" name="buyerID">
+      <Position>6</Position>
+      <Comment>买家的ID</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="42" parent="10" name="buyerID">
+      <ColNames>buyerID</ColNames>
+    </index>
+    <index id="43" parent="10" name="userID">
+      <ColNames>salerID</ColNames>
+    </index>
+    <key id="44" parent="10" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>onum</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="45" parent="10" name="order1_ibfk_2">
+      <ColNames>salerID</ColNames>
+      <RefSchemaName>shujub</RefSchemaName>
+      <RefTableName>saler</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="46" parent="10" name="order1_ibfk_1">
+      <ColNames>buyerID</ColNames>
+      <RefSchemaName>shujub</RefSchemaName>
+      <RefTableName>buyer</RefTableName>
+      <RefColNames>ID</RefColNames>
+    </foreign-key>
+    <column id="47" parent="11" name="ID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="48" parent="11" name="username">
+      <Position>2</Position>
+      <Comment>账号</Comment>
+      <DataType>varchar(80)|0</DataType>
+    </column>
+    <column id="49" parent="11" name="password">
+      <Position>3</Position>
+      <Comment>密码</Comment>
+      <DataType>varchar(80)|0</DataType>
+    </column>
+    <column id="50" parent="11" name="email">
+      <Position>4</Position>
+      <Comment>邮箱</Comment>
+      <DataType>varchar(80)|0</DataType>
+    </column>
+    <column id="51" parent="11" name="saddress">
+      <Position>5</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="52" parent="11" name="tele">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="53" parent="11" name="power">
+      <Position>7</Position>
+      <Comment>权限</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;1&apos;</DefaultExpression>
+    </column>
+    <column id="54" parent="11" name="status">
+      <Position>8</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <key id="55" parent="11" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="56" parent="12" name="fType">
+      <Position>1</Position>
+      <Comment>名字</Comment>
+      <DataType>varchar(8)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="57" parent="12" name="t-remark">
+      <Position>2</Position>
+      <Comment>备注</Comment>
+      <DataType>varbinary(80)|0</DataType>
+    </column>
+    <key id="58" parent="12" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>fType</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="59" parent="13" name="fId">
+      <Position>1</Position>
+      <Comment>菜的id</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="60" parent="13" name="fName">
+      <Position>2</Position>
+      <Comment>名称</Comment>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="61" parent="13" name="fPrice">
+      <Position>3</Position>
+      <Comment>价格</Comment>
+      <DataType>float|0</DataType>
+    </column>
+    <column id="62" parent="13" name="fImg">
+      <Position>4</Position>
+      <Comment>图片名称</Comment>
+      <DataType>varchar(800)|0</DataType>
+    </column>
+    <column id="63" parent="13" name="fType">
+      <Position>5</Position>
+      <Comment>菜的类别</Comment>
+      <DataType>varchar(8)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="64" parent="13" name="fRemark">
+      <Position>6</Position>
+      <Comment>备注</Comment>
+      <DataType>varchar(80)|0</DataType>
+    </column>
+    <index id="65" parent="13" name="fType">
+      <ColNames>fType</ColNames>
+    </index>
+    <key id="66" parent="13" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>fId
+fType</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="67" parent="13" name="ware_ibfk_1">
+      <ColNames>fType</ColNames>
+      <RefSchemaName>shujub</RefSchemaName>
+      <RefTableName>type</RefTableName>
+      <RefColNames>fType</RefColNames>
+    </foreign-key>
+  </database-model>
+</dataSource>

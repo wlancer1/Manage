@@ -62,13 +62,12 @@ public class LoginAction extends ActionSupport implements ModelDriven<AdminInfo>
 		if(request.getSession().getAttribute("myname")!=null){
 			return "success";
 		}
-	Result= baseValidator.validateModel(adminInfo);
+		Result= baseValidator.validateModel(adminInfo);
 		if(Result.size()!=0)
 				return "false";
 
-		String ma=MD5.Encrypt(this.adminInfo.getAccount(),this.adminInfo.getAccount().length());
 		String mp=MD5.Encrypt(this.adminInfo.getPassword(), this.adminInfo.getPassword().length());
-		power = this.adminService.panduan(ma,mp);
+		power = this.adminService.validate(this.adminInfo.getAccount(),mp);
 		if (power == -1) {
 			Result.put("fail","账号或者密码错误，请重新输入！");
 			return "false";
@@ -83,7 +82,7 @@ public class LoginAction extends ActionSupport implements ModelDriven<AdminInfo>
 			default:
 				break;
 			}
-			request.getSession().setAttribute("sizelist",size());
+			request.getSession().setAttribute("sizelist",this.adminService.sizeList());
 			request.getSession().setAttribute("power", quanxian);
             request.getSession().setAttribute("myname", this.adminInfo.getAccount());
 			return "success";
@@ -91,8 +90,4 @@ public class LoginAction extends ActionSupport implements ModelDriven<AdminInfo>
 
 	}
 
-	public List size(){
-		size=this.adminService.sizeList();
-		return size;
-	}
 }

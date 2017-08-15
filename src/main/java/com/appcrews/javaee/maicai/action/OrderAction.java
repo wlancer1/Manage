@@ -23,7 +23,7 @@ public class OrderAction extends ActionSupport {
 	HttpServletRequest request = ServletActionContext.getRequest();
 	@Autowired
 	private orderService orderService;
-	int allpage, index = 0;
+	int allpage, pageSize=5;
 	List<OrderInfo> info1;
 	List<DetailInfo> info2;
 	List<WareInfo> info3;
@@ -40,7 +40,7 @@ public class OrderAction extends ActionSupport {
 		} else {
 			pagenow = 1;
 		}
-		allpage = ((orderService.getListorder().size() / 5) + 1);
+		allpage = orderService.getcountTotalPage(pageSize);
 		if (request.getParameter("flag") != null) {
 			if (request.getParameter("flag").equals("0")) {
 				if (pagenow != 1) {
@@ -54,9 +54,8 @@ public class OrderAction extends ActionSupport {
 		}
 		request.setAttribute("page", allpage);// 总页数
 		request.setAttribute("pagenow", pagenow);
-		index = (pagenow - 1) * 5;
 		// 现在要查询的
-		info1 = orderService.getList(index);
+		info1 = orderService.getqueryForPage(pagenow,pageSize);
 		request.setAttribute("orderinfo", info1);
 		return "success";
 
@@ -92,38 +91,38 @@ public class OrderAction extends ActionSupport {
 
 	}
 
-	public String delet() {
-		String onum = request.getParameter("de");
-		int id = Integer.parseInt(request.getParameter("scid"));
-		orderService.delete(id, onum);
-		edit1(onum);
-		return "edit";
-
-	}
-
-	public String deletorder() {
-		String onum = request.getParameter("de");
-		orderService.deleteorder(onum);
-		return query();
-
-	}
-
-
-	public String print() {
-		float sum = 0;
-		int onum = Integer.parseInt(request.getParameter("ts"));
-		info2 = orderService.getListdetailorder(onum);
-		OrderInfo order = orderService.getOrderInfo(onum);
-		SaleInfo sale = orderService.getsaleinfo(order.getUserID());
-		String name=sale.getSaddress();
-		request.setAttribute("tele", sale.getTele());
-		request.setAttribute("name", name);
-		request.setAttribute("time", order.getOtime());
-		request.setAttribute("num", onum);
-		request.setAttribute("detailinfo", info2);
-		request.setAttribute("sum", sum);
-		return "print";
-	}
+//	public String delet() {
+//		String onum = request.getParameter("de");
+//		int id = Integer.parseInt(request.getParameter("scid"));
+//		orderService.delete(id, onum);
+//		edit1(onum);
+//		return "edit";
+//
+//	}
+//
+//	public String deletorder() {
+//		String onum = request.getParameter("de");
+//		orderService.deleteorder(onum);
+//		return query();
+//
+//	}
+//
+//
+//	public String print() {
+//		float sum = 0;
+//		int onum = Integer.parseInt(request.getParameter("ts"));
+//		info2 = orderService.getListdetailorder(onum);
+//		OrderInfo order = orderService.getOrderInfo(onum);
+//		SaleInfo sale = orderService.getsaleinfo(order.getUserID());
+//		String name=sale.getSaddress();
+//		request.setAttribute("tele", sale.getTele());
+//		request.setAttribute("name", name);
+//		request.setAttribute("time", order.getOtime());
+//		request.setAttribute("num", onum);
+//		request.setAttribute("detailinfo", info2);
+//		request.setAttribute("sum", sum);
+//		return "print";
+//	}
 
 	public String edit1(String num) {
 		float sum=0;

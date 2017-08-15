@@ -1,8 +1,12 @@
 package com.appcrews.javaee.maicai.model;
 
+import javax.persistence.*;
 import java.io.File;
+import java.io.Serializable;
 
-public class WareInfo {
+@Entity
+@Table(name = "ware")
+public class WareInfo implements Serializable {
 	// 上传文件的类型：text/plain
 	private String uploadImageContentType;
 
@@ -14,6 +18,16 @@ public class WareInfo {
 	private float price;
 	private String img = "", remark;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "fid",updatable = false)
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 	public File getUploadImage() {
 		return uploadImage;
 	}
@@ -38,14 +52,7 @@ public class WareInfo {
 		this.uploadImageFileName = uploadImageFileName;
 	}
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
+	@Column(name = "fName")
 	public String getName() {
 		return name;
 	}
@@ -53,7 +60,7 @@ public class WareInfo {
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	@Column(name = "fType")
 	public String getType() {
 		return type;
 	}
@@ -61,7 +68,7 @@ public class WareInfo {
 	public void setType(String type) {
 		this.type = type;
 	}
-
+	@Column(name = "fPrice")
 	public float getPrice() {
 		return price;
 	}
@@ -69,7 +76,7 @@ public class WareInfo {
 	public void setPrice(float price) {
 		this.price = price;
 	}
-
+	@Column(name = "fImg")
 	public String getImg() {
 		return img;
 	}
@@ -77,7 +84,7 @@ public class WareInfo {
 	public void setImg(String img) {
 		this.img = img;
 	}
-
+	@Column(name = "fRemark")
 	public String getRemark() {
 		return remark;
 	}

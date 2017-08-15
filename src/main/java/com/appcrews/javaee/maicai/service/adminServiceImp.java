@@ -1,40 +1,53 @@
 package com.appcrews.javaee.maicai.service;
 
-import com.appcrews.javaee.maicai.dal.Admin;
+import com.appcrews.javaee.maicai.dal.*;
 import com.appcrews.javaee.maicai.model.AdminInfo;
 import com.appcrews.javaee.maicai.tool.MD5;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by micheal on 2017/2/16.
  */
-
+@Transactional
 @Service
 public class adminServiceImp implements adminService {
+
     @Autowired
    private Admin admin;
+    @Autowired
+   private Data data;
+    @Autowired
+   private User user;
+    @Autowired
+   private Order order;
+    private  List list;
+    private AdminInfo adminInfo;
 
 
     @Override
-    public int panduan(String account, String password) {
-            List<AdminInfo> list=this.admin.getList();
-        for (int i = 0; i < list.size(); i++) {
-            String am = list.get(i).getAccount();
-            String pm = list.get(i).getPassword();
-            am = MD5.Encrypt(am, am.length());
-            pm = MD5.Encrypt(pm, pm.length());
-            if (am.equals(account) && pm.equals(password)) {
-                return list.get(i).getPower();
-            }
-        }
-        return -1;
+    public int validate(String account, String password) {
+            adminInfo=admin.getAdminInfo(account);
+            if(adminInfo!=null){
+               if(adminInfo.getPassword().equals(password))
+                   return 1;
+               else
+                   return -1;
+
+            }else
+                return -1;
     }
 
     @Override
     public List<Integer> sizeList() {
-       return admin.sizeList();
+        list=new ArrayList();
+        list.add(user.getLength());
+         list.add(data.getLength());
+         list.add(order.getLength());
+        return list;
     }
 }

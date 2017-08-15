@@ -8,6 +8,7 @@ private String name;
 	private int phone;
 	private int status;
 
+	
 	public int getStatus() {
 		return status;
 	}

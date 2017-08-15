@@ -1,8 +1,12 @@
 package com.appcrews.javaee.maicai.model;
 
+import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 
-public class OrderInfo {
+@Entity
+@Table(name = "order1")
+public class OrderInfo implements Serializable {
 	public int getUserID() {
 		return userID;
 	}
@@ -21,7 +25,8 @@ public class OrderInfo {
 
 
 
-
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public int getOnum() {
 		return onum;
 	}

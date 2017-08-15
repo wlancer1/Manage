@@ -1,55 +1,43 @@
 package com.appcrews.javaee.maicai.dal;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
-import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.support.JdbcDaoSupport;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
 
 import com.appcrews.javaee.maicai.model.AdminInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.annotation.Resource;
 
 
-public class Adminimpl extends JdbcDaoSupport implements Admin{
-	@SuppressWarnings({ "unchecked", "unused" })
-	private List<Integer> sizeList;
+@Repository
+public class Adminimpl implements Admin{
+	@Autowired
+	private BaseDaoI baseDaoI;
+	@Override
+	public int getLength() {
+		String hql = "SELECT count(*) FROM AdminInfo";
+		return  baseDaoI.count(hql);
+	}
+
 
 
 	@Override
-	public List<AdminInfo> getList() {
-		List<AdminInfo> list = new ArrayList<AdminInfo>();
-		String sql = "SELECT* FROM admin";
-		list = this.getJdbcTemplate().query(sql, new adminrowMap());
-		return list;
+	public AdminInfo getAdminInfo(String account) {
+		String hql = "from AdminInfo  where account='"+account+"'";
+//		String sql="SELECT * from admin WHERE account='"+account+"'";
+
+//		Query query= getCurrentSession().createQuery(hql);
+		return (AdminInfo) baseDaoI.get(hql);
 	}
 
-	@Override
-	public List<Integer> sizeList() {
-		sizeList=new ArrayList<Integer>();
-		String sql="SELECT COUNT(*) FROM saler , buyer;";
-		int size=this.getJdbcTemplate().queryForInt(sql);
-		sizeList.add(size);
-		sql="SELECT COUNT(*) FROM shucai;";
-		size=this.getJdbcTemplate().queryForInt(sql);
-		sizeList.add(size);
-		sql="SELECT COUNT(*) FROM order1;";
-		size=this.getJdbcTemplate().queryForInt(sql);
-		sizeList.add(size);
-		return sizeList;
-	}
 
-	public class adminrowMap implements RowMapper {
-		@Override
-		public Object mapRow(ResultSet rs, int arg1) throws SQLException {
-			// TODO Auto-generated method stub
-			AdminInfo info = new AdminInfo();
-			info.setAccount(rs.getString("account"));
-			info.setPassword(rs.getString("password"));
-			info.setPower(rs.getInt("power"));
-			return info;
-		}
 
-	}
+
+
 
 }

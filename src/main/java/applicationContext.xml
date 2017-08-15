@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	   xmlns:jpa="http://www.springframework.org/schema/data/jpa" xmlns:aop="http://www.springframework.org/schema/aop"
 	   xsi:schemaLocation="http://www.springframework.org/schema/beans
             http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
-        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 	<!-- 添加propertyConfigurer bean 这个类也是Spring提供的 -->
 	<!--<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">-->
 		<!--&lt;!&ndash; 把properties文件的路径注入给location属性，前面要加classpath: &ndash;&gt;-->
 		<!--<property name="location" value="classpath:mysql_wyh.properties"/>-->
 	<!--</bean>-->
+
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
 		<property name="password" value="123456"></property>
@@ -23,23 +25,35 @@
 		<!--<property name="username" value="${jdbc.user}"></property>-->
 		<!--<property name="url" value="${jdbc.url}"></property>-->
 	<!--</bean>-->
-    <bean id="shucaiaction" class="com.appcrews.javaee.maicai.dal.Dataimpl">
-		<property name="dataSource" ref="dataSource">
+
+
+	<!-- sessionFactory实体管理工厂的配置 -->
+	<bean id="sessionFactory"        class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="packagesToScan">
+			<list>
+				<value>com.appcrews.javaee.maicai.model</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props><prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+			</props>
+
 		</property>
 	</bean>
 
-	<context:component-scan base-package="com.appcrews.javaee.maicai.*" />
-	<bean id="orderdao" class="com.appcrews.javaee.maicai.dal.Orderimpl">
-	<property name="dataSource" ref="dataSource">
-	</property>
-</bean>
-	<bean id="admindao" class="com.appcrews.javaee.maicai.dal.Adminimpl">
-		<property name="dataSource" ref="dataSource">
-		</property>
-	</bean >
-	<bean id="useraction" class="com.appcrews.javaee.maicai.dal.Userimpl">
-	    <property name="dataSource" ref="dataSource">
-		</property>
+	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
+
+	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
+
+	<context:component-scan base-package="com.appcrews.javaee.maicai.*" />
+
+
+
 
 </beans>

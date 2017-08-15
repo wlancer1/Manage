@@ -1,16 +1,24 @@
 package com.appcrews.javaee.maicai.model;
 
-public class DetailInfo {
-	private int onum, SCid, SCnum;
+import javax.persistence.*;
+import java.io.Serializable;
+
+@Entity
+@Table(name = "detailorder")
+public class DetailInfo implements Serializable {
+	private int onum, wareid, warenum;
 	int ID;
 	String name;
 	private float price;
 	private float sum;
 	private String img = "";
-	public DetailInfo (int ounm,int SCid,int SCnum){
+	public  DetailInfo(){
+
+	}
+	public DetailInfo (int ounm,int wareid,int warenum){
 			this.onum=ounm;
-			this.SCid=SCid;
-			this.SCnum=SCnum;
+			this.wareid=wareid;
+			this.warenum=warenum;
 	}
 	public int getID() {
 		return ID;
@@ -52,6 +60,7 @@ public class DetailInfo {
 		this.img = img;
 	}
 
+
 	public int getOnum() {
 		return onum;
 	}
@@ -59,21 +68,21 @@ public class DetailInfo {
 	public void setOnum(int ounm) {
 		this.onum=ounm;
 	}
-
-	public int getSCid() {
-		return SCid;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	public int getWareid() {
+		return wareid;
 	}
 
-	public void setSCid(int sCid) {
-		SCid = sCid;
+	public void setWareid(int wareid) {
+		this.wareid = wareid;
 	}
 
-	public int getSCnum() {
-		return SCnum;
+	public int getWarenum() {
+		return warenum;
 	}
 
-	public void setSCnum(int sCnum) {
-		SCnum = sCnum;
+	public void setWarenum(int warenum) {
+		this.warenum = warenum;
 	}
-
 }

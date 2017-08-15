@@ -9,8 +9,8 @@ import java.util.List;
  * Created by micheal on 2017/2/5.
  */
 public interface Admin {
-//     int panduan(String account, String password);
-     List<Integer> sizeList();
-     List<AdminInfo> getList();
+
+      AdminInfo getAdminInfo(String account);//以用户名查询密码
+     int getLength();  //获取admin条数
 
 }

@@ -34,8 +34,9 @@ public class ManagerAction extends ActionSupport implements ModelDriven<WareInfo
     private dataService dataService;
     private WareInfo info = new WareInfo();
     private Map map;
+    final private int pageSize = 5;//翻页数
     private int de, ts;
-    private int index, allpage, pageNo, pageSize = 5,sort;
+    private int index, allpage, pageNo, sort=0;
     private String key;
     List<WareInfo> info1;
     List<TypeInfo> info2;
@@ -90,7 +91,7 @@ public class ManagerAction extends ActionSupport implements ModelDriven<WareInfo
     public String search() {
         map = new HashMap();
         this.response = ServletActionContext.getResponse();
-        info1 = dataService.getListsearch(key);
+        info1 = dataService.getListWaresearch(key);
 
         if(info1==null){
             map.put("datalist", "null");
@@ -110,24 +111,19 @@ public class ManagerAction extends ActionSupport implements ModelDriven<WareInfo
 
     public String sort() {
         response=ServletActionContext.getResponse();
-        index = (pageNo - 1) * this.pageSize;
-        if (this.sort==1) {
-            info1 = dataService.getListshucaisort(pageNo, 1,this.pageSize);
-        } else {
-            info1 = dataService.getListshucaisort(pageNo, 0,this.pageSize);
-        }
+        System.out.println("flag========"+sort);
+        info1 = dataService.getListWaresort(this.pageNo,this.pageSize,this.sort);
         JSONArray jsonArray = JSONArray.fromObject(info1);
-        System.out.print(jsonArray);
+        System.out.println(jsonArray);
          Util.renderData(response, jsonArray);
         return "success";
     }
 
     public void initquery() {
         response = ServletActionContext.getResponse();
-        allpage = (((dataService.getListshucai().size() -1)/ this.pageSize) + 1);
+        allpage = dataService.getcountTotalPage(pageSize);
         map = new HashMap();
-        index = (pageNo - 1) * this.pageSize;
-        info1 = dataService.getList(index);
+        info1 = dataService.getqueryForPage(this.pageNo,this.pageSize);
         map.put("datalist", info1);
         map.put("allpage", allpage);
         JSONObject jsonObject = JSONObject.fromObject(map);
@@ -135,16 +131,14 @@ public class ManagerAction extends ActionSupport implements ModelDriven<WareInfo
     }
 
     public String query() {
-
-        allpage = (((dataService.getListshucai().size() -1)/ this.pageSize) + 1);
+        allpage = dataService.getcountTotalPage(this.pageSize);
         return "success";
 
     }
 
     public void fanye() {
         response = ServletActionContext.getResponse();
-        index = (pageNo - 1) * this.pageSize;
-        info1 = dataService.getList(index);
+        info1 = dataService.getqueryForPage(pageNo,pageSize);
         JSONArray jsonArray = JSONArray.fromObject(info1);
          Util.renderData(response, jsonArray);
 
@@ -153,9 +147,9 @@ public class ManagerAction extends ActionSupport implements ModelDriven<WareInfo
     public String queryedit() {
         ts = Integer.parseInt(ServletActionContext.getRequest().getParameter(
                 "ts"));
-        info = dataService.getShucaiInfo(ts);
+        info = dataService.getWareInfo(ts);
         String type = info.getType();
-        info2 = dataService.getType(type);
+//        info2 = dataService.getType(type);
         request.setAttribute("ts", ts);
         request.setAttribute("typeinfo", info2);
         request.setAttribute("shucaiinfo", info);
@@ -163,19 +157,19 @@ public class ManagerAction extends ActionSupport implements ModelDriven<WareInfo
 
     }
 
-    public String querytype() {
-        info2 = dataService.gettype();
-        request.setAttribute("typeinfo", info2);
-        return "type";
-
-    }
-
-    public String inserttype() {
-        String type = request.getParameter("type");
-        dataService.inserttype(type);
-        request.setAttribute("flag", 1);
-        return "type1";
-    }//插入类型
+//    public String querytype() {
+////        info2 = dataService.gettype();
+//        request.setAttribute("typeinfo", info2);
+//        return "type";
+//
+//    }
+//
+//    public String inserttype() {
+//        String type = request.getParameter("type");
+//        dataService.inserttype(type);
+//        request.setAttribute("flag", 1);
+//        return "type1";
+//    }//插入类型
 
     public String save() {
 
@@ -206,7 +200,7 @@ public class ManagerAction extends ActionSupport implements ModelDriven<WareInfo
         de = Integer.parseInt(ServletActionContext.getRequest().getParameter(
                 "de"));
         response = ServletActionContext.getResponse();
-        if ((dataService.delete(de)).equals("success")) {
+        if ((dataService.delete(de))!=0) {
             dataService.delete(de);
             Util.renderData(response, "success");
             return "success";
@@ -216,17 +210,17 @@ public class ManagerAction extends ActionSupport implements ModelDriven<WareInfo
         }
     }
 
-    public int size() {
-        int size = dataService.getListshucai().size();
-        return size;
-    }
+//    public int size() {
+//        int size = dataService.getListshucai().size();
+//        return size;
+//    }
 
-    public String insert() {
-        info2 = dataService.gettype();
-        request.setAttribute("typeinfo", info2);
-        return "insert";
-
-    }
+//    public String insert() {
+//        info2 = dataService.gettype();
+//        request.setAttribute("typeinfo", info2);
+//        return "insert";
+//
+//    }
 
     public String edit() {
         try {

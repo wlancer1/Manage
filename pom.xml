@@ -7,7 +7,7 @@
 	<packaging>war</packaging>
 	<properties>
 		<log4j.version>2.0.2</log4j.version>
-		<spring.framework.version>4.0.6.RELEASE</spring.framework.version>
+		<spring.framework.version>3.1.4.RELEASE</spring.framework.version>
 	</properties>
 		<build>
 			<resources>
@@ -106,6 +106,11 @@
 			<version>${spring.framework.version}</version>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+			<version>1.3.2.RELEASE</version>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
 			<version>${spring.framework.version}</version>
@@ -123,8 +128,29 @@
 			<version>2.4</version>
             <classifier>jdk15</classifier>
         </dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.8.8</version>
+		</dependency>
 
-
+		<!-- hibernate begin -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>4.2.1.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>4.2.1.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate.common</groupId>
+			<artifactId>hibernate-commons-annotations</artifactId>
+			<version>4.0.1.Final</version>
+		</dependency>
+		<!-- hibernate end -->
 
 		<!-- validator  mysql el -->
 		<dependency>
@@ -175,12 +201,19 @@
 			<artifactId>antlr</artifactId>
 			<version>2.7.6</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/aspectj/aspectjrt -->
+		<!-- https://mvnrepository.com/artifact/cglib/cglib-nodep -->
 		<dependency>
-			<groupId>aspectj</groupId>
-			<artifactId>aspectjrt</artifactId>
-			<version>1.2.1</version>
+			<groupId>cglib</groupId>
+			<artifactId>cglib-nodep</artifactId>
+			<version>2.1_3</version>
 		</dependency>
+
+		<!--&lt;!&ndash; https://mvnrepository.com/artifact/aspectj/aspectjrt &ndash;&gt;-->
+		<!--<dependency>-->
+			<!--<groupId>aspectj</groupId>-->
+			<!--<artifactId>aspectjrt</artifactId>-->
+			<!--<version>1.2.1</version>-->
+		<!--</dependency>-->
 
 
 
@@ -206,6 +239,8 @@
 			<artifactId>commons-collections</artifactId>
 			<version>3.2.1</version>
 		</dependency>
+
+
 
 	</dependencies>
 	

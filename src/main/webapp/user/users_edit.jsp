@@ -62,7 +62,7 @@
                 <div class="control-group">
                     <label class="control-label" for="pnohe" >手机号</label>
                     <div class="controls">
-                        <input type="text" class="input-xlarge" id="phone" value="${userinfo.phone}" name="phone"/>
+                        <input type="number" class="input-xlarge" id="phone" value="${userinfo.phone}" name="phone"/>
                     </div>
                 </div>
                 <div class="control-group">

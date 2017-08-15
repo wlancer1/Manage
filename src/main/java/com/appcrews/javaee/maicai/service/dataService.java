@@ -10,17 +10,18 @@ import java.util.List;
  * Created by micheal on 2017/2/22.
  */
 public interface dataService {
-    List<WareInfo> getList(int index);
-    List<WareInfo> getListsearch(String key);
-    List<WareInfo> getListsort(String name);
-    WareInfo getShucaiInfo(int id);
-    List<WareInfo> getListshucaisort(int index, int flag, int pageSize);
-    List<WareInfo> getListshucai();
-    int getSCid(String name);
-    List<TypeInfo> getType(String TYPE);
-    List<TypeInfo> gettype();
-    void inserttype(String type);
-    void insert(WareInfo info);
+    List<WareInfo> getqueryForPage(int pageno,int pagesize);
+    int getcountTotalPage(int pagesize);
+    List<WareInfo> getListWaresort(int pageNo, int pageSize,int flag);
+    List<WareInfo> getListWaresearch(String key);
     void update(int id, WareInfo info) throws SQLException;
-    String delete(int id) throws SQLException;
+    int delete(int id) throws SQLException;
+    WareInfo getWareInfo(int id);
+    void insert(WareInfo info);
+
+//    List<TypeInfo> getType(String TYPE);
+//    List<TypeInfo> gettype();
+//    void inserttype(String type);
+
+
 }

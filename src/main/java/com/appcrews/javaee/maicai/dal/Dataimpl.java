@@ -5,157 +5,117 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 
 import com.appcrews.javaee.maicai.model.WareInfo;
 import com.appcrews.javaee.maicai.model.TypeInfo;
+import org.springframework.stereotype.Repository;
 
-public class Dataimpl extends JdbcDaoSupport implements Data{
+import javax.annotation.Resource;
 
-	@SuppressWarnings("unchecked")
-	public List<WareInfo> getList(int index) {
-		List<WareInfo> list = new ArrayList<WareInfo>();
-		String sql = "SELECT* FROM shucai LIMIT " + index + ",5";
-		list = this.getJdbcTemplate().query(sql, new ShuCairowMap());
-		return list;
-	}
-	@SuppressWarnings( "unchecked")
-	public List<WareInfo> getListsearch(String key){
-		List<WareInfo> list = new ArrayList<WareInfo>();
-		String sql="SELECT * FROM shucai WHERE fName LIKE '%"+key+"%'LIMIT 0,5";
-		list=this.getJdbcTemplate().query(sql, new ShuCairowMap());
-		return list;
-		
+@Repository
+public class Dataimpl implements Data {
+	@Autowired
+	BaseDaoI baseDaoI;
+	@Resource(name="sessionFactory")
+	private SessionFactory sessionFactory;
+
+	public SessionFactory getSessionFactory() {
+		return sessionFactory;
 	}
 
-	@SuppressWarnings("unchecked")
-	public List<WareInfo> getListsort(String name) {
-		List<WareInfo> list = new ArrayList<WareInfo>();
-		String sql = "SELECT * FROM `shucai` ORDER BY (CASE WHEN fName='"
-				+ name + "' THEN 1 ELSE 4 END),fName DESC";
-		list = this.getJdbcTemplate().query(sql, new ShuCairowMap());
-		return list;
+	@Autowired
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
 	}
 
-	public WareInfo getShucaiInfo(int id) {
-		String sql = "select * from shucai where fId=" + id + "";
-		System.out.println(sql);
-		WareInfo info = (WareInfo) this.getJdbcTemplate().queryForObject(
-				sql, new ShuCairowMap());
-		return info;
+	private Session getCurrentSession() {
+		return this.sessionFactory.getCurrentSession();
+	}
+
+
+	@Override
+	public int delete(int id) {
+		String sql="DELETE FROM ware  WHERE fId = '" + id + "' ";
+		return getCurrentSession().createSQLQuery(sql).executeUpdate();
 
 	}
 
-	@SuppressWarnings("unchecked")
-	public List<WareInfo>  getListshucaisort(int index, int flag, int pageSize) {
-		List<WareInfo> list = new ArrayList<WareInfo>();
+	@Override
+	public List<WareInfo> getListWare(int pageNo, int pageSize) {
+		String hql="from WareInfo";
+		return baseDaoI.find(hql,pageNo,pageSize);
+	}
+
+	@Override
+	public List<WareInfo> getListWare(int pageNo, int pageSize,int flag) {
+		String hql="from WareInfo ";
 		if (flag == 0) {
-			String sql1 = "SELECT* FROM shucai ORDER BY fPrice DESC LIMIT "
-					+ index + ","+pageSize+ "";
-//			String sql1 = "SELECT* FROM shucai ORDER BY fPrice DESC ";
-			list = this.getJdbcTemplate().query(sql1, new ShuCairowMap());
+			hql+="order by price desc";
+			return baseDaoI.find(hql,pageNo,pageSize);
 		} else {
-			String sql2 = "SELECT* FROM shucai ORDER BY fPrice asc LIMIT "
-					+ index + ","+pageSize+ "";
-//			String sql2 = "SELECT* FROM shucai ORDER BY fPrice asc ";
-			list = this.getJdbcTemplate().query(sql2, new ShuCairowMap());
+			hql+="order by price asc";
+			return baseDaoI.find(hql,pageNo,pageSize);
 		}
-		return list;
 	}
 
-	@SuppressWarnings("unchecked")
-	public List<WareInfo> getListshucai() {
-		List<WareInfo> list = new ArrayList<WareInfo>();
-		String sql = "SELECT* FROM shucai";
-		list = this.getJdbcTemplate().query(sql, new ShuCairowMap());
-		return list;
+	@Override
+	public List<WareInfo> getListWare(String key) {
+		String hql="from WareInfo WHERE name ='"+key+"'";
+		return baseDaoI.find(hql);
 	}
 
-	public int getSCid(String name) {
-		String sql = "SELECT fId FROM shucai WHERE fName = '" + name + "'";
-		return this.getJdbcTemplate().queryForInt(sql);
-
-	}
-
-	@SuppressWarnings("unchecked")
-	public List<TypeInfo> getType(String TYPE) {
-		List<TypeInfo> list = new ArrayList<TypeInfo>();
-		String sql = "SELECT * FROM `type` ORDER BY (CASE WHEN fType='" + TYPE
-				+ "' THEN 1 ELSE 4 END),fType DESC;";
-		list = this.getJdbcTemplate().query(sql, new TyperowMap());
-		return list;
-	}
-
-	@SuppressWarnings("unchecked")
-	public List<TypeInfo> gettype() {
-		List<TypeInfo> list = new ArrayList<TypeInfo>();
-		String sql = "SELECT * FROM type";
-		list = this.getJdbcTemplate().query(sql, new TyperowMap());
-		return list;
-	}
-	
-	public void inserttype(String type) {
-		String sql = "INSERT INTO `shujub`.`type` (`fType`, `t-remark`) VALUES ";
-		sql=sql+" ('"+type+  "','"+"1"+"')";
-		this.getJdbcTemplate().execute(sql);
-		
-	}
-	public void insert(WareInfo info) {
-		String sql = "insert into shucai(fName,fPrice,fImg,fType,fRemark) values ";
-		sql = sql + " ('" + info.getName() + "','" + info.getPrice() + "','"
-				+ info.getImg() + "','" + info.getType() + "','"
-				+ info.getRemark() + "')";
-		this.getJdbcTemplate().execute(sql);
-	}
-
-	public void update(int id, WareInfo info) throws SQLException {
-		String sql = "update shucai set" + " fName='" + info.getName()
-				+ "',fPrice='" + info.getPrice() + "',fImg='" + info.getImg()
-				+ "',fType='" + info.getType() + "',fRemark='"
-				+ info.getRemark() + "' where fid=" + id + "";
-		this.getJdbcTemplate().execute(sql);
-
-	}
+	//	@SuppressWarnings("unchecked")
+//	public List<WareInfo>  getListshucaisort(int index, int flag, int pageSize) {
+//		List<WareInfo> list = new ArrayList<WareInfo>();
+//		if (flag == 0) {
+//			String sql1 = "SELECT* FROM shucai ORDER BY fPrice DESC LIMIT "
+//					+ index + ","+pageSize+ "";
+////			String sql1 = "SELECT* FROM shucai ORDER BY fPrice DESC ";
+//
+//			list = this.getJdbcTemplate().query(sql1, new ShuCairowMap());
+//		} else {
+//			String sql2 = "SELECT* FROM shucai ORDER BY fPrice asc LIMIT "
+//					+ index + ","+pageSize+ "";
+////			String sql2 = "SELECT* FROM shucai ORDER BY fPrice asc ";
+//			list = this.getJdbcTemplate().query(sql2, new ShuCairowMap());
+//		}
+//		return list;
+//
+//
+//	}
+//
+//	@SuppressWarnings("unchecked")
+//	public List<WareInfo> getListshucai() {
+//		List<WareInfo> list = new ArrayList<WareInfo>();
+//		String sql = "SELECT* FROM shucai";
+//		list = this.getJdbcTemplate().query(sql, new ShuCairowMap());
+//		return list;
+//	}
+//
+//	public int getSCid(String name) {
+//		String sql = "SELECT fId FROM shucai WHERE fName = '" + name + "'";
+//		return this.getJdbcTemplate().queryForInt(sql);
+//
+//	}
+//
+//	@SuppressWarnings("unchecked")
+//	public List<TypeInfo> getType(String TYPE) {
+//		List<TypeInfo> list = new ArrayList<TypeInfo>();
+//		String sql = "SELECT * FROM `type` ORDER BY (CASE WHEN fType='" + TYPE
+//				+ "' THEN 1 ELSE 4 END),fType DESC;";
+//		list = this.getJdbcTemplate().query(sql, new TyperowMap());
+//		return list;
+//	}
 
 
-	public String delete(int id) throws SQLException {
-		try {
-			String sql = "delete from shucai where fId =" + id + "";
-			this.getJdbcTemplate().execute(sql);
-			return "success";
-		} catch (Exception e) {
-			// TODO: handle exception
-			return "input";
-		}
-
-	}
-
-	public class ShuCairowMap implements RowMapper {
-		@Override
-		public Object mapRow(ResultSet rs, int arg1) throws SQLException {
-			// TODO Auto-generated method stub
-			WareInfo info = new WareInfo();
-			info.setId(rs.getInt("fId"));
-			info.setName(rs.getString("fName"));
-			info.setPrice(rs.getFloat(("fPrice")));
-			info.setImg(rs.getString("fImg"));
-			info.setType(rs.getString("fType"));
-			info.setRemark(rs.getString("fRemark"));
-			return info;
-		}
-
-	}
-
-	public class TyperowMap implements RowMapper {
-		@Override
-		public Object mapRow(ResultSet rs, int arg1) throws SQLException {
-			// TODO Auto-generated method stub
-			TypeInfo info = new TypeInfo();
-			info.setRemark(rs.getString("t-remark"));
-			info.setType(rs.getString("fType"));
-			return info;
-		}
-
+	@Override
+	public int getLength() {
+		String hql="SELECT COUNT(*) FROM WareInfo";
+		return baseDaoI.count(hql);
 	}
 }

@@ -11,14 +11,15 @@ import java.util.List;
  */
 public interface User {
      List<SaleInfo> getlists();
-    int size();
-     SaleInfo getsaleinfo(int index);
-     BuyerInfo getbuyinfo(int index);
+        int getLength();
+//     SaleInfo getsaleinfo(int index);
+//     BuyerInfo getbuyinfo(int index);
     List<BuyerInfo> getlistb();
-    void update(UserInfo userInfo);
-    void insert(BuyerInfo buyerInfo);//buyer表插入
-    void insert(SaleInfo saleInfo);//saler表插入
-    void delete(int index);
-    void insert(int index);
+//    void update(UserInfo userInfo);
+//    void insert(BuyerInfo buyerInfo);//buyer表插入
+//    void insert(SaleInfo saleInfo);//saler表插入
+    //改变买卖双方的身份
+    void change(int index);
+
 
 }

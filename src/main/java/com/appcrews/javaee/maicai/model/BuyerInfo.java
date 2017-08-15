@@ -1,6 +1,11 @@
 package com.appcrews.javaee.maicai.model;
 
-public class BuyerInfo {
+import javax.persistence.*;
+import java.io.Serializable;
+
+@Entity
+@Table(name = "buyer")
+public class BuyerInfo implements Serializable {
  private int id;
 	private String bname;
 
@@ -11,7 +16,27 @@ public class BuyerInfo {
 	private int power;
 	private  int status;
 	private  String password;
+public BuyerInfo(){
 
+}
+	public BuyerInfo(int id, String name,
+					String email, int power, int phone, int status){
+		this.id=id;
+		this.bname=name;
+		this.bemail=email;
+		this.power=power;
+		this.btele=phone;
+		this.status=status;
+	}
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	@Column(name = "bpassword")
 	public String getPassword() {
 		return password;
 	}
@@ -34,12 +59,6 @@ public void setPower(int power) {
 	this.power = power;
 }
 
-public int getId() {
-	return id;
-}
-public void setId(int id) {
-	this.id = id;
-}
 public String getBname() {
 	return bname;
 }
