@@ -1,6 +1,8 @@
 package com.appcrews.javaee.maicai.model;
 
 import javax.persistence.*;
+import javax.persistence.Transient;
+import java.beans.*;
 import java.io.File;
 import java.io.Serializable;
 
@@ -28,6 +30,7 @@ public class WareInfo implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
+@Transient
 	public File getUploadImage() {
 		return uploadImage;
 	}
@@ -35,7 +38,7 @@ public class WareInfo implements Serializable {
 	public void setUploadImage(File uploadImage) {
 		this.uploadImage = uploadImage;
 	}
-
+@Transient
 	public String getUploadImageContentType() {
 		return uploadImageContentType;
 	}
@@ -43,7 +46,7 @@ public class WareInfo implements Serializable {
 	public void setUploadImageContentType(String uploadImageContentType) {
 		this.uploadImageContentType = uploadImageContentType;
 	}
-
+	@Transient
 	public String getUploadImageFileName() {
 		return uploadImageFileName;
 	}

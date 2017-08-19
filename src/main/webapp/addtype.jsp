@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <html lang="en-US">
-<%@ taglib uri="/struts-tags" prefix="s"%>
+
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <head>
 <title>添加</title>

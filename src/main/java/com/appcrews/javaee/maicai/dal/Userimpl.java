@@ -113,19 +113,20 @@ public int getLength(){
 //
 
 	@Override
-	public void change(int index) {
+	public void delete(int index) {
 		String sql;
-		if(index<2000000)
-		{
-			sql = "insert into buyer(bname, bpassword, btele, baddress, email) ";
-			sql=sql+"select username, password, tele, saddress, email from saler Where ID="+index;
-		}
-		else{
-			sql = "insert into saler(username, password, tele, saddress, email )";
-			sql=sql+"select bname, bpassword, btele, baddress, email from buyer Where ID="+index;
-		}
-		System.out.println("======"+sql);
-		getCurrentSession().createSQLQuery(sql).executeUpdate();
+//		if(index<2000000)
+//		{
+//			sql = "insert into buyer(bname, bpassword, btele, baddress, email) ";
+//			sql=sql+"select username, password, tele, saddress, email from saler Where ID="+index;
+//		}
+//		else{
+//			sql = "insert into saler(username, password, tele, saddress, email )";
+//			sql=sql+"select bname, bpassword, btele, baddress, email from buyer Where ID="+index;
+//		}
+//		System.out.println("======"+sql);
+//		getCurrentSession().createSQLQuery(sql).executeUpdate();
+//		System.out.println("======"+sql);
 		if(index<2000000)
 			sql="delete from saler where ID ="+index+"";
 		else

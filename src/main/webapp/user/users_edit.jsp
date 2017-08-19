@@ -1,12 +1,12 @@
-<%@ page import="com.appcrews.javaee.maicai.tool.BaseConfig" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: micheal
   Date: 2017/7/19
   Time: 10:39
   To change this template use File | Settings | File Templates.
 --%>
-<%@ taglib uri="/struts-tags" prefix="s"%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
@@ -109,12 +109,7 @@
                     url:"/user/update_user.html?uid=${uid}",
                     data:$('#myform').serialize(),// 你的formid
                     async: false,
-//                    headers: {
-//                        Token:
-//            },
                     success: function(data) {
-<%--//                        var jsdata=JSON.parse(data);--%>
-                        console.log(data);
                         if(data=="success")
                         {
                             console.log(12323);

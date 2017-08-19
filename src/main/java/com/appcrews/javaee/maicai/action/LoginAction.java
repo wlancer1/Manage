@@ -68,6 +68,7 @@ public class LoginAction extends ActionSupport implements ModelDriven<AdminInfo>
 
 		String mp=MD5.Encrypt(this.adminInfo.getPassword(), this.adminInfo.getPassword().length());
 		power = this.adminService.validate(this.adminInfo.getAccount(),mp);
+		System.out.println("======"+power);
 		if (power == -1) {
 			Result.put("fail","账号或者密码错误，请重新输入！");
 			return "false";

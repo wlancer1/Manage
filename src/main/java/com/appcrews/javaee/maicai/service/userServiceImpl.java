@@ -79,34 +79,46 @@ public class userServiceImpl implements userService {
     }
     @Override
     public int update(UserInfo u) {
-
-    if(u.getId()/1000000==1){
+//        if (u.getId() / 1000000 != u.getPower()) {
+//
+//            if(order.count(u.getId())!=0)
+//                return 0;
+//            try{
+//                user.change(u.getId());
+//            }catch (Exception e){
+//                System.out.println(e);
+//                return  -1;
+//            }
+//
+//
+//        }
+    if(u.getPower()==1){
         sale=new SaleInfo(u.getId(),u.getName(),u.getEmail(),u.getPower(),u.getPhone(),u.getStatus());
+        if (u.getId() / 1000000 != u.getPower()) {
+            user.delete(u.getId());
+            baseDaoI.save(sale);
+            return  1;
+        }
         try{
             baseDaoI.update(sale);
         }catch (Exception e){
+
             return  -1;
         }
-    }
-    else{
+    } else{
         buyer=new BuyerInfo(u.getId(),u.getName(),u.getEmail(),u.getPower(),u.getPhone(),u.getStatus());
+        if (u.getId() / 1000000 != u.getPower()) {
+            user.delete(u.getId());
+            baseDaoI.save(buyer);
+            return  1;
+        }
         try{
             baseDaoI.update(buyer);
         }catch (Exception e){
             return  -1;
         }
     }
-        if (u.getId() / 1000000 != u.getPower()) {
-            if(order.count(u.getId())!=0)
-                    return 0;
-            try{
-                user.change(u.getId());
-            }catch (Exception e){
-                return  -1;
-            }
 
-
-        }
         return 1;
 }
 

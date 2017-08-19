@@ -19,7 +19,7 @@ public interface User {
 //    void insert(BuyerInfo buyerInfo);//buyer表插入
 //    void insert(SaleInfo saleInfo);//saler表插入
     //改变买卖双方的身份
-    void change(int index);
+    void delete(int index);
 
 
 }
