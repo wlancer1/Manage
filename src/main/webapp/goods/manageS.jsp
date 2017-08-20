@@ -127,10 +127,9 @@
             type: "post",
             data: {pageNo: page},
             success: function (data) {
-
                 var jsdata=JSON.parse(data);
+                console.log(jsdata);
                 var data1 = {dataList: jsdata.datalist}
-
                 var Str = template("dataTemplate", data1);
                 $("#box").html(Str);
                 var temp="";
@@ -161,8 +160,8 @@
                 type:"post",
                 data:{key:detail},
                 success: function (data) {
-                    console.log()
                     var jsdata=JSON.parse(data);
+
                     if(jsdata.datalist==null)
                         alert("没有该名称的数据");
                     else{
@@ -196,7 +195,7 @@
                      src="<%=request.getContextPath()%>/fileupload/{{data.img}}" onerror="this.src='<%=request.getContextPath()%>/fileupload/default.png'"/>
             </div>
         </td>
-        <td>{{data.type}}</td>
+        <td>{{data.typeInfo.type}}</td>
         <td>{{data.remark}}</td>
         <td><a data-val="bj" data-index="{{index}}" data-id="{{data.id}}"><i
                 class="icon-pencil"></i> 编辑</a>

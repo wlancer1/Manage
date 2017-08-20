@@ -36,7 +36,8 @@ public class ManagerAction extends ActionSupport implements ModelDriven<WareInfo
     private Map map;
     final private int pageSize = 5;//翻页数
     private int de, ts;
-    private int index, allpage, pageNo, sort=0;
+    private int  allpage, pageNo, sort=0;
+private  TypeInfo typeInfo;
     private String key;
     List<WareInfo> info1;
     List<TypeInfo> info2;
@@ -92,21 +93,13 @@ public class ManagerAction extends ActionSupport implements ModelDriven<WareInfo
         map = new HashMap();
         this.response = ServletActionContext.getResponse();
         info1 = dataService.getListWaresearch(key);
+        allpage = dataService.getcountTotalPage(pageSize);
 
-        if(info1==null){
-            map.put("datalist", "null");
-            allpage=0;
-          }
-        else{
             map.put("datalist", info1);
-            allpage = (((info1.size()-1) / this.pageSize) + 1);
-        }
-
-        map.put("allpage", allpage);
+             map.put("allpage", allpage);
         JSONObject jsonObject = JSONObject.fromObject(map);
          Util.renderData(this.response, jsonObject);
         return "success";
-
     }
 
     public String sort() {
@@ -131,6 +124,7 @@ public class ManagerAction extends ActionSupport implements ModelDriven<WareInfo
     }
 
     public String query() {
+
         allpage = dataService.getcountTotalPage(this.pageSize);
         return "success";
 
@@ -148,11 +142,10 @@ public class ManagerAction extends ActionSupport implements ModelDriven<WareInfo
         ts = Integer.parseInt(ServletActionContext.getRequest().getParameter(
                 "ts"));
         info = dataService.getWareInfo(ts);
-        String type = info.getType();
-//        info2 = dataService.getType(type);
+        info2 = dataService.getType();
         request.setAttribute("ts", ts);
         request.setAttribute("typeinfo", info2);
-        request.setAttribute("shucaiinfo", info);
+        request.setAttribute("wareinfo", info);
         return "edit";
 
     }
@@ -177,6 +170,8 @@ public class ManagerAction extends ActionSupport implements ModelDriven<WareInfo
 
         String path = sc.getRealPath("/fileupload");
         String Name = info.getUploadImageFileName();
+        typeInfo=dataService.getTypeInfo(info.getType());
+        info.setTypeInfo(typeInfo);
         if (Name == null) {
             info.setImg(Name);
             dataService.insert(info);
@@ -215,18 +210,20 @@ public class ManagerAction extends ActionSupport implements ModelDriven<WareInfo
 //        return size;
 //    }
 
-//    public String insert() {
-//        info2 = dataService.gettype();
-//        request.setAttribute("typeinfo", info2);
-//        return "insert";
-//
-//    }
+    public String insert() {
+        info2 = dataService.getType();
+        request.setAttribute("typeinfo", info2);
+        return "insert";
+
+    }
 
     public String edit() {
         try {
             ts = Integer.parseInt(ServletActionContext.getRequest()
                     .getParameter("ts"));
             String Name = info.getUploadImageFileName();
+            typeInfo=dataService.getTypeInfo(info.getType());
+            info.setTypeInfo(typeInfo);
             if (Name != null) {
                 ServletContext sc = ServletActionContext.getServletContext();
                 String path = sc.getRealPath("/fileupload");
@@ -245,6 +242,7 @@ public class ManagerAction extends ActionSupport implements ModelDriven<WareInfo
             }
         } catch (SQLException e) {
             // TODO Auto-generated catch block
+
             e.printStackTrace();
             return "false";
         }

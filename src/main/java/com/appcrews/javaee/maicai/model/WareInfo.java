@@ -16,13 +16,23 @@ public class WareInfo implements Serializable {
 	private String uploadImageFileName;
 	private int id;
 	private File uploadImage;
-	private String name = "", type;
+	private String name = "";
+	private int type;
 	private float price;
 	private String img = "", remark;
+	private  TypeInfo typeInfo;
 
+	public void setTypeInfo(TypeInfo typeInfo) {
+		this.typeInfo = typeInfo;
+	}
+	@OneToOne
+	@JoinColumn(name="ftype",unique=true)
+	public TypeInfo getTypeInfo() {
+		return typeInfo;
+	}
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "fid",updatable = false)
+	@Column(name = "fid")
 	public int getId() {
 		return id;
 	}
@@ -64,11 +74,11 @@ public class WareInfo implements Serializable {
 		this.name = name;
 	}
 	@Column(name = "fType")
-	public String getType() {
+	public int getType() {
 		return type;
 	}
 
-	public void setType(String type) {
+	public void setType(int type) {
 		this.type = type;
 	}
 	@Column(name = "fPrice")

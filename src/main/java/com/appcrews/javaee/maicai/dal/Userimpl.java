@@ -134,49 +134,5 @@ public int getLength(){
 		getCurrentSession().createSQLQuery(sql).executeUpdate();
 	}
 
-//	@Override
-//	public void delete(int index) {
-//	String sql;
-//	if(index<2000000)
-//			sql="delete from saler where ID ="+index+"";
-//		else
-//			sql="delete from buyer where ID ="+index+"";
-//		getCurrentSession().createSQLQuery(sql).executeUpdate();
-//	}
-//
-//	public class SalerowMap implements RowMapper {
-//
-//	@Override
-//	public Object mapRow(ResultSet rs, int arg1) throws SQLException {
-//		// TODO Auto-generated method stub
-//		SaleInfo info = new SaleInfo();
-//		info.setEmail(rs.getString("email"));
-//		info.setUserid(rs.getInt("ID"));
-//		info.setUsername(rs.getString("username"));
-//		info.setPower(rs.getInt("power"));
-//		info.setTele(rs.getInt("tele"));
-//		info.setStatus(rs.getInt("status"));
-//		info.setSaddress(rs.getString("saddress"));
-//		return info;
-//	}
 
-//}
-//	public class BuyerrowMap implements RowMapper {
-//
-//		@Override
-//		public Object mapRow(ResultSet rs, int arg1) throws SQLException {
-//			// TODO Auto-generated method stub
-//			BuyerInfo info = new BuyerInfo();
-//			info.setBaddress(rs.getString("baddress"));
-//			info.setBname(rs.getString("bname"));
-//			info.setBtele(rs.getInt("btele"));
-//			info.setId(rs.getInt("ID"));
-//			info.setStatus(rs.getInt("status"));
-//			info.setBemail(rs.getString("email"));
-//			info.setBremark(rs.getString("bremark"));
-//			info.setPower(rs.getInt("power"));
-//			return info;
-//		}
-//
-//	}
 }

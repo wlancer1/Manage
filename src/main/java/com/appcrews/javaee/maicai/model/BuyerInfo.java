@@ -19,14 +19,13 @@ public class BuyerInfo implements Serializable {
 public BuyerInfo(){
 
 }
-	public BuyerInfo(int id, String name,
-					String email, int power, int phone, int status){
-		this.id=id;
-		this.bname=name;
-		this.bemail=email;
-		this.power=power;
-		this.btele=phone;
-		this.status=status;
+	public BuyerInfo(UserInfo u){
+		this.id=u.getId();
+		this.bname=u.getName();
+		this.bemail=u.getEmail();
+		this.power=u.getPower();
+		this.btele=u.getPhone();
+		this.status=u.getStatus();
 	}
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

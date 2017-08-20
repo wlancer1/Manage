@@ -18,8 +18,8 @@ public interface Data {
     int delete(int id);
     //    List<WareInfo> getListshucai();
 //    int getSCid(String name);
-//    List<TypeInfo> getType(String TYPE);
-//    List<TypeInfo> gettype();
+//    List<TypeInfo> getListType(String TYPE);
+    List<TypeInfo> getListType();
     int getLength();
 
 

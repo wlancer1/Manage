@@ -1,8 +1,14 @@
 package com.appcrews.javaee.maicai.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "type")
 public class TypeInfo {
+	private  int typeid;
 	private String type;
 	private String remark;
+
 
 	public String getType() {
 		return type;
@@ -20,4 +26,12 @@ public class TypeInfo {
 		this.remark = remark;
 	}
 
+	public void setTypeid(int typeid) {
+		this.typeid = typeid;
+	}
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	public int getTypeid() {
+		return typeid;
+	}
 }

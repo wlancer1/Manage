@@ -13,17 +13,17 @@ public class SaleInfo implements Serializable {
 	private  int status;
 	private String password;
 	private String saddress;
+	private UserInfo userInfo;
 	private int tele;
 	public SaleInfo(){
 	}
-	public SaleInfo(int id, String name,
-			 String email, int power, int phone, int status){
-		this.userid=id;
-		this.username=name;
-		this.email=email;
-		this.power=power;
-		this.tele=phone;
-		this.status=status;
+	public SaleInfo(UserInfo u){
+		this.userid=u.getId();
+		this.username=u.getName();
+		this.email=u.getEmail();
+		this.power=u.getPower();
+		this.tele=u.getPhone();
+		this.status=u.getStatus();
 	}
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

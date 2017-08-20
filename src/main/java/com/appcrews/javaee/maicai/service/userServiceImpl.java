@@ -22,8 +22,8 @@ import java.util.List;
 public class userServiceImpl implements userService {
     @Autowired
     private BaseDaoI baseDaoI;
-   @Autowired
-   private  Order order;
+//   @Autowired
+//   private  Order order;
     @Autowired
     private User user;
     private UserInfo userInfo;
@@ -57,21 +57,9 @@ public class userServiceImpl implements userService {
         userInfo = new UserInfo();
         if (uid < 2000000) {
             sale = (SaleInfo)baseDaoI.get(SaleInfo.class,uid);
-//            userInfo.setId(sale.getUserid());
-//            userInfo.setPower(sale.getPower());
-//            userInfo.setName(sale.getUsername());
-//            userInfo.setEmail(sale.getEmail());
-//            userInfo.setStatus(sale.getStatus());
-//            userInfo.setPhone(sale.getTele());
             salerUser(sale,userInfo);
         } else {
             buyer = (BuyerInfo) baseDaoI.get(BuyerInfo.class,uid);
-//            userInfo.setId(buyer.getId());
-//            userInfo.setPower(buyer.getPower());
-//            userInfo.setName(buyer.getBemail());
-//            userInfo.setEmail(buyer.getBname());
-//            userInfo.setPhone(buyer.getBtele());
-//            userInfo.setStatus(buyer.getStatus());
             buyerUser(buyer,userInfo);
         }
 
@@ -79,21 +67,8 @@ public class userServiceImpl implements userService {
     }
     @Override
     public int update(UserInfo u) {
-//        if (u.getId() / 1000000 != u.getPower()) {
-//
-//            if(order.count(u.getId())!=0)
-//                return 0;
-//            try{
-//                user.change(u.getId());
-//            }catch (Exception e){
-//                System.out.println(e);
-//                return  -1;
-//            }
-//
-//
-//        }
     if(u.getPower()==1){
-        sale=new SaleInfo(u.getId(),u.getName(),u.getEmail(),u.getPower(),u.getPhone(),u.getStatus());
+        sale=new SaleInfo(u);
         if (u.getId() / 1000000 != u.getPower()) {
             user.delete(u.getId());
             baseDaoI.save(sale);
@@ -106,7 +81,7 @@ public class userServiceImpl implements userService {
             return  -1;
         }
     } else{
-        buyer=new BuyerInfo(u.getId(),u.getName(),u.getEmail(),u.getPower(),u.getPhone(),u.getStatus());
+        buyer=new BuyerInfo(u);
         if (u.getId() / 1000000 != u.getPower()) {
             user.delete(u.getId());
             baseDaoI.save(buyer);

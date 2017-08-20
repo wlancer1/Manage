@@ -50,6 +50,7 @@ public class dataServiceImp implements dataService {
 
     @Override
     public List<WareInfo> getListWaresort(int pageNo,  int pageSize,int flag) {
+
         return this.data.getListWare(pageNo,pageSize,flag);
     }
 
@@ -60,10 +61,16 @@ public class dataServiceImp implements dataService {
 //        return this.data.getType(TYPE);
 //    }
 //
-//    @Override
-//    public List<TypeInfo> gettype() {
-//        return this.data.gettype();
-//    }
+    @Override
+    public List<TypeInfo> getType() {
+        return this.data.getListType();
+    }
+
+    @Override
+    public TypeInfo getTypeInfo(int id) {
+
+        return (TypeInfo) baseDaoI.get(TypeInfo.class,id);
+    }
 //
 //    @Override
 //    public void inserttype(String type) {
@@ -77,7 +84,8 @@ public class dataServiceImp implements dataService {
 
     @Override
     public void update(int id, WareInfo info) throws SQLException {
-    this.baseDaoI.update(info);
+        info.setId(id);
+        this.baseDaoI.update(info);
     }
 
 

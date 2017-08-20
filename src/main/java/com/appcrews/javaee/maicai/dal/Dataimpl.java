@@ -112,6 +112,12 @@ public class Dataimpl implements Data {
 //		return list;
 //	}
 
+	@Override
+	public List<TypeInfo> getListType() {
+		String hql="from TypeInfo";
+	return baseDaoI.find(hql);
+	}
+
 
 	@Override
 	public int getLength() {
