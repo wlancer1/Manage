@@ -39,4 +39,5 @@ public interface BaseDaoI<T> {
 
 	public int executeHql(String hql);
 
+	public int exexuteSql(String sql);
 }

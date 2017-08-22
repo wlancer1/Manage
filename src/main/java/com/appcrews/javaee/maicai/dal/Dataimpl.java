@@ -21,28 +21,10 @@ import javax.annotation.Resource;
 public class Dataimpl implements Data {
 	@Autowired
 	BaseDaoI baseDaoI;
-	@Resource(name="sessionFactory")
-	private SessionFactory sessionFactory;
-
-	public SessionFactory getSessionFactory() {
-		return sessionFactory;
-	}
-
-	@Autowired
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
-
-	private Session getCurrentSession() {
-		return this.sessionFactory.getCurrentSession();
-	}
-
-
 	@Override
 	public int delete(int id) {
 		String sql="DELETE FROM ware  WHERE fId = '" + id + "' ";
-		return getCurrentSession().createSQLQuery(sql).executeUpdate();
-
+		return baseDaoI.exexuteSql(sql);
 	}
 
 	@Override

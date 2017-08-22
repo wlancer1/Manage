@@ -29,9 +29,6 @@ public class Adminimpl implements Admin{
 	@Override
 	public AdminInfo getAdminInfo(String account) {
 		String hql = "from AdminInfo  where account='"+account+"'";
-//		String sql="SELECT * from admin WHERE account='"+account+"'";
-
-//		Query query= getCurrentSession().createQuery(hql);
 		return (AdminInfo) baseDaoI.get(hql);
 	}
 

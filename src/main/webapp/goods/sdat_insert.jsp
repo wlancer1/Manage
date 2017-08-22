@@ -66,11 +66,9 @@
 								<label class="control-label">类型:</label>
 								<div class="controls">
 									<select onchange="showtable()" name="type">
-										<s:iterator value="#request.typeinfo" status="index">
-											<option>
-												<s:property value="type" />
-											</option>
-										</s:iterator>
+										<c:forEach items="${typeinfo}" var="typeList">
+													<option  value="${typeList.typeid}">${typeList.type}</option>
+										</c:forEach>
 									</select>
 								</div>
 							</div>

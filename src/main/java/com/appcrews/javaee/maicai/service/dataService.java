@@ -21,9 +21,6 @@ public interface dataService {
     List getType();
     TypeInfo getTypeInfo(int id);
 
-//    List<TypeInfo> getType(String TYPE);
-//    List<TypeInfo> gettype();
-//    void inserttype(String type);
 
 
 }

@@ -136,4 +136,9 @@ public class BaseDaoImpl<T> implements BaseDaoI<T> {
 		return q.executeUpdate();
 	}
 
+	@Override
+	public int exexuteSql(String sql) {
+		Query q = this.getCurrentSession().createSQLQuery(sql);
+		return q.executeUpdate();
+	}
 }

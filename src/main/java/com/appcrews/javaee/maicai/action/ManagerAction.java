@@ -124,10 +124,8 @@ private  TypeInfo typeInfo;
     }
 
     public String query() {
-
-        allpage = dataService.getcountTotalPage(this.pageSize);
+//        allpage = dataService.getcountTotalPage(this.pageSize);
         return "success";
-
     }
 
     public void fanye() {
@@ -165,7 +163,6 @@ private  TypeInfo typeInfo;
 //    }//插入类型
 
     public String save() {
-
         ServletContext sc = ServletActionContext.getServletContext();
 
         String path = sc.getRealPath("/fileupload");

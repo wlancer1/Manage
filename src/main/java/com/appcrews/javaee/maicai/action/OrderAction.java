@@ -34,28 +34,28 @@ public class OrderAction extends ActionSupport {
 	List<String> SCnumlist;
 
 	public String query() {
-		int pagenow = 0;
-		if (request.getParameter("pagenow") != null) {
-			pagenow = Integer.parseInt(request.getParameter("pagenow"));
+		int pageno = 0;
+		if (request.getParameter("pageno") != null) {
+			pageno = Integer.parseInt(request.getParameter("pageno"));
 		} else {
-			pagenow = 1;
+			pageno = 1;
 		}
 		allpage = orderService.getcountTotalPage(pageSize);
 		if (request.getParameter("flag") != null) {
 			if (request.getParameter("flag").equals("0")) {
-				if (pagenow != 1) {
-					pagenow--;
+				if (pageno != 1) {
+					pageno--;
 				}
 			} else if (request.getParameter("flag").equals("1")) {
-				if (pagenow != allpage) {
-					pagenow++;
+				if (pageno != allpage) {
+					pageno++;
 				}
 			}
 		}
 		request.setAttribute("page", allpage);// 总页数
-		request.setAttribute("pagenow", pagenow);
+		request.setAttribute("pageno", pageno);
 		// 现在要查询的
-		info1 = orderService.getqueryForPage(pagenow,pageSize);
+		info1 = orderService.getqueryForPage(pageno,pageSize);
 		request.setAttribute("orderinfo", info1);
 		return "success";
 

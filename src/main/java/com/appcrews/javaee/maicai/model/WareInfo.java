@@ -73,7 +73,7 @@ public class WareInfo implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-	@Column(name = "fType")
+	@Transient
 	public int getType() {
 		return type;
 	}

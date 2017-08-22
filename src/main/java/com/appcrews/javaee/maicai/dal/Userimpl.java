@@ -22,21 +22,6 @@ import javax.annotation.Resource;
 public class Userimpl implements User{
 	@Autowired
 	private BaseDaoI baseDaoI;
-	@Resource(name="sessionFactory")
-	private SessionFactory sessionFactory;
-
-	public SessionFactory getSessionFactory() {
-		return sessionFactory;
-	}
-
-	@Autowired
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
-
-	private Session getCurrentSession() {
-		return this.sessionFactory.getCurrentSession();
-	}
 
 	public List<BuyerInfo> getlistb() {
 		String hql = "FROM BuyerInfo";
@@ -44,7 +29,7 @@ public class Userimpl implements User{
 
 	}
 @SuppressWarnings("unchecked")
-public List<SaleInfo> getlists(){
+	public List<SaleInfo> getlists(){
 	String hql="FROM SaleInfo";
 	return baseDaoI.find(hql);
 	
@@ -115,23 +100,11 @@ public int getLength(){
 	@Override
 	public void delete(int index) {
 		String sql;
-//		if(index<2000000)
-//		{
-//			sql = "insert into buyer(bname, bpassword, btele, baddress, email) ";
-//			sql=sql+"select username, password, tele, saddress, email from saler Where ID="+index;
-//		}
-//		else{
-//			sql = "insert into saler(username, password, tele, saddress, email )";
-//			sql=sql+"select bname, bpassword, btele, baddress, email from buyer Where ID="+index;
-//		}
-//		System.out.println("======"+sql);
-//		getCurrentSession().createSQLQuery(sql).executeUpdate();
-//		System.out.println("======"+sql);
 		if(index<2000000)
 			sql="delete from saler where ID ="+index+"";
 		else
 			sql="delete from buyer where ID ="+index+"";
-		getCurrentSession().createSQLQuery(sql).executeUpdate();
+		baseDaoI.exexuteSql(sql);
 	}
 
 
