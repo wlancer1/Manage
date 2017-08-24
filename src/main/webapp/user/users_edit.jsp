@@ -65,23 +65,6 @@
                         <input type="number" class="input-xlarge" id="phone" value="${userinfo.phone}" name="phone"/>
                     </div>
                 </div>
-                <div class="control-group">
-                    <label class="control-label" for="role">身份</label>
-                    <div class="controls">
-                        <select id="role" name="power">
-                            <s:if test="#request.userinfo.power==2">
-                            <option value="2" selected>买家</option>
-                                <option value="1" >卖家</option>
-                            </s:if>
-                            <s:elseif test="#request.userinfo.power==1">
-                                <option value="2" >买家</option>
-                                <option value="1" selected>卖家</option>
-                            </s:elseif>
-
-
-                        </select>
-                    </div>
-                </div>
                 <div class="form-actions">
                     <input type="submit" class="btn btn-success btn-large" value="保存修改" /> <div id="btn-dialogBox" style="display:none;"></div>
                     <a class="btn" href="history.go(-1)">取消</a>
@@ -106,13 +89,12 @@
                 $.ajax({
                     cache: true,
                     type: "POST",
-                    url:"/user/update_user.html?uid=${uid}",
+                    url:"/user/update_user.html?uuid=${uid}",
                     data:$('#myform').serialize(),// 你的formid
                     async: false,
                     success: function(data) {
                         if(data=="success")
                         {
-                            console.log(12323);
                             $('#btn-dialogBox2').dialogBox({
                                 content:'用户修改成功！',
                                 confirmValue: '确定', hasBtn: true

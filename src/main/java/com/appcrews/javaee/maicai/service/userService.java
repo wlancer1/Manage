@@ -8,8 +8,10 @@ import java.util.List;
  * Created by micheal on 2017/7/17.
  */
 public interface userService {
-    List<UserInfo> query();
-    UserInfo query(int uid);//按uid查询
+    List<UserInfo> getQueryForPage(int pageno,int pagesize);
     int update(UserInfo u);
+    UserInfo getUserInfo(int uid);
+int ShopNum(int uid);
+    int getcountTotalPage(int pageSize);
 
 }

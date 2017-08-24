@@ -1,38 +1,40 @@
 
 
-$("#pr").click(function () {
-    $("#ys li").eq(page).removeClass("active");
-    if(page<=1)
-        return;
-    choose(--page);
-});
-$("#ne").click(function () {
-    $("#ys li").eq(page).removeClass("active");
-    if(all<=page)
-        return;
-choose(++page);
-})
-   choose=function (pa) {
-        $("#ys li").eq(page).removeClass("active");
-        page=pa;
-        $.ajax({
-            url:"/data/fanye_manage.html",
-            type:"post",
-            data:{pageNo:page},
-            success: function (data) {
-                console.log(data);
-                var jsdata=JSON.parse(data);
-                var data1 = {dataList: jsdata}
-                var Str = template("dataTemplate", data1);
-                $("#box").html(Str);
-                $("#ys li").eq(page).attr("class","active");
-            }
-        })
 
-    }
+   //分页
+   //搜索
+   var search=document.getElementsByClassName('search_key2')[0];
+   search.onclick=function () {
+       var detail=$(".search_key").val();
+       if(detail!="")
+       {
+           $.ajax({
+               url:"/data/search_manage.html",
+               type:"post",
+               data:{key:detail},
+               success: function (data) {
+                   var jsdata=JSON.parse(data);
 
+                   if(jsdata.datalist==null)
+                       alert("没有该名称的数据");
+                   else{
+                       var data1 = {dataList: jsdata.datalist}
+                       var Str = template("dataTemplate", data1);
+                       $("#box").html(Str);
+                   }
+               }
+           })
 
-$("#box").on("click", "a", function () {
+       }else
+       {
+           for(var i=1;i<=all;i++){
+               $(".pagination ul li").eq(1).remove();
+           }
+           init();
+       }
+   }
+
+   $("#box").on("click", "a", function () {
 
     var box = document.getElementById("box");
     var trlist = box.getElementsByTagName("tr");
@@ -50,16 +52,15 @@ $("#box").on("click", "a", function () {
     if (choose == "bj") {
        window.location.href="/data/queryedit_manage.html?ts="+id;
     } else {
-
         $.ajax({
             url: "/data/delet_manage.html",
             type: "post",
-            data: {de: id},
+            data: {ts: id},
             success: function (data) {
                 if (data == "success") {
                     document.getElementById('box').deleteRow(index);
                     for(var i=1;i<=all;i++){
-                        $("#ys li").eq(1).remove();
+                        $(".pagination ul li").eq(1).remove();
                     }
                     init();
                 } else {

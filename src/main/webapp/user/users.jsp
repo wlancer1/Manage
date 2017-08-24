@@ -11,7 +11,8 @@
 <link href="<%=request.getContextPath()%>/css/bootstrap.css" rel="stylesheet">
 <link href="<%=request.getContextPath()%>/css/site.css" rel="stylesheet">
 <link href="<%=request.getContextPath()%>/css/bootstrap-responsive.css" rel="stylesheet">
-<!--[if lt IE 9]>
+	<script type="text/javascript" src="/js/arttemp.js"></script>
+	<!--[if lt IE 9]>
       <script src="../js/html5.js"></script>
     <![endif]-->
 </head>
@@ -35,55 +36,19 @@
 								<th>名字</th>
 								<th>手机号</th>
 								<th>E-mail</th>
-								<th>身份</th>
+								<th>是否开店</th>
 								<th>状态</th>
 								<th>选择</th>
 							</tr>
 						</thead>
 						<tbody id="box">
-						<s:iterator value="userInfoList" status="index">
-							<tr class="list-users">
-								<td><s:property value="id"/></td>
-								<td><s:property value="name" /></td>
-								<th><s:property value="phone"/> </th>
-								<td><s:property value="email" /></td>
-								<td>
-									<s:if test="power==1">
-										卖家
-									</s:if>
-									<s:elseif test="power==2">
-									买家
-									</s:elseif>
-								</td>
-								<td><s:if test="status==0">
-									<span class="label label-important">Inactive</span></s:if>
-									<s:elseif test="status==1">
-										<span class="label label-success">Active</span>
-									</s:elseif>
-								</td>
-								<td>
-									<div class="btn-group">
-										<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" >Actions <span class="caret"></span></a>
-										<ul class="dropdown-menu">
-											<li><a  data-val="bj"  data-id="${id}"  ><i class="icon-pencil"></i> 编辑</a></li>
-											<li><a  data-val="sc"  data-id="${id}"  ><i class="icon-trash"></i> 删除</a></li>
-											<li><a data-val="xq"  data-id="${id}"  ><i class="icon-user"></i> 详情</a></li>
-											<li class="nav-header">Permissions</li>
-											<li><a data-val="up_saler"  data-id="${id}"  ><i class="icon-lock"></i> 成为 <strong>买家</strong></a></li>
-											<li><a data-val="up_buyer"  data-id="${id}"  ><i class="icon-lock"></i> 成为 <strong>卖家</strong></a></li>
-										</ul>
-									</div>
-								</td>
-							</tr>
-							</s:iterator>
-							
 						</tbody>
 					</table>
 					<div class="pagination">
 						<ul>
-							<li><a >Prev</a></li>
+							<li><a id="pr" >Prev</a></li>
 							<li class="active"><a >1</a></li>
-							<li><a >Next</a></li>
+							<li><a id="ne">Next</a></li>
 						</ul>
 					</div>
 				</div>
@@ -98,17 +63,20 @@
 <script async="" src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <script src="../js/jquery-3.1.1.js"></script>
 <script src="../js/bootstrap.min.js"></script>
-
+<script type="application/javascript" src="/js/paging.js"></script>
 <script >
     var bar =document.getElementById("bar");
     var list=bar.getElementsByTagName("li");
     list[1].setAttribute("class","active");
+	var url="/user/queryWay_user.html";
+	var page=1;
+	var templ="UserTemplate";
     $("#box").on("click","a",function () {
         var choose = $(this).attr('data-val');
         var id = parseInt($(this).attr('data-id'));
         switch(choose){
 			case "bj":
-			  window.location.href="<%=request.getContextPath()%>/user/queryedit_user.html?uid="+id;
+			  window.location.href="<%=request.getContextPath()%>/user/queryedit_user.html?uuid="+id;
 			    break;
 			case "sc":
                 console.log("sc"+id);
@@ -126,10 +94,11 @@
                 console.log("ups"+id);
                 break;
 		}
-
-
     })
+
+	choose(page,url);
 </script>
+
 	<script>
 		$(document).ready(function() {
 			$('.dropdown-menu li a').hover(function() {
@@ -143,5 +112,41 @@
 			}
 		});
 	</script>
+<script type="text/html" id="UserTemplate">
+	{{each dataList as data index}}
+	<tr class="list-users">
+		<td>{{data.uid}}</td>
+		<td>{{data.name}}</td>
+		<th>{{data.phone}} </th>
+		<td>{{data.email}} /></td>
+		<td>
+			{{if data.power==1}}
+			有店铺
+			{{else}}
+				无店铺
+			{{/if}}
+		</td>
+		<td>{{if data.status==1}}
+			<span class="label label-important">Inactive</span>
+			{{else}}
+				<span class="label label-success">Active</span>
+			{{/if}}
+		</td>
+		<td>
+			<div class="btn-group">
+				<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" >Actions <span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a  data-val="bj"  data-id="{{data.uid}}"  ><i class="icon-pencil"></i> 编辑</a></li>
+					<li><a  data-val="sc"  data-id="{{data.uid}}"  ><i class="icon-trash"></i> 删除</a></li>
+					<li><a data-val="xq"  data-id="{{data.uid}}"  ><i class="icon-user"></i> 详情</a></li>
+					<li class="nav-header">Permissions</li>
+					<li><a data-val="up_saler"  data-id="{{data.uid}}"  ><i class="icon-lock"></i> 成为 <strong>买家</strong></a></li>
+					<li><a data-val="up_buyer"  data-id="{{data.uid}}"  ><i class="icon-lock"></i> 成为 <strong>卖家</strong></a></li>
+				</ul>
+			</div>
+		</td>
+	</tr>
+	{{/each }}
+</script>
 </body>
 </html>

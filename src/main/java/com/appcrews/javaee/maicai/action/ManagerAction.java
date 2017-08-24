@@ -12,6 +12,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.appcrews.javaee.maicai.model.PageInfo;
 import com.appcrews.javaee.maicai.service.dataService;
 import com.appcrews.javaee.maicai.tool.Util;
 import net.sf.json.JSONArray;
@@ -34,38 +35,30 @@ public class ManagerAction extends ActionSupport implements ModelDriven<WareInfo
     private dataService dataService;
     private WareInfo info = new WareInfo();
     private Map map;
-    final private int pageSize = 5;//翻页数
-    private int de, ts;
-    private int  allpage, pageNo, sort=0;
-private  TypeInfo typeInfo;
+    private PageInfo pageInfo=PageInfo.getPageInfo();
+    private int ts;
+    private int sort=-1;
+    private  TypeInfo typeInfo;
     private String key;
-    List<WareInfo> info1;
-    List<TypeInfo> info2;
+    List<WareInfo> WareInfoList;
+    List<TypeInfo> TypeInfoList;
     HttpServletResponse response;
     HttpServletRequest request = ServletActionContext.getRequest();
 
-    public List<WareInfo> getInfo1() {
-        return info1;
+    public List<WareInfo> getWareInfoList() {
+        return WareInfoList;
     }
 
-    public void setInfo1(List<WareInfo> info1) {
-        this.info1 = info1;
+    public void setWareInfoList(List<WareInfo> WareInfoList) {
+        this.WareInfoList = WareInfoList;
     }
 
-    public int getPageNo() {
-        return pageNo;
+    public void setPageInfo(PageInfo pageInfo) {
+        this.pageInfo = pageInfo;
     }
 
-    public void setPageNo(int pageNo) {
-        this.pageNo = pageNo;
-    }
-
-    public int getAllpage() {
-        return allpage;
-    }
-
-    public void setAllpage(int allpage) {
-        this.allpage = allpage;
+    public PageInfo getPageInfo() {
+        return pageInfo;
     }
 
     public WareInfo getModel() {
@@ -89,68 +82,78 @@ private  TypeInfo typeInfo;
         return sort;
     }
 
+    public int getTs() {
+        return ts;
+    }
+
+    public void setTs(int ts) {
+        this.ts = ts;
+    }
+
     public String search() {
         map = new HashMap();
         this.response = ServletActionContext.getResponse();
-        info1 = dataService.getListWaresearch(key);
-        allpage = dataService.getcountTotalPage(pageSize);
-
-            map.put("datalist", info1);
-             map.put("allpage", allpage);
+        WareInfoList = dataService.getListWaresearch(key);
+        pageInfo.setAllpage(dataService.getcountTotalPage(pageInfo.getPageSize()));
+        map.put("datalist", WareInfoList);
+        map.put("allpage", pageInfo.getAllpage());
         JSONObject jsonObject = JSONObject.fromObject(map);
          Util.renderData(this.response, jsonObject);
         return "success";
     }
 
-    public String sort() {
-        response=ServletActionContext.getResponse();
-        System.out.println("flag========"+sort);
-        info1 = dataService.getListWaresort(this.pageNo,this.pageSize,this.sort);
-        JSONArray jsonArray = JSONArray.fromObject(info1);
-        System.out.println(jsonArray);
-         Util.renderData(response, jsonArray);
-        return "success";
-    }
+//    public String sort() {
+//        response=ServletActionContext.getResponse();
+//        WareInfoList = dataService.getListWaresort(pageInfo.getPageNo(),pageInfo.getPageSize(),this.sort);
+//        JSONArray jsonArray = JSONArray.fromObject(WareInfoList);
+//        System.out.println(jsonArray);
+//         Util.renderData(response, jsonArray);
+//        return "success";
+//    }
 
-    public void initquery() {
-        response = ServletActionContext.getResponse();
-        allpage = dataService.getcountTotalPage(pageSize);
-        map = new HashMap();
-        info1 = dataService.getqueryForPage(this.pageNo,this.pageSize);
-        map.put("datalist", info1);
-        map.put("allpage", allpage);
-        JSONObject jsonObject = JSONObject.fromObject(map);
-         Util.renderData(response, jsonObject);
-    }
+//    public void initquery() {
+//        response = ServletActionContext.getResponse();
+//        pageInfo.setAllpage(dataService.getcountTotalPage(pageInfo.getPageSize()));
+//        map = new HashMap();
+//        WareInfoList = dataService.getQueryForPage(pageInfo.getPageNo(),pageInfo.getPageSize());
+//        map.put("datalist", WareInfoList);
+//        map.put("allpage",pageInfo.getAllpage());
+//        JSONObject jsonObject = JSONObject.fromObject(map);
+//         Util.renderData(response, jsonObject);
+//    }
 
     public String query() {
-//        allpage = dataService.getcountTotalPage(this.pageSize);
         return "success";
     }
 
-    public void fanye() {
+    public void queryWay() {
         response = ServletActionContext.getResponse();
-        info1 = dataService.getqueryForPage(pageNo,pageSize);
-        JSONArray jsonArray = JSONArray.fromObject(info1);
-         Util.renderData(response, jsonArray);
+        pageInfo.setAllpage(dataService.getcountTotalPage(pageInfo.getPageSize()));
+        if(sort==-1)
+        WareInfoList = dataService.getQueryForPage(pageInfo.getPageNo(),pageInfo.getPageSize());
+        else
+            WareInfoList = dataService.getListWaresort(pageInfo.getPageNo(),pageInfo.getPageSize(),this.sort);
+        map = new HashMap();
+        map.put("datalist", WareInfoList);
+        map.put("allpage",pageInfo.getAllpage());
+        JSONObject jsonObject = JSONObject.fromObject(map);
+         Util.renderData(response, jsonObject);
 
     }
 
     public String queryedit() {
-        ts = Integer.parseInt(ServletActionContext.getRequest().getParameter(
-                "ts"));
         info = dataService.getWareInfo(ts);
-        info2 = dataService.getType();
+        TypeInfoList = dataService.getType();
         request.setAttribute("ts", ts);
-        request.setAttribute("typeinfo", info2);
+        request.setAttribute("typeinfo", TypeInfoList);
         request.setAttribute("wareinfo", info);
         return "edit";
 
     }
 
 //    public String querytype() {
-////        info2 = dataService.gettype();
-//        request.setAttribute("typeinfo", info2);
+////        TypeInfoList = dataService.gettype();
+//        request.setAttribute("typeinfo", TypeInfoList);
 //        return "type";
 //
 //    }
@@ -189,11 +192,9 @@ private  TypeInfo typeInfo;
     }
 
     public String delet() throws SQLException {
-        de = Integer.parseInt(ServletActionContext.getRequest().getParameter(
-                "de"));
         response = ServletActionContext.getResponse();
-        if ((dataService.delete(de))!=0) {
-            dataService.delete(de);
+        if ((dataService.delete(ts))!=0) {
+            dataService.delete(ts);
             Util.renderData(response, "success");
             return "success";
         } else {
@@ -202,22 +203,15 @@ private  TypeInfo typeInfo;
         }
     }
 
-//    public int size() {
-//        int size = dataService.getListshucai().size();
-//        return size;
-//    }
-
     public String insert() {
-        info2 = dataService.getType();
-        request.setAttribute("typeinfo", info2);
+        TypeInfoList = dataService.getType();
+        request.setAttribute("typeinfo", TypeInfoList);
         return "insert";
 
     }
 
     public String edit() {
         try {
-            ts = Integer.parseInt(ServletActionContext.getRequest()
-                    .getParameter("ts"));
             String Name = info.getUploadImageFileName();
             typeInfo=dataService.getTypeInfo(info.getType());
             info.setTypeInfo(typeInfo);

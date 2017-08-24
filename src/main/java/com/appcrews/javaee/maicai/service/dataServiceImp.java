@@ -2,6 +2,7 @@ package com.appcrews.javaee.maicai.service;
 
 import com.appcrews.javaee.maicai.dal.BaseDaoI;
 import com.appcrews.javaee.maicai.dal.Data;
+import com.appcrews.javaee.maicai.model.PageInfo;
 import com.appcrews.javaee.maicai.model.WareInfo;
 import com.appcrews.javaee.maicai.model.TypeInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,14 +25,14 @@ public class dataServiceImp implements dataService {
 @Autowired
     private BaseDaoI baseDaoI;
     @Override
-    public List<WareInfo> getqueryForPage(int pageNo,int pageSize) {
+    public List<WareInfo> getQueryForPage(int pageNo,int pageSize) {
         return data.getListWare(pageNo,pageSize);
     }
 
     @Override
     public int getcountTotalPage(int pagesize) {
         int length=data.getLength();
-        return countTotalPage(pagesize,length);
+        return PageInfo.countTotalPage(pagesize,length);
     }
 
     @Override
@@ -54,13 +55,6 @@ public class dataServiceImp implements dataService {
         return this.data.getListWare(pageNo,pageSize,flag);
     }
 
-
-
-//    @Override
-//    public List<TypeInfo> getType(String TYPE) {
-//        return this.data.getType(TYPE);
-//    }
-//
     @Override
     public List<TypeInfo> getType() {
         return this.data.getListType();
@@ -89,13 +83,9 @@ public class dataServiceImp implements dataService {
     }
 
 
-
     @Override
     public int delete(int id) throws SQLException {
         return data.delete(id);
     }
-    public static int countTotalPage(final int pageSize, final int allRow) {
-              int totalPage = allRow % pageSize == 0 ? allRow / pageSize : allRow / pageSize + 1;
-              return totalPage;
-    }
+
 }

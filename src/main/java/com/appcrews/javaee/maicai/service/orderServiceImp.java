@@ -5,7 +5,6 @@ import  com.appcrews.javaee.maicai.dal.Data;
 import com.appcrews.javaee.maicai.dal.User;
 import com.appcrews.javaee.maicai.model.DetailInfo;
 import com.appcrews.javaee.maicai.model.OrderInfo;
-import com.appcrews.javaee.maicai.model.SaleInfo;
 import com.appcrews.javaee.maicai.model.WareInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

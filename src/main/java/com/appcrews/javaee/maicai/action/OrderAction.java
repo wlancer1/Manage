@@ -11,7 +11,6 @@ import org.springframework.context.annotation.Scope;
 
 import com.appcrews.javaee.maicai.model.DetailInfo;
 import com.appcrews.javaee.maicai.model.OrderInfo;
-import com.appcrews.javaee.maicai.model.SaleInfo;
 import com.appcrews.javaee.maicai.model.WareInfo;
 import com.opensymphony.xwork2.ActionSupport;
 import org.springframework.stereotype.Controller;

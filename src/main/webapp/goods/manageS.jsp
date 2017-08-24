@@ -1,12 +1,7 @@
-<%@page import="com.appcrews.javaee.maicai.tool.BaseConfig" %>
-
-
-<%@ taglib uri="/struts-tags" prefix="s" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
-
     <title><%=BaseConfig.getProjectName()%></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
@@ -50,9 +45,9 @@
                         <th>ID</th>
                         <th>商品名</th>
                         <th>
-                            <a  onclick="sort(1)"><i
+                            <a  onclick="sortWare(1)"><i
                                     class="icon-arrow-up"></i> </a> <a
-                                onclick="sort(0)"><i
+                                onclick="sortWare(0)"><i
                                 class="icon-arrow-down icon-blue"></i> </a>价格
                         </th>
                         <th>图片</th>
@@ -66,10 +61,11 @@
                 </table>
                 <div class="pagination">
 
-                    <ul id="ys">
+                    <ul>
                         <li><a
                                  id="pr">Prev</a>
                         </li>
+                        <li ><a >1</a></li>
                         <li><a
                                 id="ne">Next</a>
                         </li>
@@ -102,86 +98,6 @@
         }
     });
 </script>
-<script type="application/javascript">
-    var page=1;
-    var all=${allpage};
-    function sort(way) {
-        $.ajax({
-            url: "/data/sort_manage.html",
-            type: "post",
-            data: {sort: way,pageNo:page},
-            success: function (data) {
-                console.log(data);
-                var jsdata=JSON.parse(data);
-                var data1 = {dataList: jsdata}
-                var Str = template("dataTemplate", data1);
-                $("#box").html(Str);
-            }
-        })
-    }
-    init();
-  function init() {
-
-        $.ajax({
-            url: "/data/initquery_manage.html",
-            type: "post",
-            data: {pageNo: page},
-            success: function (data) {
-                var jsdata=JSON.parse(data);
-                console.log(jsdata);
-                var data1 = {dataList: jsdata.datalist}
-                var Str = template("dataTemplate", data1);
-                $("#box").html(Str);
-                var temp="";
-                all=parseInt(jsdata.allpage);
-                for(var i=1;i<=all;i++){
-                    temp=temp+" <li><a onclick='choose("+i+")'>"+i
-                            +"</a></li>";
-                }
-                $("#ys li").eq(0).append(temp);
-
-            }
-        })
-
-    }
-
-</script>
-<script src="/js/manage.js" >
-
-</script>
-<script type="application/javascript">//search
-    var search=document.getElementsByClassName('search_key2')[0];
-    search.onclick=function () {
-        var detail=$(".search_key").val();
-        if(detail!="")
-        {
-            $.ajax({
-                url:"/data/search_manage.html",
-                type:"post",
-                data:{key:detail},
-                success: function (data) {
-                    var jsdata=JSON.parse(data);
-
-                    if(jsdata.datalist==null)
-                        alert("没有该名称的数据");
-                    else{
-                        var data1 = {dataList: jsdata.datalist}
-                        var Str = template("dataTemplate", data1);
-                        $("#box").html(Str);
-                    }
-                }
-            })
-
-        }else
-        {
-            for(var i=1;i<=all;i++){
-                $("#ys li").eq(1).remove();
-            }
-            init();
-        }
-    }
-
-</script>
 <script type="text/html" id="dataTemplate">
     {{each dataList as data index}}
     <tr class="middle-demo-1">
@@ -204,5 +120,33 @@
     </tr>
     {{/each }}
 </script>
+<script  src="/js/paging.js"></script>
+<script type="application/javascript">
+    var url="/data/queryWay_manage.html";
+    var templ="dataTemplate"
+    var page=1;
+    var all;
+
+    choose(page,url);
+    sortWare=function (way) {
+        $.ajax({
+            url: url,
+            type: "post",
+            data: {sort: way,"PageInfo.pageNo":page},
+            success: function (data) {
+                console.log(data);
+                var jsdata=JSON.parse(data);
+                var data1 = {dataList: jsdata.datalist}
+                var Str = template(templ, data1);
+                $("#box").html(Str);
+            }
+        })
+    }
+
+</script>
+
+<script src="/js/manage.js" >
+</script>
+
 </body>
 </html>

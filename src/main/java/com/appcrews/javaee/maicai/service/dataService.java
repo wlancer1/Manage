@@ -1,5 +1,6 @@
 package com.appcrews.javaee.maicai.service;
 
+import com.appcrews.javaee.maicai.model.PageInfo;
 import com.appcrews.javaee.maicai.model.WareInfo;
 import com.appcrews.javaee.maicai.model.TypeInfo;
 
@@ -11,7 +12,7 @@ import java.util.List;
  */
 public interface dataService {
     int getcountTotalPage(int pagesize);
-    List<WareInfo> getqueryForPage(int pageno,int pagesize);
+    List<WareInfo> getQueryForPage(int pageno,int pagesize);
     List<WareInfo> getListWaresort(int pageNo, int pageSize,int flag);
     List<WareInfo> getListWaresearch(String key);
     WareInfo  getWareInfo(int id);

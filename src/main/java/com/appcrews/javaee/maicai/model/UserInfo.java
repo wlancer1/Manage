@@ -1,14 +1,30 @@
 package com.appcrews.javaee.maicai.model;
 
-public class UserInfo {
-	private int id;
-private String name;
+
+import javax.persistence.*;
+import java.io.Serializable;
+
+@Entity
+@Table(name="user")
+public class UserInfo implements Serializable {
+	private int uid;
+	private String name;
 	private String email;
 	private int power;
 	private int phone;
+	private int sid;
 	private int status;
+	private String password;
 
-	
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	@Column(updatable = false)
 	public int getStatus() {
 		return status;
 	}
@@ -17,13 +33,25 @@ private String name;
 		this.status = status;
 	}
 
-	public int getId() {
-	return id;
-}
-public void setId(int id) {
-	this.id = id;
-}
-public String getName() {
+	public void setUid(int uid) {
+		this.uid = uid;
+	}
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	public int getUid() {
+		return uid;
+	}
+
+	public void setSid(int sid) {
+		this.sid = sid;
+	}
+
+
+	public int getSid() {
+		return sid;
+	}
+@Column(name = "username")
+	public String getName() {
 	return name;
 }
 public void setName(String name) {
@@ -35,6 +63,7 @@ public String getEmail() {
 public void setEmail(String email) {
 	this.email = email;
 }
+@Column(updatable = false)
 public int  getPower() {
 	return power;
 }

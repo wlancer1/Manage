@@ -1,7 +1,5 @@
 package com.appcrews.javaee.maicai.dal;
 
-import com.appcrews.javaee.maicai.model.BuyerInfo;
-import com.appcrews.javaee.maicai.model.SaleInfo;
 import com.appcrews.javaee.maicai.model.UserInfo;
 
 import java.util.List;
@@ -10,16 +8,9 @@ import java.util.List;
  * Created by micheal on 2017/2/5.
  */
 public interface User {
-     List<SaleInfo> getlists();
         int getLength();
-//     SaleInfo getsaleinfo(int index);
-//     BuyerInfo getbuyinfo(int index);
-    List<BuyerInfo> getlistb();
-//    void update(UserInfo userInfo);
-//    void insert(BuyerInfo buyerInfo);//buyer表插入
-//    void insert(SaleInfo saleInfo);//saler表插入
-    //改变买卖双方的身份
-    void delete(int index);
+    List<UserInfo> getListUser();
+    List<UserInfo> getListUser(int pageNo, int pageSize);
 
 
 }
