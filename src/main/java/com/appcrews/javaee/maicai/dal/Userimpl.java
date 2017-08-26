@@ -2,7 +2,7 @@ package com.appcrews.javaee.maicai.dal;
 
 import java.util.List;
 
-import com.appcrews.javaee.maicai.model.UserInfo;
+import com.appcrews.javaee.maicai.model.base.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Repository;

@@ -1,8 +1,8 @@
-package com.appcrews.javaee.maicai.service;
+package com.appcrews.javaee.maicai.service.impl;
 
 import com.appcrews.javaee.maicai.dal.*;
-import com.appcrews.javaee.maicai.model.AdminInfo;
-import com.appcrews.javaee.maicai.tool.MD5;
+import com.appcrews.javaee.maicai.model.base.AdminInfo;
+import com.appcrews.javaee.maicai.service.adminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,7 +15,7 @@ import java.util.List;
  */
 @Transactional
 @Service
-public class adminServiceImp implements adminService {
+public class adminServiceImp extends  baseServiceImp<AdminInfo> implements adminService {
 
     @Autowired
    private Admin admin;

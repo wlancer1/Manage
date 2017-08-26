@@ -9,9 +9,9 @@ import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 
-import com.appcrews.javaee.maicai.model.DetailInfo;
-import com.appcrews.javaee.maicai.model.OrderInfo;
-import com.appcrews.javaee.maicai.model.WareInfo;
+import com.appcrews.javaee.maicai.model.base.DetailInfo;
+import com.appcrews.javaee.maicai.model.base.OrderInfo;
+import com.appcrews.javaee.maicai.model.base.WareInfo;
 import com.opensymphony.xwork2.ActionSupport;
 import org.springframework.stereotype.Controller;
 
@@ -27,8 +27,16 @@ public class OrderAction extends ActionSupport {
 	List<DetailInfo> info2;
 	List<WareInfo> info3;
 	List<String> namelist;
+	private  int onum;
 
 
+	public int getOnum() {
+		return onum;
+	}
+
+	public void setOnum(int onum) {
+		this.onum = onum;
+	}
 
 	List<String> SCnumlist;
 
@@ -80,7 +88,6 @@ public class OrderAction extends ActionSupport {
 
 	public String edit() {
 		float sum = 0;
-		int onum = Integer.parseInt(request.getParameter("ts"));// 得到订单号
 		info2 = orderService.getListdetailorder(onum);// 向defaultinfo中输入商品数量和商品id
 		request.setAttribute("nameinfo", info3);
 		request.setAttribute("num", onum);

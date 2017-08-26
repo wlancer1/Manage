@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
 import java.io.Serializable;
+import java.lang.reflect.ParameterizedType;
 import java.util.List;
 import java.util.Map;
 
@@ -118,6 +119,8 @@ public class BaseDaoImpl<T> implements BaseDaoI<T> {
 		Query q = this.getCurrentSession().createQuery(hql);
 		return ((Number)q.uniqueResult()).intValue();
 	}
+
+
 
 	@Override
 	public Long count(String hql, Map<String, Object> params) {

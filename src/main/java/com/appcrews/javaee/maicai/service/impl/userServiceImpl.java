@@ -1,16 +1,15 @@
-package com.appcrews.javaee.maicai.service;
+package com.appcrews.javaee.maicai.service.impl;
 
 import com.appcrews.javaee.maicai.dal.BaseDaoI;
 import com.appcrews.javaee.maicai.dal.Shop;
 import com.appcrews.javaee.maicai.dal.User;
-import com.appcrews.javaee.maicai.model.PageInfo;
-import com.appcrews.javaee.maicai.model.ShopInfo;
-import com.appcrews.javaee.maicai.model.UserInfo;
+import com.appcrews.javaee.maicai.model.base.PageInfo;
+import com.appcrews.javaee.maicai.model.base.UserInfo;
+import com.appcrews.javaee.maicai.service.userService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,7 +17,7 @@ import java.util.List;
  */
 @Transactional
 @Service
-public class userServiceImpl implements userService {
+public class userServiceImpl extends baseServiceImp<UserInfo> implements userService {
     @Autowired
     private BaseDaoI baseDaoI;
     @Autowired
@@ -33,25 +32,12 @@ public class userServiceImpl implements userService {
     }
 
 
-    @Override
-    public int getcountTotalPage(int pagesize) {
-        int length=user.getLength();
-        return PageInfo.countTotalPage(pagesize,length);
-    }
 
-    @Override
-    public UserInfo getUserInfo(int uid) {
-        return (UserInfo) baseDaoI.get(UserInfo.class,uid);
-    }
 
     @Override
     public int ShopNum(int uid) {
         return shop.query(uid).size();
     }
 
-    @Override
-    public int update(UserInfo u) {
-        baseDaoI.update(u);
-        return 1;
-    }
+
 }

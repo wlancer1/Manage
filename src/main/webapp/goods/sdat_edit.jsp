@@ -31,7 +31,7 @@
 						</h1>
 					</div>
 					<form class="form-horizontal"
-						action="<%=request.getContextPath()%>/data/edit_manage.html?ts=<s:property value="#request.ts"/>"
+						action="<%=request.getContextPath()%>/data/edit_manage.html?id=<s:property value="#request.ts"/>"
 						method="post" enctype="multipart/form-data">
 						<s:token></s:token>
 						<fieldset>

@@ -1,11 +1,12 @@
-package com.appcrews.javaee.maicai.service;
+package com.appcrews.javaee.maicai.service.impl;
 import com.appcrews.javaee.maicai.dal.BaseDaoI;
 import  com.appcrews.javaee.maicai.dal.Order;
 import  com.appcrews.javaee.maicai.dal.Data;
 import com.appcrews.javaee.maicai.dal.User;
-import com.appcrews.javaee.maicai.model.DetailInfo;
-import com.appcrews.javaee.maicai.model.OrderInfo;
-import com.appcrews.javaee.maicai.model.WareInfo;
+import com.appcrews.javaee.maicai.model.base.DetailInfo;
+import com.appcrews.javaee.maicai.model.base.OrderInfo;
+import com.appcrews.javaee.maicai.model.base.WareInfo;
+import com.appcrews.javaee.maicai.service.orderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -48,7 +49,7 @@ public class orderServiceImp implements orderService {
             detailInfo =detList.get(i);
            wareInfo =(WareInfo) baseDaoI.get(WareInfo.class,detList.get(i).getWareid());
             detailInfo.setImg(wareInfo.getImg());
-            detailInfo.setID(wareInfo.getId());
+            detailInfo.setID(wareInfo.getFid());
             detailInfo.setName(wareInfo.getName());
             detailInfo.setPrice(wareInfo.getPrice());
         }

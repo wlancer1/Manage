@@ -76,7 +76,7 @@
         var id = parseInt($(this).attr('data-id'));
         switch(choose){
 			case "bj":
-			  window.location.href="<%=request.getContextPath()%>/user/queryedit_user.html?uuid="+id;
+			  window.location.href="<%=request.getContextPath()%>/user/queryedit_user.html?id="+id;
 			    break;
 			case "sc":
                 console.log("sc"+id);
@@ -118,7 +118,7 @@
 		<td>{{data.uid}}</td>
 		<td>{{data.name}}</td>
 		<th>{{data.phone}} </th>
-		<td>{{data.email}} /></td>
+		<td>{{data.email}}</td>
 		<td>
 			{{if data.power==1}}
 			有店铺

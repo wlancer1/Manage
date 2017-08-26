@@ -1,9 +1,6 @@
 package com.appcrews.javaee.maicai.dal;
 
-import com.appcrews.javaee.maicai.model.AdminInfo;
-
-import java.sql.SQLException;
-import java.util.List;
+import com.appcrews.javaee.maicai.model.base.AdminInfo;
 
 /**
  * Created by micheal on 2017/2/5.

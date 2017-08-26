@@ -25,7 +25,7 @@
     <link href="<%=request.getContextPath()%>/css/site.css" rel="stylesheet">
     <link href="<%=request.getContextPath()%>/css/bootstrap-responsive.css" rel="stylesheet">
     <!--[if lt IE 9]>
-    <script src="js/html5.js"></script>
+    <script src="/js/html5.js"></script>
     <![endif]-->
     <script async="" src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 </head>

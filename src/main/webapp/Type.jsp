@@ -23,7 +23,7 @@
 		
 	<script src="js/bootstrap.min.js"></script>
 <!--[if lt IE 9]>
-      <script src="js/html5.js"></script>
+      <script src="/js/html5.js"></script>
     <![endif]-->
 
 </head>

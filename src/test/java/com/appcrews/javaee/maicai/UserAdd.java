@@ -4,14 +4,11 @@ package com.appcrews.javaee.maicai;
 
 import com.appcrews.javaee.maicai.dal.Admin;
 import com.appcrews.javaee.maicai.dal.BaseDaoI;
-import com.appcrews.javaee.maicai.model.AdminInfo;
-import com.appcrews.javaee.maicai.model.UserInfo;
-import com.appcrews.javaee.maicai.tool.MD5;
+import com.appcrews.javaee.maicai.model.base.AdminInfo;
+import com.appcrews.javaee.maicai.model.base.UserInfo;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.ejb.HibernateEntityManager;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

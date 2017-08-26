@@ -1,4 +1,4 @@
-package com.appcrews.javaee.maicai.model;
+package com.appcrews.javaee.maicai.model.base;
 
 import javax.persistence.*;
 import java.io.Serializable;

@@ -89,36 +89,38 @@
                 $.ajax({
                     cache: true,
                     type: "POST",
-                    url:"/user/update_user.html?uuid=${uid}",
+                    dataType:"json",
+                    url:"/user/update_user.html?id=${id}",
                     data:$('#myform').serialize(),// 你的formid
                     async: false,
                     success: function(data) {
-                        if(data=="success")
+                        if(data.success)
                         {
                             $('#btn-dialogBox2').dialogBox({
-                                content:'用户修改成功！',
+                                content:data.msg,
                                 confirmValue: '确定', hasBtn: true
                                 ,confirm:function () {
                                     window.location.href="<%=request.getContextPath()%>/user/query_user.html";
                                 }
                             })
-                        }else if(data=="error1"){
+                        }else{
                             $('#btn-dialogBox2').dialogBox({
-                                content:'用户修改失败！',
-                                confirmValue: '确定', hasBtn: true
-                                ,confirm:function () {
-                                    window.location.href="<%=request.getContextPath()%>/user/query_user.html";
-                                }
-                            })
-                        }else if(data=="error2"){
-                            $('#btn-dialogBox2').dialogBox({
-                                content:'订单中有该用户，无法修改身份！',
+                                content:data.msg,
                                 confirmValue: '确定', hasBtn: true
                                 ,confirm:function () {
                                     window.location.href="<%=request.getContextPath()%>/user/query_user.html";
                                 }
                             })
                         }
+                        <%--}else if(data=="error2"){--%>
+                            <%--$('#btn-dialogBox2').dialogBox({--%>
+                                <%--content:'订单中有该用户，无法修改身份！',--%>
+                                <%--confirmValue: '确定', hasBtn: true--%>
+                                <%--,confirm:function () {--%>
+                                    <%--window.location.href="<%=request.getContextPath()%>/user/query_user.html";--%>
+                                <%--}--%>
+                            <%--})--%>
+                        <%--}--%>
 <%--//                        $("#commonLayout_appcreshi").parent().html(data);--%>
                     }
                 });

@@ -1,6 +1,6 @@
 package com.appcrews.javaee.maicai.dal;
 
-import com.appcrews.javaee.maicai.model.ShopInfo;
+import com.appcrews.javaee.maicai.model.base.ShopInfo;
 
 import java.util.List;
 

@@ -5,14 +5,15 @@ choose=function (pa,url) {
     $.ajax({
         url:url,
         type:"post",
+        dataType: "json",
         data:{"PageInfo.pageNo":page},
         success: function (data) {
             console.log(data);
-            var jsdata=JSON.parse(data);
-            var data1 = {dataList: jsdata.datalist}
+            var map=data.obj;
+            var data1 = {dataList: map.datalist}
             var Str = template(templ, data1);
             $("#box").html(Str);
-           all=parseInt(jsdata.allpage);
+           all=parseInt(map.allpage);
             var temp="";
             for(var i=1;i<=all;i++){
                 temp=temp+" <li><a onclick='choose("+i+",url)'>"+i

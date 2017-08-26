@@ -1,8 +1,7 @@
 package com.appcrews.javaee.maicai.dal;
 
-import com.appcrews.javaee.maicai.model.DetailInfo;
-import com.appcrews.javaee.maicai.model.OrderInfo;
-import com.appcrews.javaee.maicai.model.OrderInfo;
+import com.appcrews.javaee.maicai.model.base.DetailInfo;
+import com.appcrews.javaee.maicai.model.base.OrderInfo;
 
 import java.util.List;
 

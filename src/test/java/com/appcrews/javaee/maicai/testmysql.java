@@ -4,7 +4,7 @@ package com.appcrews.javaee.maicai;
 
 import com.appcrews.javaee.maicai.dal.Admin;
 import com.appcrews.javaee.maicai.dal.BaseDaoI;
-import com.appcrews.javaee.maicai.model.AdminInfo;
+import com.appcrews.javaee.maicai.model.base.AdminInfo;
 import com.appcrews.javaee.maicai.tool.MD5;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -15,15 +15,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 
 /**
@@ -89,5 +86,12 @@ public class testmysql{
         adminInfo.setAccount(account);
         adminInfo.setPower(1);
         baseDaoI.save(adminInfo);
+    }
+
+    @Transactional
+    @Test
+    public void  testhql(){
+        String hql="select count(*) from com.appcrews.javaee.maicai.model.base.WareInfo";
+       System.out.println( baseDaoI.count(hql));
     }
 }

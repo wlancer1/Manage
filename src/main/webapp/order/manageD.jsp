@@ -25,6 +25,7 @@
       <script src="js/html5.js"></script>
     <![endif]-->
 <script src="/js/jquery-3.1.1.js"></script>
+	<script type="text/javascript" src="/js/arttemp.js"></script>
 </head>
 
 <body>
@@ -52,26 +53,8 @@
 									<th>选择</th>
 								</tr>
 							</thead>
-							<tbody>
-							<s:iterator value="#request.orderinfo" >
-								<tr>
-									<td><s:property value="onum"/></td>
-									<td><s:property value="otime"/></td>
-									<td><s:property value="Stime"/></td>
-									<td><s:property value="oremark"/></td>
-									<td><a
-										href="<%=request.getContextPath()%>/order/detailquery_order.html?ts=<s:property
-												value="onum" />"><i
-											class="icon-book"></i> 详情</a> 
-											<a
-										href="<%=request.getContextPath()%>/order/print_order.html?ts=<s:property
-												value="onum" />"><i
-											class="icon-print"></i>打印订单</a> 
-											<a
-										href="<%=request.getContextPath()%>/order/deletorder_order.html?de=<s:property value="onum"/>"><i
-											class="icon-trash"></i> 删除</a></td>
-								</tr>
-								</s:iterator>
+							<tbody id="box">
+								
 							</tbody>
 						</table>
 						<div class="pagination">
@@ -80,13 +63,11 @@
 						%>
 						<ul>
 							<li><a
-								href="<%=request.getContextPath()%>/order/query_order.html?pagenow=<s:property value="#request.pagenow"/>&&flag=0">Prev</a></li>
-							<s:iterator value="new int[#request.page]">
+							>Prev</a></li>
+
 								<li><a
-									href="<%=request.getContextPath()%>/order/query_order.html?pagenow=<%=i%>"><%=i++%></a></li>
-							</s:iterator>
-							<li><a
-								href="<%=request.getContextPath()%>/order/query_order.html?pagenow=<s:property value="#request.pagenow"/>&&flag=1">Next</a></li>
+									>1</a></li>
+							<li><a>Next</a></li>
 						</ul>
 					</div>
 					</div>
@@ -116,5 +97,26 @@
 			}
 		});
 	</script>
+<script type="text/html" id="orderTemplate">
+	{{each dataList as data index}}
+	<tr>
+		<td>{{data.onum}}/></td>
+		<td>{{data.otime}}/></td>
+		<td>{{data.Stime}}/></td>
+		<td>{{data.oremark}}/></td>
+		<td><a
+				href="<%=request.getContextPath()%>/order/detailquery_order.html?ts={{data.onum}}"><i
+				class="icon-book"></i> 详情</a>
+			<a
+					href="<%=request.getContextPath()%>/order/print_order.html?ts={{data.onum}}>">
+					<i
+					class="icon-print"></i>打印订单</a>
+			<a
+					href="<%=request.getContextPath()%>/order/deletorder_order.html?de={{data.onum}}"/>"><i
+					class="icon-trash"></i> 删除</a>
+		</td>
+	</tr>
+	{{/each }}
+</script>
 </body>
 </html>

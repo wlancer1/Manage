@@ -4,10 +4,12 @@ package com.appcrews.javaee.maicai.action;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.appcrews.javaee.maicai.service.baseService;
+import com.appcrews.javaee.maicai.service.userService;
 import com.appcrews.javaee.maicai.validation.BaseValidator;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.appcrews.javaee.maicai.model.AdminInfo;
+import com.appcrews.javaee.maicai.model.base.AdminInfo;
 import com.appcrews.javaee.maicai.tool.MD5;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -16,15 +18,15 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 @SuppressWarnings("serial")
 @Controller
 @Scope("prototype")
-public class LoginAction extends ActionSupport implements ModelDriven<AdminInfo> {
+public class LoginAction extends BaseAction implements ModelDriven<AdminInfo> {
 	private List<Integer> size;
-	private HttpServletRequest request = ServletActionContext.getRequest();
 	private AdminInfo adminInfo=new AdminInfo();
 	@Autowired
 	private adminService adminService;
@@ -32,6 +34,10 @@ public class LoginAction extends ActionSupport implements ModelDriven<AdminInfo>
 	private BaseValidator baseValidator;
 	private Map Result;
 
+	@Autowired
+	public void setService(adminService service) {
+		super.setService(service);
+	}
 
 	public void setSize(List<Integer> size) {
 		this.size = size;
@@ -59,13 +65,12 @@ public class LoginAction extends ActionSupport implements ModelDriven<AdminInfo>
 	public String login() throws UnsupportedEncodingException {
 		int power;
 		String quanxian = null;
-		if(request.getSession().getAttribute("myname")!=null){
+		if(getSession().getAttribute("myname")!=null){
 			return "success";
 		}
 		Result= baseValidator.validateModel(adminInfo);
 		if(Result.size()!=0)
 				return "false";
-
 		String mp=MD5.Encrypt(this.adminInfo.getPassword(), this.adminInfo.getPassword().length());
 		power = this.adminService.validate(this.adminInfo.getAccount(),mp);
 		if (power == -1) {
@@ -82,9 +87,9 @@ public class LoginAction extends ActionSupport implements ModelDriven<AdminInfo>
 			default:
 				break;
 			}
-			request.getSession().setAttribute("sizelist",this.adminService.sizeList());
-			request.getSession().setAttribute("power", quanxian);
-            request.getSession().setAttribute("myname", this.adminInfo.getAccount());
+			getRequest().getSession().setAttribute("sizelist",this.adminService.sizeList());
+			getRequest().getSession().setAttribute("power", quanxian);
+            getRequest().getSession().setAttribute("myname", this.adminInfo.getAccount());
 			return "success";
 		}
 

@@ -1,7 +1,7 @@
 package com.appcrews.javaee.maicai;
 
 import com.appcrews.javaee.maicai.dal.BaseDaoI;
-import com.appcrews.javaee.maicai.model.AdminInfo;
+import com.appcrews.javaee.maicai.model.base.AdminInfo;
 import com.appcrews.javaee.maicai.validation.BaseValidator;
 import org.junit.Test;
 import org.junit.runner.RunWith;

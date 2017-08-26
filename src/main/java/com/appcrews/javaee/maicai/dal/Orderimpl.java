@@ -1,16 +1,11 @@
 package com.appcrews.javaee.maicai.dal;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.support.JdbcDaoSupport;
 
-import com.appcrews.javaee.maicai.model.DetailInfo;
-import com.appcrews.javaee.maicai.model.OrderInfo;
+import com.appcrews.javaee.maicai.model.base.DetailInfo;
+import com.appcrews.javaee.maicai.model.base.OrderInfo;
 import org.springframework.stereotype.Repository;
 
 @Repository

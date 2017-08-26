@@ -1,6 +1,6 @@
 package com.appcrews.javaee.maicai.dal;
 
-import com.appcrews.javaee.maicai.model.UserInfo;
+import com.appcrews.javaee.maicai.model.base.UserInfo;
 
 import java.util.List;
 

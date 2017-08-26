@@ -1,31 +1,22 @@
 package com.appcrews.javaee.maicai.dal;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.support.JdbcDaoSupport;
 
-import com.appcrews.javaee.maicai.model.WareInfo;
-import com.appcrews.javaee.maicai.model.TypeInfo;
+import com.appcrews.javaee.maicai.model.base.WareInfo;
+import com.appcrews.javaee.maicai.model.base.TypeInfo;
 import org.springframework.stereotype.Repository;
-
-import javax.annotation.Resource;
 
 @Repository
 public class Dataimpl implements Data {
 	@Autowired
 	BaseDaoI baseDaoI;
-	@Override
-	public int delete(int id) {
-		String sql="DELETE FROM ware  WHERE fId = '" + id + "' ";
-		return baseDaoI.exexuteSql(sql);
-	}
+//	@Override
+//	public int delete(int id) {
+//		String sql="DELETE FROM ware  WHERE fId = '" + id + "' ";
+//		return baseDaoI.exexuteSql(sql);
+//	}
 
 	@Override
 	public List<WareInfo> getListWare(int pageNo, int pageSize) {

@@ -1,6 +1,6 @@
 package com.appcrews.javaee.maicai.dal;
 
-import com.appcrews.javaee.maicai.model.ShopInfo;
+import com.appcrews.javaee.maicai.model.base.ShopInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

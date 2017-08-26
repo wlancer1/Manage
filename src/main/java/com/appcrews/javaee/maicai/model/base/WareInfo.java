@@ -1,8 +1,7 @@
-package com.appcrews.javaee.maicai.model;
+package com.appcrews.javaee.maicai.model.base;
 
 import javax.persistence.*;
 import javax.persistence.Transient;
-import java.beans.*;
 import java.io.File;
 import java.io.Serializable;
 
@@ -14,7 +13,7 @@ public class WareInfo implements Serializable {
 
 	// 上传文件的真是名称
 	private String uploadImageFileName;
-	private int id;
+	private int fid;
 	private File uploadImage;
 	private String name = "";
 	private int type;
@@ -30,16 +29,18 @@ public class WareInfo implements Serializable {
 	public TypeInfo getTypeInfo() {
 		return typeInfo;
 	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "fid")
-	public int getId() {
-		return id;
+	public int getFid() {
+		return fid;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setFid(int fid) {
+		this.fid = fid;
 	}
+
+
 @Transient
 	public File getUploadImage() {
 		return uploadImage;

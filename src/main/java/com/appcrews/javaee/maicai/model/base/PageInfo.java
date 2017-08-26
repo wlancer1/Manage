@@ -1,4 +1,4 @@
-package com.appcrews.javaee.maicai.model;
+package com.appcrews.javaee.maicai.model.base;
 
 /**
  * Created by micheal on 2017/8/23.

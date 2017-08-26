@@ -1,17 +1,9 @@
 package com.appcrews.javaee.maicai.dal;
 
 
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-
-
-import com.appcrews.javaee.maicai.model.AdminInfo;
+import com.appcrews.javaee.maicai.model.base.AdminInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
-
-import javax.annotation.Resource;
 
 
 @Repository

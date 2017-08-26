@@ -11,14 +11,14 @@
            $.ajax({
                url:"/data/search_manage.html",
                type:"post",
+               dataType: "json",
                data:{key:detail},
                success: function (data) {
-                   var jsdata=JSON.parse(data);
-
-                   if(jsdata.datalist==null)
+                   var map=data.obj;
+                   if(map.datalist==null)
                        alert("没有该名称的数据");
                    else{
-                       var data1 = {dataList: jsdata.datalist}
+                       var data1 = {dataList: map.datalist}
                        var Str = template("dataTemplate", data1);
                        $("#box").html(Str);
                    }
@@ -50,12 +50,12 @@
     var index = parseInt($(this).attr('data-index'));
 
     if (choose == "bj") {
-       window.location.href="/data/queryedit_manage.html?ts="+id;
+       window.location.href="/data/queryedit_manage.html?id="+id;
     } else {
         $.ajax({
             url: "/data/delet_manage.html",
             type: "post",
-            data: {ts: id},
+            data: {id: id},
             success: function (data) {
                 if (data == "success") {
                     document.getElementById('box').deleteRow(index);

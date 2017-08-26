@@ -102,7 +102,7 @@
     {{each dataList as data index}}
     <tr class="middle-demo-1">
 
-        <td>{{data.id}}</td>
+        <td>{{data.fid}}</td>
         <td>{{data.name}}</td>
         <td>{{data.price}}RMB</td>
         <td>
@@ -113,9 +113,9 @@
         </td>
         <td>{{data.typeInfo.type}}</td>
         <td>{{data.remark}}</td>
-        <td><a data-val="bj" data-index="{{index}}" data-id="{{data.id}}"><i
+        <td><a data-val="bj" data-index="{{index}}" data-id="{{data.fid}}"><i
                 class="icon-pencil"></i> 编辑</a>
-            <a data-val="sc" data-index="{{index}}" data-id="{{data.id}}"><i
+            <a data-val="sc" data-index="{{index}}" data-id="{{data.fid}}"><i
                     class="icon-trash"><s:token></s:token></i> 删除</a></td>
     </tr>
     {{/each }}
@@ -132,11 +132,10 @@
         $.ajax({
             url: url,
             type: "post",
+            dataType: "json",
             data: {sort: way,"PageInfo.pageNo":page},
             success: function (data) {
-                console.log(data);
-                var jsdata=JSON.parse(data);
-                var data1 = {dataList: jsdata.datalist}
+                var data1 = {dataList: data.obj.datalist}
                 var Str = template(templ, data1);
                 $("#box").html(Str);
             }

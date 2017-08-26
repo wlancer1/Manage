@@ -12,38 +12,36 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.appcrews.javaee.maicai.model.PageInfo;
+import com.appcrews.javaee.maicai.model.base.PageInfo;
+import com.appcrews.javaee.maicai.model.easyui.Json;
 import com.appcrews.javaee.maicai.service.dataService;
 import com.appcrews.javaee.maicai.tool.Util;
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
-import com.appcrews.javaee.maicai.model.WareInfo;
-import com.appcrews.javaee.maicai.model.TypeInfo;
-import com.opensymphony.xwork2.ActionSupport;
+import com.appcrews.javaee.maicai.model.base.WareInfo;
+import com.appcrews.javaee.maicai.model.base.TypeInfo;
 import com.opensymphony.xwork2.ModelDriven;
 import org.springframework.stereotype.Controller;
 
 @SuppressWarnings("serial")
 @Scope("prototype")
 @Controller
-public class ManagerAction extends ActionSupport implements ModelDriven<WareInfo> {
-    @Autowired
-    private dataService dataService;
+public class ManagerAction extends BaseAction implements ModelDriven<WareInfo> {
+
     private WareInfo info = new WareInfo();
     private Map map;
-    private PageInfo pageInfo=PageInfo.getPageInfo();
-    private int ts;
     private int sort=-1;
     private  TypeInfo typeInfo;
     private String key;
     List<WareInfo> WareInfoList;
     List<TypeInfo> TypeInfoList;
-    HttpServletResponse response;
-    HttpServletRequest request = ServletActionContext.getRequest();
+
+    @Autowired
+    public void setService(dataService service) {
+        this.service = service;
+    }
 
     public List<WareInfo> getWareInfoList() {
         return WareInfoList;
@@ -51,14 +49,6 @@ public class ManagerAction extends ActionSupport implements ModelDriven<WareInfo
 
     public void setWareInfoList(List<WareInfo> WareInfoList) {
         this.WareInfoList = WareInfoList;
-    }
-
-    public void setPageInfo(PageInfo pageInfo) {
-        this.pageInfo = pageInfo;
-    }
-
-    public PageInfo getPageInfo() {
-        return pageInfo;
     }
 
     public WareInfo getModel() {
@@ -82,100 +72,81 @@ public class ManagerAction extends ActionSupport implements ModelDriven<WareInfo
         return sort;
     }
 
-    public int getTs() {
-        return ts;
-    }
-
-    public void setTs(int ts) {
-        this.ts = ts;
-    }
 
     public String search() {
         map = new HashMap();
-        this.response = ServletActionContext.getResponse();
-        WareInfoList = dataService.getListWaresearch(key);
-        pageInfo.setAllpage(dataService.getcountTotalPage(pageInfo.getPageSize()));
+        Json json = new Json();
+        WareInfoList = ((dataService)service).getListWaresearch(key);
+        pageInfo.setAllpage(service.getcountTotalPage(pageInfo.getPageSize()));
         map.put("datalist", WareInfoList);
         map.put("allpage", pageInfo.getAllpage());
-        JSONObject jsonObject = JSONObject.fromObject(map);
-         Util.renderData(this.response, jsonObject);
+        json.setSuccess(true);
+        json.setMsg("搜索成功！");
+        json.setObj(map);
+        writeJson(json);
         return "success";
     }
 
-//    public String sort() {
-//        response=ServletActionContext.getResponse();
-//        WareInfoList = dataService.getListWaresort(pageInfo.getPageNo(),pageInfo.getPageSize(),this.sort);
-//        JSONArray jsonArray = JSONArray.fromObject(WareInfoList);
-//        System.out.println(jsonArray);
-//         Util.renderData(response, jsonArray);
-//        return "success";
-//    }
-
-//    public void initquery() {
-//        response = ServletActionContext.getResponse();
-//        pageInfo.setAllpage(dataService.getcountTotalPage(pageInfo.getPageSize()));
-//        map = new HashMap();
-//        WareInfoList = dataService.getQueryForPage(pageInfo.getPageNo(),pageInfo.getPageSize());
-//        map.put("datalist", WareInfoList);
-//        map.put("allpage",pageInfo.getAllpage());
-//        JSONObject jsonObject = JSONObject.fromObject(map);
-//         Util.renderData(response, jsonObject);
-//    }
 
     public String query() {
         return "success";
     }
 
     public void queryWay() {
-        response = ServletActionContext.getResponse();
-        pageInfo.setAllpage(dataService.getcountTotalPage(pageInfo.getPageSize()));
+        Json json = new Json();
+        pageInfo.setAllpage(service.getcountTotalPage(pageInfo.getPageSize()));
         if(sort==-1)
-        WareInfoList = dataService.getQueryForPage(pageInfo.getPageNo(),pageInfo.getPageSize());
+        WareInfoList = ((dataService)service).getQueryForPage(pageInfo.getPageNo(),pageInfo.getPageSize());
         else
-            WareInfoList = dataService.getListWaresort(pageInfo.getPageNo(),pageInfo.getPageSize(),this.sort);
+            WareInfoList = ((dataService)service).getListWaresort(pageInfo.getPageNo(),pageInfo.getPageSize(),this.sort);
         map = new HashMap();
         map.put("datalist", WareInfoList);
         map.put("allpage",pageInfo.getAllpage());
-        JSONObject jsonObject = JSONObject.fromObject(map);
-         Util.renderData(response, jsonObject);
+        json.setSuccess(true);
+        json.setMsg("搜索成功！");
+        json.setObj(map);
+        writeJson(json);
 
     }
 
     public String queryedit() {
-        info = dataService.getWareInfo(ts);
-        TypeInfoList = dataService.getType();
-        request.setAttribute("ts", ts);
-        request.setAttribute("typeinfo", TypeInfoList);
-        request.setAttribute("wareinfo", info);
+        info =(WareInfo) service.getById(getId());
+        TypeInfoList = ((dataService)service).getType();
+        getRequest().setAttribute("ts", getId());
+        getRequest().setAttribute("typeinfo", TypeInfoList);
+        getRequest().setAttribute("wareinfo", info);
         return "edit";
 
     }
 
 //    public String querytype() {
-////        TypeInfoList = dataService.gettype();
-//        request.setAttribute("typeinfo", TypeInfoList);
+////        TypeInfoList = ((dataService)service).gettype();
+//        getRequest().setAttribute("typeinfo", TypeInfoList);
 //        return "type";
 //
 //    }
 //
 //    public String inserttype() {
-//        String type = request.getParameter("type");
-//        dataService.inserttype(type);
-//        request.setAttribute("flag", 1);
+//        String type = getRequest().getParameter("type");
+//        ((dataService)service).inserttype(type);
+//        getRequest().setAttribute("flag", 1);
 //        return "type1";
 //    }//插入类型
 
-    public String save() {
+    public void save() {
         ServletContext sc = ServletActionContext.getServletContext();
-
+        Json json = new Json();
         String path = sc.getRealPath("/fileupload");
         String Name = info.getUploadImageFileName();
-        typeInfo=dataService.getTypeInfo(info.getType());
+        typeInfo=((dataService)service).getTypeInfo(info.getType());
         info.setTypeInfo(typeInfo);
         if (Name == null) {
             info.setImg(Name);
-            dataService.insert(info);
-            return "success";
+            service.save(info);
+            json.setSuccess(true);
+            json.setMsg("添加成功！");
+            writeJson(json);
+            return;
         }
         File file = new File(path, Name);
         File uploadimage = info.getUploadImage();
@@ -186,26 +157,30 @@ public class ManagerAction extends ActionSupport implements ModelDriven<WareInfo
             e.printStackTrace();
         }
         info.setImg(Name);
-        dataService.insert(info);
-        return "success";
+        service.save(info);
+        json.setSuccess(true);
+        json.setMsg("添加成功！");
+        writeJson(json);
 
     }
 
     public String delet() throws SQLException {
-        response = ServletActionContext.getResponse();
-        if ((dataService.delete(ts))!=0) {
-            dataService.delete(ts);
-            Util.renderData(response, "success");
+        json=new Json();
+            info.setFid(getId());
+        if (service.getById(getId())!=null) {
+            service.delete(info);
+            json.setMsg("删除成功！");
+            json.setSuccess(true);
+            writeJson(json);
             return "success";
         } else {
-           Util.renderData(response, "error");
             return "input1";
         }
     }
 
     public String insert() {
-        TypeInfoList = dataService.getType();
-        request.setAttribute("typeinfo", TypeInfoList);
+        TypeInfoList = ((dataService)service).getType();
+        getRequest().setAttribute("typeinfo", TypeInfoList);
         return "insert";
 
     }
@@ -213,8 +188,9 @@ public class ManagerAction extends ActionSupport implements ModelDriven<WareInfo
     public String edit() {
         try {
             String Name = info.getUploadImageFileName();
-            typeInfo=dataService.getTypeInfo(info.getType());
+            typeInfo=((dataService)service).getTypeInfo(info.getType());
             info.setTypeInfo(typeInfo);
+            info.setFid(getId());
             if (Name != null) {
                 ServletContext sc = ServletActionContext.getServletContext();
                 String path = sc.getRealPath("/fileupload");
@@ -227,13 +203,13 @@ public class ManagerAction extends ActionSupport implements ModelDriven<WareInfo
                     e.printStackTrace();
                 }
                 info.setImg(Name);
-                dataService.update(ts, info);
-            } else {
-                dataService.update(ts, info);
-            }
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
 
+                service.update(info);
+            } else {
+            service.update(info);
+            }
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
             e.printStackTrace();
             return "false";
         }
