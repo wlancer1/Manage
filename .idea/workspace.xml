@@ -2,66 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6606b4e4-17f1-4963-a886-13be4eb59301" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_fastjson_1_1_37.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/action/BaseAction.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/model/easyui/Json.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/service/baseService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/service/impl/baseServiceImp.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/tool/FastjsonFilter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/com/appcrews/javaee/maicai/jsontest.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_beanutils_commons_beanutils_1_8_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_lang_commons_lang_2_5.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_ezmorph_ezmorph_1_0_6.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_json_lib_json_lib_jdk15_2_4.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/js/jquery.flot.resize.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/maicai_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/maicai_war_exploded.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/maicai.iml" afterPath="$PROJECT_DIR$/maicai.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/action/LoginAction.java" afterPath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/action/LoginAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/action/ManagerAction.java" afterPath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/action/ManagerAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/action/OrderAction.java" afterPath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/action/OrderAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/action/UserAction.java" afterPath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/action/UserAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/dal/Admin.java" afterPath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/dal/Admin.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/dal/Adminimpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/dal/Adminimpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/dal/BaseDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/dal/BaseDaoImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/dal/Data.java" afterPath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/dal/Data.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/dal/Dataimpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/dal/Dataimpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/dal/Order.java" afterPath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/dal/Order.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/dal/Orderimpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/dal/Orderimpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/dal/Shop.java" afterPath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/dal/Shop.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/dal/ShopImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/dal/ShopImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/dal/User.java" afterPath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/dal/User.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/dal/Userimpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/dal/Userimpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/service/adminService.java" afterPath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/service/adminService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/service/dataService.java" afterPath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/service/dataService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/service/orderService.java" afterPath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/service/orderService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/service/userService.java" afterPath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/service/userService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/Type.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/Type.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/goods/manageS.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/goods/manageS.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/goods/sdat_edit.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/goods/sdat_edit.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/goods/sdat_insert.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/goods/sdat_insert.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/js/manage.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/manage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/js/paging.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/paging.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/order/manageD.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/order/manageD.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/user/users.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/user/users.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/user/users_edit.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/user/users_edit.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/appcrews/javaee/maicai/TestVaild.java" afterPath="$PROJECT_DIR$/src/test/java/com/appcrews/javaee/maicai/TestVaild.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/appcrews/javaee/maicai/UserAdd.java" afterPath="$PROJECT_DIR$/src/test/java/com/appcrews/javaee/maicai/UserAdd.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/appcrews/javaee/maicai/testmysql.java" afterPath="$PROJECT_DIR$/src/test/java/com/appcrews/javaee/maicai/testmysql.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/model/AdminInfo.java" afterPath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/model/base/AdminInfo.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/model/DetailInfo.java" afterPath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/model/base/DetailInfo.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/model/OrderInfo.java" afterPath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/model/base/OrderInfo.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/model/PageInfo.java" afterPath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/model/base/PageInfo.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/model/ShopInfo.java" afterPath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/model/base/ShopInfo.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/model/TypeInfo.java" afterPath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/model/base/TypeInfo.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/model/UserInfo.java" afterPath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/model/base/UserInfo.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/model/WareInfo.java" afterPath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/model/base/WareInfo.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/service/adminServiceImp.java" afterPath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/service/impl/adminServiceImp.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/service/dataServiceImp.java" afterPath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/service/impl/dataServiceImp.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/service/orderServiceImp.java" afterPath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/service/impl/orderServiceImp.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/service/userServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/service/impl/userServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/service/impl/adminServiceImp.java" afterPath="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/service/impl/adminServiceImp.java" />
     </list>
     <ignored path="maicai.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -105,16 +49,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dataServiceImp.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/service/impl/dataServiceImp.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="UserAction.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/action/UserAction.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -142,7 +76,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Data.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Data.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/dal/Data.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="314">
@@ -152,18 +86,26 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="LogoutAction.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/action/LogoutAction.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="125">
+              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="LoginAction.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/action/LoginAction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1100">
-              <caret line="66" column="29" selection-start-line="66" selection-start-column="29" selection-end-line="66" selection-end-column="29" />
+            <state relative-caret-position="-50">
+              <caret line="24" column="33" selection-start-line="24" selection-start-column="33" selection-end-line="24" selection-end-column="46" />
               <folding>
-                <element signature="e#1236#1237#0" expanded="true" />
-                <element signature="e#1268#1269#0" expanded="true" />
-                <element signature="e#1519#1520#0" expanded="true" />
-                <element signature="e#1539#1540#0" expanded="true" />
-                <element signature="e#1577#1578#0" expanded="true" />
-                <element signature="e#1599#1600#0" expanded="true" />
+                <element signature="e#1365#1366#0" expanded="true" />
+                <element signature="e#1385#1386#0" expanded="true" />
+                <element signature="e#1423#1424#0" expanded="true" />
+                <element signature="e#1445#1446#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -191,14 +133,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="adminService.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="adminService.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/service/adminService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="175">
+              <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -206,8 +146,8 @@
       <file leaf-file-name="adminServiceImp.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/service/impl/adminServiceImp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="925">
-              <caret line="45" column="37" selection-start-line="45" selection-start-column="37" selection-end-line="45" selection-end-column="37" />
+            <state relative-caret-position="225">
+              <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -331,9 +271,9 @@
         <option value="$PROJECT_DIR$/src/main/webapp/Type.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/goods/sdat_insert.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/action/ManagerAction.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/service/adminService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/service/impl/adminServiceImp.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/action/LoginAction.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/service/impl/adminServiceImp.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/service/adminService.java" />
       </list>
     </option>
   </component>
@@ -363,9 +303,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="615" />
-    <option name="y" value="143" />
-    <option name="width" value="1370" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
     <option name="height" value="744" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -2092,7 +2032,7 @@
       <workItem from="1503535461556" duration="10737000" />
       <workItem from="1503627252515" duration="12723000" />
       <workItem from="1503717334267" duration="4881000" />
-      <workItem from="1503733981281" duration="7156000" />
+      <workItem from="1503733981281" duration="7381000" />
     </task>
     <servers />
   </component>
@@ -2129,7 +2069,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="407706000" />
+    <option name="totallyTimeSpent" value="407931000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -2141,7 +2081,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="615" y="143" width="1370" height="744" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -2155,7 +2095,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22350994" sideWeight="0.7672282" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.071192056" sideWeight="0.7672282" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.4969651" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.294702" sideWeight="0.45482388" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -2165,7 +2105,7 @@
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32781458" sideWeight="0.4969651" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25114855" sideWeight="0.49043062" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24886191" sideWeight="0.49043062" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924962" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="JRebel" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
@@ -2265,14 +2205,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/model/base/DetailInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/model/base/OrderInfo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -2637,18 +2569,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/action/ManagerAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3577">
-          <caret line="181" column="30" selection-start-line="181" selection-start-column="30" selection-end-line="181" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2456#2457#0" expanded="true" />
-            <element signature="e#2488#2489#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/applicationContext.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="509">
@@ -2680,24 +2600,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/service/impl/adminServiceImp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="925">
-          <caret line="45" column="37" selection-start-line="45" selection-start-column="37" selection-end-line="45" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/service/adminService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/action/BaseAction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="191">
@@ -2708,25 +2610,59 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/action/LoginAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1100">
-          <caret line="66" column="29" selection-start-line="66" selection-start-column="29" selection-end-line="66" selection-end-column="29" />
-          <folding>
-            <element signature="e#1236#1237#0" expanded="true" />
-            <element signature="e#1268#1269#0" expanded="true" />
-            <element signature="e#1519#1520#0" expanded="true" />
-            <element signature="e#1539#1540#0" expanded="true" />
-            <element signature="e#1577#1578#0" expanded="true" />
-            <element signature="e#1599#1600#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/dal/Data.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="314">
           <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/action/LogoutAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/action/ManagerAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3577">
+          <caret line="181" column="30" selection-start-line="181" selection-start-column="30" selection-end-line="181" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2456#2457#0" expanded="true" />
+            <element signature="e#2488#2489#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/action/LoginAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-50">
+          <caret line="24" column="33" selection-start-line="24" selection-start-column="33" selection-end-line="24" selection-end-column="46" />
+          <folding>
+            <element signature="e#1365#1366#0" expanded="true" />
+            <element signature="e#1385#1386#0" expanded="true" />
+            <element signature="e#1423#1424#0" expanded="true" />
+            <element signature="e#1445#1446#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/service/impl/adminServiceImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/appcrews/javaee/maicai/service/adminService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
           <folding />
         </state>
       </provider>

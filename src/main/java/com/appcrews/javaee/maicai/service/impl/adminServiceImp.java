@@ -15,7 +15,7 @@ import java.util.List;
  */
 @Transactional
 @Service
-public class adminServiceImp extends  baseServiceImp<AdminInfo> implements adminService {
+public class adminServiceImp implements adminService {
 
     @Autowired
    private Admin admin;
