@@ -26,10 +26,7 @@ public class userServiceImpl extends baseServiceImp<UserInfo> implements userSer
 //   private  Order order;
     @Autowired
     private User user;
-    @Override
-    public List<UserInfo> getQueryForPage(int pageno, int pagesize) {
-        return user.getListUser(pageno,pagesize);
-    }
+
 
 
 

@@ -1,9 +1,13 @@
 package com.appcrews.javaee.maicai.action;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.appcrews.javaee.maicai.model.easyui.Json;
 import com.appcrews.javaee.maicai.service.orderService;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,64 +18,52 @@ import com.appcrews.javaee.maicai.model.base.OrderInfo;
 import com.appcrews.javaee.maicai.model.base.WareInfo;
 import com.opensymphony.xwork2.ActionSupport;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 
 @SuppressWarnings("serial")
 @Controller
 @Scope("prototype")
-public class OrderAction extends ActionSupport {
+public class OrderAction extends BaseAction {
 	HttpServletRequest request = ServletActionContext.getRequest();
 	@Autowired
 	private orderService orderService;
-	int allpage, pageSize=5;
-	List<OrderInfo> info1;
-	List<DetailInfo> info2;
-	List<WareInfo> info3;
-	List<String> namelist;
-	private  int onum;
-
-
-	public int getOnum() {
-		return onum;
+//	int allpage, pageSize=5;
+	List<OrderInfo> OrderInfoList;
+//	List<DetailInfo> info2;
+//	List<WareInfo> info3;
+	private OrderInfo orderInfo;
+	Map map;
+	private Set<DetailInfo> detailInfo;
+	@Autowired
+	public void setService(orderService service) {
+		this.service = service;
 	}
 
-	public void setOnum(int onum) {
-		this.onum = onum;
-	}
 
-	List<String> SCnumlist;
 
 	public String query() {
-		int pageno = 0;
-		if (request.getParameter("pageno") != null) {
-			pageno = Integer.parseInt(request.getParameter("pageno"));
-		} else {
-			pageno = 1;
-		}
-		allpage = orderService.getcountTotalPage(pageSize);
-		if (request.getParameter("flag") != null) {
-			if (request.getParameter("flag").equals("0")) {
-				if (pageno != 1) {
-					pageno--;
-				}
-			} else if (request.getParameter("flag").equals("1")) {
-				if (pageno != allpage) {
-					pageno++;
-				}
-			}
-		}
-		request.setAttribute("page", allpage);// 总页数
-		request.setAttribute("pageno", pageno);
-		// 现在要查询的
-		info1 = orderService.getqueryForPage(pageno,pageSize);
-		request.setAttribute("orderinfo", info1);
+
 		return "success";
 
 	}
+	public  void queryWay(){
+		Json json = new Json();
+		pageInfo.setAllpage(service.getcountTotalPage(pageInfo.getPageSize()));
+			OrderInfoList = service.find(pageInfo.getPageNo(),pageInfo.getPageSize());
+		map = new HashMap();
+		map.put("datalist", OrderInfoList);
+		map.put("allpage",pageInfo.getAllpage());
+		json.setSuccess(true);
+		json.setMsg("查询成功！");
+		json.setObj(map);
+		writeJson(json);
 
-	public int size() {
-		int size = orderService.getListorder().size();
-		return size;
 	}
+
+//	public int size() {
+//		int size = orderService.getListorder().size();
+//		return size;
+//	}
 
 //	public String save() {
 //		int onum = Integer.parseInt(request.getParameter("onum"));
@@ -87,24 +79,26 @@ public class OrderAction extends ActionSupport {
 //	}
 
 	public String edit() {
+
 		float sum = 0;
-		info2 = orderService.getListdetailorder(onum);// 向defaultinfo中输入商品数量和商品id
-		request.setAttribute("nameinfo", info3);
-		request.setAttribute("num", onum);
-		request.setAttribute("detailinfo", info2);
-		request.setAttribute("sum", sum);
+		orderInfo=((orderService)service).getDetail(getId());
+
+		getRequest().setAttribute("editDetail", orderInfo);
+		getRequest().setAttribute("sum", sum);
 		return "edit";
 
 	}
 
-//	public String delet() {
-//		String onum = request.getParameter("de");
-//		int id = Integer.parseInt(request.getParameter("scid"));
-//		orderService.delete(id, onum);
-//		edit1(onum);
-//		return "edit";
-//
-//	}
+	public void deletWare() {
+		Json json = new Json();
+		int wareid = Integer.parseInt(getRequest().getParameter("wareid"));
+		((orderService)service).wareDelete(id, wareid);
+		json.setSuccess(true);
+		json.setMsg("删除成功！");
+		json.setObj(map);
+		writeJson(json);
+
+	}
 //
 //	public String deletorder() {
 //		String onum = request.getParameter("de");
@@ -130,42 +124,11 @@ public class OrderAction extends ActionSupport {
 //		return "print";
 //	}
 
-	public String edit1(String num) {
-		float sum=0;
-		int onum = Integer.parseInt(num);// 得到订单号
-		info2 = orderService.getListdetailorder(onum);// 向defaultinfo中输入商品数量和商品id
-		request.setAttribute("nameinfo", info3);
-		request.setAttribute("num", onum);
-		request.setAttribute("detailinfo", info2);
-		request.setAttribute("sum", sum);
-		return "edit";
-
-	}
-
 	public String detailquery() {
-		float sum = 0;
-		int onum = Integer.parseInt(request.getParameter("ts"));
-		info2 = orderService.getListdetailorder(onum);
-		System.out.println(info2);
-		request.setAttribute("num", onum);
-		request.setAttribute("detailinfo", info2);
+		orderInfo=((orderService)service).getDetail(getId());
+		getRequest().setAttribute("OrderDetail", orderInfo);
 		return "detail";
 
 	}
 
-	public List<String> getNamelist() {
-		return namelist;
-	}
-
-	public void setNamelist(List<String> namelist) {
-		this.namelist = namelist;
-	}
-
-	public List<String> getSCnumlist() {
-		return SCnumlist;
-	}
-
-	public void setSCnumlist(List<String> sCnumlist) {
-		SCnumlist = sCnumlist;
-	}
 }

@@ -24,27 +24,6 @@ public class dataServiceImp extends baseServiceImp<WareInfo> implements dataServ
 
 @Autowired
     private BaseDaoI baseDaoI;
-    @Override
-    public List<WareInfo> getQueryForPage(int pageNo,int pageSize) {
-        return data.getListWare(pageNo,pageSize);
-    }
-
-
-
-    @Override
-    public List<WareInfo> getListWaresearch(String key) {
-        if (data.getListWare(key).size()==0)
-            return null;
-        else
-        return this.data.getListWare(key);
-    }
-
-
-    @Override
-    public List<WareInfo> getListWaresort(int pageNo,  int pageSize,int flag) {
-
-        return this.data.getListWare(pageNo,pageSize,flag);
-    }
 
     @Override
     public List<TypeInfo> getType() {
@@ -56,7 +35,18 @@ public class dataServiceImp extends baseServiceImp<WareInfo> implements dataServ
 
         return (TypeInfo) baseDaoI.get(TypeInfo.class,id);
     }
-//
+
+    @Override
+    public int saveType(TypeInfo typeInfo) {
+        try {
+            this.baseDaoI.save(typeInfo);
+            return 1;
+        }catch(Exception e){
+            return 0;
+        }
+
+    }
+    //
 //    @Override
 //    public void inserttype(String type) {
 //        this.data.inserttype(type);

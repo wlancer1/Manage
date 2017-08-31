@@ -17,7 +17,7 @@ public class TypeInfo {
 	public void setType(String type) {
 		this.type = type;
 	}
-
+@Column(name = "tremark")
 	public String getRemark() {
 		return remark;
 	}

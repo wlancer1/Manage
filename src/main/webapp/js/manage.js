@@ -6,6 +6,7 @@
    var search=document.getElementsByClassName('search_key2')[0];
    search.onclick=function () {
        var detail=$(".search_key").val();
+       console.log(detail);
        if(detail!="")
        {
            $.ajax({
@@ -14,6 +15,7 @@
                dataType: "json",
                data:{key:detail},
                success: function (data) {
+                   console.log(data);
                    var map=data.obj;
                    if(map.datalist==null)
                        alert("没有该名称的数据");
@@ -24,6 +26,12 @@
                    }
                }
            })
+           var temp;
+           for(var i=1;i<=all;i++){
+               temp=temp+" <li><a onclick='choose("+i+",url)'>"+i
+                   +"</a></li>";
+           }
+           $(".pagination ul li").eq(1).html(temp);
 
        }else
        {
@@ -55,6 +63,7 @@
         $.ajax({
             url: "/data/delet_manage.html",
             type: "post",
+            dataType: "json",
             data: {id: id},
             success: function (data) {
                 if (data == "success") {

@@ -24,13 +24,9 @@ public class Userimpl implements User{
 		return baseDaoI.find(hql,pageNo,pageSize);
 	}
 
-	@SuppressWarnings("unchecked")
 
 
-public int getLength(){
-	String hql="SELECT COUNT(*) FROM UserInfo";
-	return baseDaoI.count(hql);
-}
+
 
 //
 

@@ -6,60 +6,39 @@ import java.io.Serializable;
 @Entity
 @Table(name = "detailorder")
 public class DetailInfo implements Serializable {
-	private int onum, wareid, warenum;
-	int ID;
-	String name;
-	private float price;
-	private float sum;
-	private String img = "";
-	public  DetailInfo(){
+	private int onum, wareid, warenum,id;
+	private WareInfo wareInfo;
 
-	}
-	public DetailInfo (int ounm,int wareid,int warenum){
-			this.onum=ounm;
-			this.wareid=wareid;
-			this.warenum=warenum;
-	}
-	public int getID() {
-		return ID;
+//	private OrderInfo orderInfo;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	public int getId() {
+		return id;
 	}
 
-	public void setID(int iD) {
-		ID = iD;
+	public void setId(int id) {
+		this.id = id;
+	}
+//	@ManyToOne
+//	@JoinColumn(name = "onum" , insertable = false, updatable = false)
+//	public OrderInfo getOrderInfo() {
+//		return orderInfo;
+//	}
+//
+//	public void setOrderInfo(OrderInfo orderInfo) {
+//		this.orderInfo = orderInfo;
+//	}tserese
+
+
+	@OneToOne
+	@JoinColumn(name="wareid",unique=true , insertable = false, updatable = false)
+	public WareInfo getWareInfo() {
+		return wareInfo;
 	}
 
-	public String getName() {
-		return name;
+	public void setWareInfo(WareInfo wareInfo) {
+		this.wareInfo = wareInfo;
 	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public float getPrice() {
-		return price;
-	}
-
-	public void setPrice(float price) {
-		this.price = price;
-	}
-
-	public float getSum() {
-		return sum;
-	}
-
-	public void setSum(float sum) {
-		this.sum = sum;
-	}
-
-	public String getImg() {
-		return img;
-	}
-
-	public void setImg(String img) {
-		this.img = img;
-	}
-
 
 	public int getOnum() {
 		return onum;
@@ -68,8 +47,7 @@ public class DetailInfo implements Serializable {
 	public void setOnum(int ounm) {
 		this.onum=ounm;
 	}
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	public int getWareid() {
 		return wareid;
 	}
@@ -77,7 +55,6 @@ public class DetailInfo implements Serializable {
 	public void setWareid(int wareid) {
 		this.wareid = wareid;
 	}
-
 	public int getWarenum() {
 		return warenum;
 	}

@@ -19,13 +19,6 @@ public class adminServiceImp implements adminService {
 
     @Autowired
    private Admin admin;
-    @Autowired
-   private Data data;
-    @Autowired
-   private User user;
-    @Autowired
-   private Order order;
-    private  List list;
     private AdminInfo adminInfo;
 
 
@@ -44,10 +37,6 @@ public class adminServiceImp implements adminService {
 
     @Override
     public List<Integer> sizeList() {
-        list=new ArrayList();
-        list.add(user.getLength());
-         list.add(data.getLength());
-         list.add(order.getLength());
-        return list;
+        return admin.getSizeList();
     }
 }

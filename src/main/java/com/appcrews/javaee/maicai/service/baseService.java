@@ -1,5 +1,7 @@
 package com.appcrews.javaee.maicai.service;
 
+import com.appcrews.javaee.maicai.tool.HqlFilter;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -67,6 +69,25 @@ public interface baseService<T> {
      *            每页显示多少条
      * @return List
      */
+    /**
+     * 获得分页后的对象列表
+     *
+     * @param page
+     * @param rows
+     * @return
+     */
+    public List<T> find(int page, int rows);
+
+    /**
+     * 获得分页后的对象列表
+     *
+     * @param hqlFilter
+     * @param page
+     * @param rows
+     * @return
+     */
+    public List<T> findByFilter(HqlFilter hqlFilter, int page, int rows);
+
     int getcountTotalPage(int pagesize);
 
 }

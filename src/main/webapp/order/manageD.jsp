@@ -12,19 +12,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description"
 	content="Admin panel developed with the Bootstrap from Twitter.">
-<meta name="author" content="travis">
+
 
 <link href="<%=request.getContextPath()%>/css/bootstrap.css"
 	rel="stylesheet">
 <link href="<%=request.getContextPath()%>/css/site.css" rel="stylesheet">
-<link href="<%=request.getContextPath()%>/css/app.css" rel="stylesheet">
 <link href="<%=request.getContextPath()%>/css/bootstrap-responsive.css"
 	rel="stylesheet">
 <script async="" src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <!--[if lt IE 9]>
       <script src="js/html5.js"></script>
     <![endif]-->
-<script src="/js/jquery-3.1.1.js"></script>
+	<script type="text/javascript" src="/js/jquery-3.1.1.js"></script>
 	<script type="text/javascript" src="/js/arttemp.js"></script>
 </head>
 
@@ -58,9 +57,6 @@
 							</tbody>
 						</table>
 						<div class="pagination">
-						<%
-							int i = 1;
-						%>
 						<ul>
 							<li><a
 							>Prev</a></li>
@@ -78,9 +74,9 @@
 
 	<%@ include file="/footer.jsp"%>
 	</div>
+<script type="application/javascript"  src="/js/paging.js">
 
-	<script src="js/jquery.js"></script>
-	<script src="js/bootstrap.min.js"></script>
+</script>
 	<script>
 		var bar =document.getElementById("bar");
 		var list=bar.getElementsByTagName("li");
@@ -96,23 +92,30 @@
 				$('tr.list-users td div ul').addClass('pull-right');
 			}
 		});
+		var url="/order/queryWay_order.html";
+		var templ="orderTemplate"
+		var page=1;
+		var all;
+
+		choose(page,url);
 	</script>
+
 <script type="text/html" id="orderTemplate">
 	{{each dataList as data index}}
 	<tr>
-		<td>{{data.onum}}/></td>
-		<td>{{data.otime}}/></td>
-		<td>{{data.Stime}}/></td>
-		<td>{{data.oremark}}/></td>
+		<td>{{data.onum}}</td>
+		<td>{{data.otime}}</td>
+		<td>{{data.stime}}</td>
+		<td>{{data.oremark}}</td>
 		<td><a
-				href="<%=request.getContextPath()%>/order/detailquery_order.html?ts={{data.onum}}"><i
+				href="<%=request.getContextPath()%>/order/detailquery_order.html?id={{data.onum}}"><i
 				class="icon-book"></i> 详情</a>
 			<a
-					href="<%=request.getContextPath()%>/order/print_order.html?ts={{data.onum}}>">
+					href="<%=request.getContextPath()%>/order/print_order.html?id={{data.onum}}>">
 					<i
 					class="icon-print"></i>打印订单</a>
 			<a
-					href="<%=request.getContextPath()%>/order/deletorder_order.html?de={{data.onum}}"/>"><i
+					href="<%=request.getContextPath()%>/order/deletorder_order.html?id={{data.onum}}"/>"<i
 					class="icon-trash"></i> 删除</a>
 		</td>
 	</tr>

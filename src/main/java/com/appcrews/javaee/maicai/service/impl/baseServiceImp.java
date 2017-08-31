@@ -3,7 +3,9 @@ package com.appcrews.javaee.maicai.service.impl;
 import com.appcrews.javaee.maicai.dal.BaseDaoI;
 import com.appcrews.javaee.maicai.model.base.PageInfo;
 import com.appcrews.javaee.maicai.service.baseService;
+import com.appcrews.javaee.maicai.tool.HqlFilter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -53,6 +55,19 @@ baseDaoI.saveOrUpdate(o);
     @Override
     public int getcountTotalPage(int pagesize) {
         return PageInfo.countTotalPage(pagesize,length());
+    }
+    @Override
+    public List<T> find(int page, int rows) {
+        return findByFilter(new HqlFilter(), page, rows);
+    }
+
+    @Override
+    public List<T> findByFilter(HqlFilter hqlFilter, int page, int rows) {
+        String className = ((Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0]).getName();
+        String hql = "select distinct t from " + className + " t";//去重
+       System.out.println(hql+hqlFilter.getWhereAndOrderHql());
+
+        return baseDaoI.find(hql + hqlFilter.getWhereAndOrderHql(), hqlFilter.getParams(), page, rows);
     }
 
 }

@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.appcrews.javaee.maicai.model.base.PageInfo;
 import com.appcrews.javaee.maicai.model.easyui.Json;
 import com.appcrews.javaee.maicai.service.dataService;
+import com.appcrews.javaee.maicai.tool.HqlFilter;
 import com.appcrews.javaee.maicai.tool.Util;
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
@@ -32,11 +33,11 @@ public class ManagerAction extends BaseAction implements ModelDriven<WareInfo> {
 
     private WareInfo info = new WareInfo();
     private Map map;
-    private int sort=-1;
     private  TypeInfo typeInfo;
     private String key;
     List<WareInfo> WareInfoList;
     List<TypeInfo> TypeInfoList;
+    private String leibie;
 
     @Autowired
     public void setService(dataService service) {
@@ -56,6 +57,15 @@ public class ManagerAction extends BaseAction implements ModelDriven<WareInfo> {
         return info;
     }
 
+
+    public String getLeibie() {
+        return leibie;
+    }
+
+    public void setLeibie(String leibie) {
+        this.leibie = leibie;
+    }
+
     public void setKey(String key) {
         this.key = key;
     }
@@ -64,22 +74,17 @@ public class ManagerAction extends BaseAction implements ModelDriven<WareInfo> {
         return key;
     }
 
-    public void setSort(int sort) {
-        this.sort = sort;
-    }
 
-    public int getSort() {
-        return sort;
-    }
 
 
     public String search() {
         map = new HashMap();
         Json json = new Json();
-        WareInfoList = ((dataService)service).getListWaresearch(key);
-        pageInfo.setAllpage(service.getcountTotalPage(pageInfo.getPageSize()));
+        HqlFilter hqlFilter=new HqlFilter();
+        hqlFilter.addFilter("QUERY_t#name_S_LK",key);
+        WareInfoList =service.findByFilter(hqlFilter,pageInfo.getPageNo(),pageInfo.getPageSize());
         map.put("datalist", WareInfoList);
-        map.put("allpage", pageInfo.getAllpage());
+        map.put("allpage", 1);
         json.setSuccess(true);
         json.setMsg("搜索成功！");
         json.setObj(map);
@@ -95,15 +100,19 @@ public class ManagerAction extends BaseAction implements ModelDriven<WareInfo> {
     public void queryWay() {
         Json json = new Json();
         pageInfo.setAllpage(service.getcountTotalPage(pageInfo.getPageSize()));
-        if(sort==-1)
-        WareInfoList = ((dataService)service).getQueryForPage(pageInfo.getPageNo(),pageInfo.getPageSize());
-        else
-            WareInfoList = ((dataService)service).getListWaresort(pageInfo.getPageNo(),pageInfo.getPageSize(),this.sort);
+        if(sort!=null){
+            HqlFilter hqlFilter=new HqlFilter();
+            hqlFilter.addOrder(order);
+            hqlFilter.addOrder(sort);
+            WareInfoList = service.findByFilter(hqlFilter,pageInfo.getPageNo(),pageInfo.getPageSize());
+        } else
+            WareInfoList = service.find(pageInfo.getPageNo(),pageInfo.getPageSize());
+
         map = new HashMap();
         map.put("datalist", WareInfoList);
         map.put("allpage",pageInfo.getAllpage());
         json.setSuccess(true);
-        json.setMsg("搜索成功！");
+        json.setMsg("查询成功！");
         json.setObj(map);
         writeJson(json);
 
@@ -126,12 +135,15 @@ public class ManagerAction extends BaseAction implements ModelDriven<WareInfo> {
 //
 //    }
 //
-//    public String inserttype() {
-//        String type = getRequest().getParameter("type");
-//        ((dataService)service).inserttype(type);
-//        getRequest().setAttribute("flag", 1);
-//        return "type1";
-//    }//插入类型
+    public String inserttype() {
+        typeInfo=new TypeInfo();
+        typeInfo.setType(leibie);
+        if(((dataService)service).saveType(typeInfo)==1)
+            getRequest().setAttribute("flag", 1);
+        else
+            getRequest().setAttribute("flag", 0);
+        return "type";
+    }//插入类型
 
     public void save() {
         ServletContext sc = ServletActionContext.getServletContext();

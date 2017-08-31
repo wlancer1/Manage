@@ -18,72 +18,31 @@ public class Dataimpl implements Data {
 //		return baseDaoI.exexuteSql(sql);
 //	}
 
-	@Override
-	public List<WareInfo> getListWare(int pageNo, int pageSize) {
-		String hql="from WareInfo";
-		return baseDaoI.find(hql,pageNo,pageSize);
-	}
-
-	@Override
-	public List<WareInfo> getListWare(int pageNo, int pageSize,int flag) {
-		String hql="from WareInfo ";
-		if (flag == 0) {
-			hql+="order by price desc";
-			return baseDaoI.find(hql,pageNo,pageSize);
-		} else {
-			hql+="order by price asc";
-			return baseDaoI.find(hql,pageNo,pageSize);
-		}
-	}
-
-	@Override
-	public List<WareInfo> getListWare(String key) {
-		String hql="from WareInfo WHERE name ='"+key+"'";
-		return baseDaoI.find(hql);
-	}
-
-	//	@SuppressWarnings("unchecked")
-//	public List<WareInfo>  getListshucaisort(int index, int flag, int pageSize) {
-//		List<WareInfo> list = new ArrayList<WareInfo>();
+//	@Override
+//	public List<WareInfo> getListWare(int pageNo, int pageSize) {
+//		String hql="from WareInfo";
+//		return baseDaoI.find(hql,pageNo,pageSize);
+//	}
+//
+//	@Override
+//	public List<WareInfo> getListWare(int pageNo, int pageSize,int flag) {
+//		String hql="from WareInfo ";
 //		if (flag == 0) {
-//			String sql1 = "SELECT* FROM shucai ORDER BY fPrice DESC LIMIT "
-//					+ index + ","+pageSize+ "";
-////			String sql1 = "SELECT* FROM shucai ORDER BY fPrice DESC ";
-//
-//			list = this.getJdbcTemplate().query(sql1, new ShuCairowMap());
+//			hql+="order by price desc";
+//			return baseDaoI.find(hql,pageNo,pageSize);
 //		} else {
-//			String sql2 = "SELECT* FROM shucai ORDER BY fPrice asc LIMIT "
-//					+ index + ","+pageSize+ "";
-////			String sql2 = "SELECT* FROM shucai ORDER BY fPrice asc ";
-//			list = this.getJdbcTemplate().query(sql2, new ShuCairowMap());
+//			hql+="order by price asc";
+//			return baseDaoI.find(hql,pageNo,pageSize);
 //		}
-//		return list;
-//
-//
 //	}
 //
-//	@SuppressWarnings("unchecked")
-//	public List<WareInfo> getListshucai() {
-//		List<WareInfo> list = new ArrayList<WareInfo>();
-//		String sql = "SELECT* FROM shucai";
-//		list = this.getJdbcTemplate().query(sql, new ShuCairowMap());
-//		return list;
+//	@Override
+//	public List<WareInfo> getListWare(String key) {
+//		String hql="from WareInfo WHERE name ='"+key+"'";
+//		return baseDaoI.find(hql);
 //	}
-//
-//	public int getSCid(String name) {
-//		String sql = "SELECT fId FROM shucai WHERE fName = '" + name + "'";
-//		return this.getJdbcTemplate().queryForInt(sql);
-//
-//	}
-//
-//	@SuppressWarnings("unchecked")
-//	public List<TypeInfo> getType(String TYPE) {
-//		List<TypeInfo> list = new ArrayList<TypeInfo>();
-//		String sql = "SELECT * FROM `type` ORDER BY (CASE WHEN fType='" + TYPE
-//				+ "' THEN 1 ELSE 4 END),fType DESC;";
-//		list = this.getJdbcTemplate().query(sql, new TyperowMap());
-//		return list;
-//	}
+
+
 
 	@Override
 	public List<TypeInfo> getListType() {

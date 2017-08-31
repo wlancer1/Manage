@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
           content="Admin panel developed with the Bootstrap from Twitter.">
-    <meta name="author" content="travis">
+
 
     <link href="<%=request.getContextPath()%>/css/bootstrap.css"
           rel="stylesheet">
@@ -34,7 +34,7 @@
                 <div class="page-header">
                     <h1>
                         订单详情
-                        <small>订单号：<s:property value="#request.num"/></small>
+                        <small>订单号：${OrderDetail.onum}</small>
                     </h1>
                 </div>
                 <div class="well-content"></div>
@@ -50,28 +50,28 @@
                     </tr>
                     </thead>
                     <tbody id="detail">
-                    <s:iterator value="#request.detailinfo">
-                        <tr price="${price}" num="${SCnum}">
-                            <td><s:property value="ID"/></td>
-                            <td><s:property value="name"/></td>
-                            <td><s:property value="price"/></td>
+                    <c:forEach items="${OrderDetail.detailInfo}" var="detailSet">
+                        <tr price="${detailSet.wareInfo.price}" num="${detailSet.warenum}">
+                            <td>${detailSet.wareid}</td>
+                            <td>${detailSet.wareInfo.name}</td>
+                            <td>${detailSet.wareInfo.price}</td>
                             <td>
                                 <div>
                                     <img height="100" width="200"
-                                         src="<%=request.getContextPath()%>/fileupload/<s:property value="img" />"
+                                         src="<%=request.getContextPath()%>/fileupload/${detailSet.wareInfo.img}"
                                          onerror="this.src='<%=request.getContextPath()%>/fileupload/default.png'"/>
                                 </div>
                             </td>
-                            <td><s:property value="SCnum"/></td>
+                            <td>${detailSet.warenum}</td>
 
                         </tr>
-                    </s:iterator>
+                   </c:forEach>
                     </tbody>
                 </table>
                 <div class="form-actions">
                     <p style="float: left"></p>
                     <div class="ab">
-                        <a href="<%=request.getContextPath()%>/order/edit_order.html?ts=<s:property
+                        <a href="<%=request.getContextPath()%>/order/edit_order.html?id=<s:property
 									value="#parameters.ts" />">修改</a>
                         <a href="<%=request.getContextPath()%>/order/query_order.html">返回</a></div>
                 </div>

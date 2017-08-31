@@ -3,25 +3,11 @@ package com.appcrews.javaee.maicai.model.base;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.Set;
 
 @Entity
 @Table(name = "order1")
 public class OrderInfo implements Serializable {
-	public int getUserID() {
-		return userID;
-	}
-
-	public void setUserID(int userID) {
-		this.userID = userID;
-	}
-
-	public int getBuyerID() {
-		return buyerID;
-	}
-
-	public void setBuyerID(int buyerID) {
-		this.buyerID = buyerID;
-	}
 
 
 
@@ -52,14 +38,41 @@ public class OrderInfo implements Serializable {
 	}
 
 	public Timestamp getStime() {
-		return Stime;
+		return stime;
 	}
 
 	public void setStime(Timestamp stime) {
-		Stime = stime;
+		this.stime = stime;
 	}
 
-	private  int userID, buyerID,onum;
+	@OneToMany
+	@JoinColumn(name = "onum" )
+	public Set<DetailInfo> getDetailInfo() {
+		return detailInfo;
+	}
+
+	public void setDetailInfo(Set<DetailInfo> detailInfo) {
+		this.detailInfo = detailInfo;
+	}
+
+	public int getUid() {
+		return uid;
+	}
+
+	public void setUid(int uid) {
+		this.uid = uid;
+	}
+
+	public int getSid() {
+		return sid;
+	}
+
+	public void setSid(int sid) {
+		this.sid = sid;
+	}
+
+	private  int uid, sid,onum;
+	private Set<DetailInfo> detailInfo;
 	private String oremark;
-	private Timestamp otime, Stime;
+	private Timestamp otime, stime;
 }

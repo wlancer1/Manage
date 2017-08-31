@@ -31,6 +31,8 @@ public class BaseAction <T>extends ActionSupport {
     protected T data;
     protected Json json;
     protected  int id;
+    protected String sort;// 排序字段
+    protected String order = "asc";// asc/desc
     protected baseService service;
 
     public void setService(baseService<T> service) {
@@ -63,6 +65,22 @@ public class BaseAction <T>extends ActionSupport {
 
     public HttpServletRequest getRequest() {
         return ServletActionContext.getRequest();
+    }
+
+    public String getSort() {
+        return sort;
+    }
+
+    public void setSort(String sort) {
+        this.sort = sort;
+    }
+
+    public String getOrder() {
+        return order;
+    }
+
+    public void setOrder(String order) {
+        this.order = order;
     }
 
     /**

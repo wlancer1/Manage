@@ -12,7 +12,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description"
 	content="Admin panel developed with the Bootstrap from Twitter.">
-<meta name="author" content="travis">
+
 
 <link href="<%=request.getContextPath()%>/css/bootstrap.css"
 	rel="stylesheet">
@@ -79,7 +79,9 @@
 													<option  value="${typeList.typeid}">${typeList.type}</option>
 										</c:forEach>
 									</select>
+									<a href="javascript:void(0)" onclick="addtype();">添加商品类型</a>
 								</div>
+
 							</div>
 
 							<div class="control-group">
@@ -108,7 +110,10 @@
 </div>
 
 <script type="application/javascript">
+	function addtype(){
+		window.open ("<%=request.getContextPath()%>/goods/addtype.jsp",'newwindow','height=200,width=400,top=0,left=0,toolbar=no,menubar=no,scrollbars=no, resizable=no,location=no, status=no');
 
+	}
 	$('form').submit(function() {
 		$('#btn-dialogBox').dialogBox({
 			hasClose: true,

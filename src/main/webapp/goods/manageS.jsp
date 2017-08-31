@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
           content="Admin panel developed with the Bootstrap from Twitter.">
-    <meta name="author" content="travis">
-
     <link href="<%=request.getContextPath()%>/css/bootstrap.css"
           rel="stylesheet">
     <link href="<%=request.getContextPath()%>/css/site.css" rel="stylesheet">
@@ -37,7 +35,7 @@
                 </div>
                 <table class="table table-striped table-bordered table-condensed">
                     <div class="search">
-                            <input type="text" class="search_key" name="key" placeholder="菜名搜索"
+                            <input type="text" class="search_key" name="key" placeholder="商品名搜索"
                                    target="_blank"  ><button class="search_key2" >搜索</button>
                     </div>
                     <thead>
@@ -45,9 +43,9 @@
                         <th>ID</th>
                         <th>商品名</th>
                         <th>
-                            <a  onclick="sortWare(1)"><i
+                            <a  onclick="sortWare('asc','price')"><i
                                     class="icon-arrow-up"></i> </a> <a
-                                onclick="sortWare(0)"><i
+                                onclick="sortWare('desc','price')"><i
                                 class="icon-arrow-down icon-blue"></i> </a>价格
                         </th>
                         <th>图片</th>
@@ -128,12 +126,12 @@
     var all;
 
     choose(page,url);
-    sortWare=function (way) {
+    sortWare=function (way,property) {
         $.ajax({
             url: url,
             type: "post",
             dataType: "json",
-            data: {sort: way,"PageInfo.pageNo":page},
+            data: {sort:property,order: way,"PageInfo.pageNo":page},
             success: function (data) {
                 var data1 = {dataList: data.obj.datalist}
                 var Str = template(templ, data1);

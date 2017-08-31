@@ -77,7 +77,7 @@ public class UserAction extends	BaseAction implements ModelDriven<UserInfo> {//ç
 	}
 	public void queryWay() {
 		map=new HashMap();
-		userInfoList= ((userService)service).getQueryForPage(pageInfo.getPageNo(),pageInfo.getPageSize());
+		userInfoList=  service.find(pageInfo.getPageNo(),pageInfo.getPageSize());
 		pageInfo.setAllpage(service.getcountTotalPage(pageInfo.getPageSize()));
 		map.put("datalist", userInfoList);
 		map.put("allpage",pageInfo.getAllpage());
@@ -88,8 +88,7 @@ public class UserAction extends	BaseAction implements ModelDriven<UserInfo> {//ç
 
 	}
 	public String queryedit() {
-		userInfo = (UserInfo) service.getById(getId());
-		log.info(userInfo+"======"+getId());
+		userInfo =(UserInfo) service.getById(getId());
 		 getRequest().setAttribute("uid", getId());
 		 getRequest().setAttribute("userinfo", userInfo);
 		return "edit";

@@ -4,7 +4,7 @@ package com.appcrews.javaee.maicai.model.base;
  * Created by micheal on 2017/8/23.
  */
 public class PageInfo {
-    private int pageNo;
+    private int pageNo=1;
     private final static int pageSize=5;
     private int allpage;
     public static PageInfo getPageInfo(){

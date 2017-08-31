@@ -4,16 +4,19 @@ import com.appcrews.javaee.maicai.model.base.DetailInfo;
 import com.appcrews.javaee.maicai.model.base.OrderInfo;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by micheal on 2017/2/22.
  */
-public interface orderService {
-    boolean queryUid(int id);//
-    List<DetailInfo> getListdetailorder(int ounm);
-    List<OrderInfo> getListorder();
-    List<OrderInfo> getqueryForPage(int pageNo,int pageSize);
-    int getcountTotalPage(int pagesize);
+public interface orderService extends baseService<OrderInfo> {
+    public OrderInfo getDetail(int id);
+    public void  wareDelete(int id,int wareid);
+//    public DetailInfo getDetailInfo(int id );
+//    List<DetailInfo> getListdetailorder(int ounm);
+//    List<OrderInfo> getListorder();
+//    List<OrderInfo> getqueryForPage(int pageNo,int pageSize);
+//    int getcountTotalPage(int pagesize);
 
 //    List<OrderInfo> getList(int index);
 //

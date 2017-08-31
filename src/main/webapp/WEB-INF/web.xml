@@ -25,7 +25,6 @@
   <listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-
 	<filter>
 		<filter-name>SessionFilter</filter-name>
 		<filter-class>com.appcrews.javaee.maicai.tool.LoginFilter</filter-class>

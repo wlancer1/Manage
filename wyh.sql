@@ -32,105 +32,104 @@ CREATE TABLE `admin` (
 
 insert  into `admin`(`id`,`account`,`password`,`power`) values (6,'account','7a57a5a743894a0e',1),(7,'123456','c15263e6b2c11344',1),(8,'admin','7a57a5a743894a0e',1);
 
-/*Table structure for table `buyer` */
-
-DROP TABLE IF EXISTS `buyer`;
-
-CREATE TABLE `buyer` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT COMMENT '买家的id',
-  `bname` varbinary(80) DEFAULT NULL COMMENT '姓名',
-  `btele` int(30) DEFAULT NULL COMMENT '联系方式',
-  `baddress` varbinary(80) DEFAULT NULL COMMENT '地址ID',
-  `bremark` varbinary(80) DEFAULT NULL COMMENT '备注',
-  `email` varbinary(20) DEFAULT NULL,
-  `bemail` varchar(255) DEFAULT NULL,
-  `bpassword` varchar(255) DEFAULT NULL,
-  `power` int(11) NOT NULL DEFAULT '2',
-  `status` int(11) NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2000004 DEFAULT CHARSET=utf8;
-
-/*Data for the table `buyer` */
-
-insert  into `buyer`(`ID`,`bname`,`btele`,`baddress`,`bremark`,`email`,`bemail`,`bpassword`,`power`,`status`) values (2000001,'(micheal',2147483647,NULL,NULL,'294634047@qq.com','',NULL,2,0),(2000003,'nishi',321321312,NULL,NULL,NULL,'294634047@qq.com',NULL,2,0);
-
 /*Table structure for table `detailorder` */
 
 DROP TABLE IF EXISTS `detailorder`;
 
 CREATE TABLE `detailorder` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `onum` int(11) NOT NULL COMMENT '消费记录ID',
-  `SCid` int(11) NOT NULL COMMENT '时间',
-  `SCnum` int(11) DEFAULT NULL COMMENT '数量',
   `wareid` int(11) NOT NULL,
-  `ID` int(11) NOT NULL,
-  `img` varchar(255) DEFAULT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `price` float NOT NULL,
-  `sum` float NOT NULL,
   `warenum` int(11) NOT NULL,
-  PRIMARY KEY (`onum`,`SCid`),
-  KEY `SCid` (`SCid`),
-  CONSTRAINT `detailorder_ibfk_3` FOREIGN KEY (`SCid`) REFERENCES `ware` (`fId`),
-  CONSTRAINT `detailorder_ibfk_4` FOREIGN KEY (`onum`) REFERENCES `order1` (`onum`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`),
+  KEY `onum` (`onum`),
+  KEY `wareid` (`wareid`),
+  CONSTRAINT `detailorder_ibfk_1` FOREIGN KEY (`onum`) REFERENCES `order1` (`onum`),
+  CONSTRAINT `detailorder_ibfk_2` FOREIGN KEY (`wareid`) REFERENCES `ware` (`fId`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 /*Data for the table `detailorder` */
+
+insert  into `detailorder`(`id`,`onum`,`wareid`,`warenum`) values (1,1,2,2),(2,1,4,2),(3,2,4,3);
 
 /*Table structure for table `order1` */
 
 DROP TABLE IF EXISTS `order1`;
 
 CREATE TABLE `order1` (
-  `onum` int(11) NOT NULL COMMENT '订单号',
+  `onum` int(11) NOT NULL AUTO_INCREMENT COMMENT '订单号',
   `otime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '订单时间',
-  `salerID` int(11) DEFAULT NULL COMMENT '卖家ID',
-  `Stime` timestamp NULL DEFAULT '0000-00-00 00:00:00' COMMENT '发货时间',
+  `sid` int(11) NOT NULL COMMENT '商铺id',
+  `stime` timestamp NULL DEFAULT '0000-00-00 00:00:00' COMMENT '发货时间',
   `oremark` varbinary(80) DEFAULT NULL COMMENT '订单备注',
-  `buyerID` int(11) DEFAULT NULL COMMENT '买家的ID',
-  `userID` int(11) NOT NULL,
+  `uid` int(11) NOT NULL COMMENT '用户id',
   PRIMARY KEY (`onum`),
-  KEY `userID` (`salerID`),
-  KEY `buyerID` (`buyerID`),
-  CONSTRAINT `order1_ibfk_2` FOREIGN KEY (`buyerID`) REFERENCES `buyer` (`ID`),
-  CONSTRAINT `order1_ibfk_3` FOREIGN KEY (`salerID`) REFERENCES `saler` (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  KEY `order1_ibfk_3` (`sid`),
+  KEY `uid` (`uid`),
+  CONSTRAINT `order1_ibfk_3` FOREIGN KEY (`sid`) REFERENCES `shop` (`sid`),
+  CONSTRAINT `order1_ibfk_4` FOREIGN KEY (`uid`) REFERENCES `user` (`uid`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 /*Data for the table `order1` */
 
-/*Table structure for table `saler` */
+insert  into `order1`(`onum`,`otime`,`sid`,`stime`,`oremark`,`uid`) values (1,'2017-08-15 09:51:59',0,'2017-08-28 09:52:12',NULL,2),(2,'2017-08-08 12:54:24',3,'2017-08-23 12:54:33',NULL,3);
 
-DROP TABLE IF EXISTS `saler`;
+/*Table structure for table `shop` */
 
-CREATE TABLE `saler` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(80) DEFAULT NULL COMMENT '账号',
-  `password` varchar(80) DEFAULT NULL COMMENT '密码',
-  `email` varchar(80) DEFAULT NULL COMMENT '邮箱',
-  `saddress` varchar(50) DEFAULT NULL,
-  `tele` int(30) DEFAULT NULL,
-  `power` int(11) NOT NULL DEFAULT '1',
-  `status` int(11) NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=1000005 DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `shop`;
 
-/*Data for the table `saler` */
+CREATE TABLE `shop` (
+  `sid` int(5) NOT NULL AUTO_INCREMENT,
+  `name` char(11) NOT NULL,
+  `uid` int(5) NOT NULL,
+  PRIMARY KEY (`sid`,`uid`),
+  UNIQUE KEY `name` (`name`),
+  KEY `uid` (`uid`),
+  CONSTRAINT `shop_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `user` (`uid`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
-insert  into `saler`(`ID`,`username`,`password`,`email`,`saddress`,`tele`,`power`,`status`) values (1000001,'wyh','123','weqwe','浙江商业职业技术学院',2147483647,1,0),(1000002,'小强','ewe','29444@11.','comewwewewwe',12323232,1,0),(1000003,'(micheal',NULL,'294634047@qq.com',NULL,2147483647,1,0);
+/*Data for the table `shop` */
+
+insert  into `shop`(`sid`,`name`,`uid`) values (0,'meimei',1),(3,'meimei2',1);
 
 /*Table structure for table `type` */
 
 DROP TABLE IF EXISTS `type`;
 
 CREATE TABLE `type` (
-  `fType` varchar(8) NOT NULL COMMENT '名字',
-  `t-remark` varbinary(80) DEFAULT NULL COMMENT '备注',
-  PRIMARY KEY (`fType`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `typeid` int(11) NOT NULL AUTO_INCREMENT,
+  `type` varchar(8) NOT NULL COMMENT '名字',
+  `tremark` varbinary(80) DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY (`typeid`,`type`),
+  UNIQUE KEY `type` (`type`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 /*Data for the table `type` */
 
-insert  into `type`(`fType`,`t-remark`) values ('sdfsd','1'),('双子类','11'),('叶子类','32'),('水果','1'),('花类','22'),('蕨类','123');
+insert  into `type`(`typeid`,`type`,`tremark`) values (2,'双子类','11'),(3,'叶子类','32'),(4,'水果','1'),(5,'花类','22'),(6,'蕨类','123'),(7,'双子叶',NULL),(15,'双子类2',NULL);
+
+/*Table structure for table `user` */
+
+DROP TABLE IF EXISTS `user`;
+
+CREATE TABLE `user` (
+  `uid` int(5) NOT NULL AUTO_INCREMENT,
+  `username` char(20) NOT NULL,
+  `password` char(20) DEFAULT NULL,
+  `email` char(20) DEFAULT NULL,
+  `phone` int(11) DEFAULT NULL,
+  `address` char(30) DEFAULT NULL,
+  `status` int(2) DEFAULT '0',
+  `power` int(2) DEFAULT '0',
+  `remark` varbinary(30) DEFAULT NULL,
+  `sid` int(11) NOT NULL,
+  PRIMARY KEY (`uid`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+
+/*Data for the table `user` */
+
+insert  into `user`(`uid`,`username`,`password`,`email`,`phone`,`address`,`status`,`power`,`remark`,`sid`) values (1,'michealy2',NULL,'294634047@qq.com',132312324,'ssdsd',0,1,'32eweq',0),(2,'努努2','346993nunu','160063@qq.com',66360691,NULL,0,0,NULL,0),(3,'努努3','142658nunu','219309@qq.com',41572232,NULL,0,0,NULL,0),(4,'努努4','230688nunu','617098@qq.com',3168743,NULL,0,0,NULL,0),(5,'努努5','446250nunu','582528@qq.com',24022563,NULL,0,0,NULL,0),(6,'努努6','541632nunu','833724@qq.com',28935193,NULL,0,0,NULL,0),(7,'努努7','866941nunu','961753@qq.com',1506369,NULL,0,0,NULL,0),(8,'努努8','868281nunu','739888@qq.com',97082709,NULL,0,0,NULL,0),(9,'努努9','606707nunu','524878@qq.com',75741628,NULL,0,0,NULL,0);
 
 /*Table structure for table `ware` */
 
@@ -141,16 +140,19 @@ CREATE TABLE `ware` (
   `fName` varchar(20) DEFAULT NULL COMMENT '名称',
   `fPrice` float DEFAULT NULL COMMENT '价格',
   `fImg` varchar(800) DEFAULT NULL COMMENT '图片名称',
-  `fType` varchar(8) NOT NULL COMMENT '菜的类别',
+  `fType` int(8) NOT NULL COMMENT '菜的类别',
   `fRemark` varchar(80) DEFAULT NULL COMMENT '备注',
+  `sid` int(5) DEFAULT NULL,
   PRIMARY KEY (`fId`,`fType`),
   KEY `fType` (`fType`),
-  CONSTRAINT `ware_ibfk_1` FOREIGN KEY (`fType`) REFERENCES `type` (`fType`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+  KEY `sid` (`sid`),
+  CONSTRAINT `ware_ibfk_1` FOREIGN KEY (`fType`) REFERENCES `type` (`typeid`),
+  CONSTRAINT `ware_ibfk_2` FOREIGN KEY (`sid`) REFERENCES `shop` (`sid`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 /*Data for the table `ware` */
 
-insert  into `ware`(`fId`,`fName`,`fPrice`,`fImg`,`fType`,`fRemark`) values (2,'白菜',23,'icon_car1.png','花类','你知道的'),(4,'茄子',232,'mn.jpg','花类','2323'),(5,'we',123,'null','sdfsd','22'),(9,'sss',5,'null','sdfsd','111'),(10,'ewwqe',55,'null','sdfsd','111');
+insert  into `ware`(`fId`,`fName`,`fPrice`,`fImg`,`fType`,`fRemark`,`sid`) values (2,'白菜',23.1,'',2,'你知道的',0),(4,'茄子',232,'mn.jpg',2,'2323',0),(5,'we',123,'null',2,'22',0),(9,'水果',15,'',2,'111',0),(10,'ewwqe',55,'null',2,'111',0),(11,'das',123,NULL,2,'dssad',0),(12,'sds',44,NULL,2,'dsd',NULL),(13,'jjj',55,NULL,2,'ss',NULL),(14,'jjj4',55,NULL,2,'ss',NULL),(15,'dasd',55,NULL,2,'sdsd',NULL),(16,'dsas',33,NULL,2,'sds',NULL),(17,'dsd',33,NULL,2,'ss',NULL);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
