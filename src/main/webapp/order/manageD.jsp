@@ -46,6 +46,7 @@
 							<thead>
 								<tr>
 									<th>订单号</th>
+									<%--<th>买家</th>--%>
 									<th>下单时间</th>
 									<th>发货时间</th>
 									<th>备注</th>
@@ -115,7 +116,7 @@
 					<i
 					class="icon-print"></i>打印订单</a>
 			<a
-					href="<%=request.getContextPath()%>/order/deletorder_order.html?id={{data.onum}}"/>"<i
+					href="<%=request.getContextPath()%>/order/deletorder_order.html?id={{data.onum}}"><i
 					class="icon-trash"></i> 删除</a>
 		</td>
 	</tr>
