@@ -163,5 +163,19 @@
             </interceptor-ref>
         </action>
     </package>
+    <package
+            name="shop"
+            extends="struts-default"
+            namespace="/shop">
+        <action
+                name="*_shop"
+                class="com.appcrews.javaee.maicai.action.ShopAction"
+                method="{1}">
+            <result
+                    name="success">
+                ../shop/shops.jsp
+            </result>
+                </action>
 
+            </package>
 </struts>

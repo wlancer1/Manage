@@ -60,7 +60,7 @@
 												<s:property value="wareInfo.name"/>
 										</td>
 									<td value="<s:property value="wareInfo.price" />"><s:property value="wareInfo.price" />RMB</td>
-									<td><select onchange="showtable()""
+									<td><select onchange="showtable()"
 										style="WIDTH: 50px">
 										<option selected="selected">
 													<s:property value="wareInfo.warenum" />

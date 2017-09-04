@@ -13,15 +13,12 @@
 <meta name="description"
 	content="Admin panel developed with the Bootstrap from Twitter.">
 
-
-<link href="<%=request.getContextPath()%>/css/bootstrap.css"
-	rel="stylesheet">
-<link href="<%=request.getContextPath()%>/css/site.css" rel="stylesheet">
-<link href="<%=request.getContextPath()%>/css/bootstrap-responsive.css"
-	rel="stylesheet">
+	<link href="<%=request.getContextPath()%>/css/bootstrap.css" rel="stylesheet">
+	<link href="<%=request.getContextPath()%>/css/site.css" rel="stylesheet">
+	<link href="<%=request.getContextPath()%>/css/bootstrap-responsive.css" rel="stylesheet">
 <script async="" src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <!--[if lt IE 9]>
-      <script src="js/html5.js"></script>
+      <script src="../js/html5.js"></script>
     <![endif]-->
 	<script type="text/javascript" src="/js/jquery-3.1.1.js"></script>
 	<script type="text/javascript" src="/js/arttemp.js"></script>

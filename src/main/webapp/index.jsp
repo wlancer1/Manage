@@ -90,6 +90,6 @@
 </div>
 
 
-<script src="<%=request.getContextPath()%>/js/bootstrap.min.js"></script>
+<%--<script src="<%=request.getContextPath()%>/js/bootstrap.min.js"></script>--%>
 </body>
 </html>
