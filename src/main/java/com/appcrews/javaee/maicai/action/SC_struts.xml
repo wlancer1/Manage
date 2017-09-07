@@ -3,6 +3,12 @@
         "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
+<!--webservice-->
+    <!--<package name="ws" extends="struts-default" namespace="/ws">-->
+        <!--<action name="*">-->
+            <!--<result>{1}</result>-->
+        <!--</action>-->
+    <!--</package>-->
     <!--//登录-->
     <package
             name="login"

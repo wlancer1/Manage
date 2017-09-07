@@ -7,12 +7,39 @@
           <element id="module-output" name="maicai" />
         </element>
         <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: org.apache.cxf:cxf-rt-frontend-jaxws:2.7.5" />
+          <element id="library" level="project" name="Maven: xml-resolver:xml-resolver:1.2" />
+          <element id="library" level="project" name="Maven: asm:asm:3.3.1" />
+          <element id="library" level="project" name="Maven: org.apache.cxf:cxf-api:2.7.5" />
+          <element id="library" level="project" name="Maven: org.codehaus.woodstox:woodstox-core-asl:4.2.0" />
+          <element id="library" level="project" name="Maven: org.codehaus.woodstox:stax2-api:3.1.1" />
+          <element id="library" level="project" name="Maven: org.apache.ws.xmlschema:xmlschema-core:2.0.3" />
+          <element id="library" level="project" name="Maven: org.apache.geronimo.specs:geronimo-javamail_1.4_spec:1.7.1" />
+          <element id="library" level="project" name="Maven: wsdl4j:wsdl4j:1.6.3" />
+          <element id="library" level="project" name="Maven: org.apache.cxf:cxf-rt-core:2.7.5" />
+          <element id="library" level="project" name="Maven: com.sun.xml.bind:jaxb-impl:2.1.13" />
+          <element id="library" level="project" name="Maven: org.apache.cxf:cxf-rt-bindings-soap:2.7.5" />
+          <element id="library" level="project" name="Maven: org.apache.cxf:cxf-rt-databinding-jaxb:2.7.5" />
+          <element id="library" level="project" name="Maven: org.apache.cxf:cxf-rt-bindings-xml:2.7.5" />
+          <element id="library" level="project" name="Maven: org.apache.cxf:cxf-rt-frontend-simple:2.7.5" />
+          <element id="library" level="project" name="Maven: org.apache.cxf:cxf-rt-ws-addr:2.7.5" />
+          <element id="library" level="project" name="Maven: org.apache.cxf:cxf-rt-ws-policy:2.7.5" />
+          <element id="library" level="project" name="Maven: org.apache.neethi:neethi:3.0.2" />
+          <element id="library" level="project" name="Maven: org.apache.cxf:cxf-rt-transports-http:2.7.5" />
+          <element id="library" level="project" name="Maven: org.apache.cxf:cxf-rt-transports-http-jetty:2.7.5" />
+          <element id="library" level="project" name="Maven: org.eclipse.jetty:jetty-server:8.1.7.v20120910" />
+          <element id="library" level="project" name="Maven: org.eclipse.jetty:jetty-continuation:8.1.7.v20120910" />
+          <element id="library" level="project" name="Maven: org.eclipse.jetty:jetty-http:8.1.7.v20120910" />
+          <element id="library" level="project" name="Maven: org.eclipse.jetty:jetty-io:8.1.7.v20120910" />
+          <element id="library" level="project" name="Maven: org.eclipse.jetty:jetty-util:8.1.7.v20120910" />
+          <element id="library" level="project" name="Maven: org.eclipse.jetty:jetty-security:8.1.7.v20120910" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.5" />
+          <element id="library" level="project" name="Maven: org.apache.geronimo.specs:geronimo-servlet_3.0_spec:1.0" />
           <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-api:2.0.2" />
           <element id="library" level="project" name="Maven: com.alibaba:fastjson:1.1.37" />
           <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-core:2.0.2" />
           <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-jcl:2.0.2" />
           <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-slf4j-impl:2.0.2" />
-          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.7" />
           <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-taglib:2.0.2" />
           <element id="library" level="project" name="Maven: junit:junit:4.10" />
           <element id="library" level="project" name="Maven: org.hamcrest:hamcrest-core:1.1" />
@@ -52,7 +79,6 @@
           <element id="library" level="project" name="Maven: org.apache.struts:struts2-spring-plugin:2.3.32" />
           <element id="library" level="project" name="Maven: org.apache.struts:struts2-core:2.3.32" />
           <element id="library" level="project" name="Maven: org.apache.struts.xwork:xwork-core:2.3.32" />
-          <element id="library" level="project" name="Maven: asm:asm:3.3" />
           <element id="library" level="project" name="Maven: asm:asm-commons:3.3" />
           <element id="library" level="project" name="Maven: asm:asm-tree:3.3" />
           <element id="library" level="project" name="Maven: org.freemarker:freemarker:2.3.22" />

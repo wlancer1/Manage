@@ -22,9 +22,19 @@
 		<param-name>contextConfigLocation</param-name>
 	<param-value>classpath:/applicationContext.xml</param-value>
 </context-param>
+	<!--cxfservlet-->
+	<servlet-mapping>
+		<servlet-name>cxfServlet</servlet-name>
+		<url-pattern>/ws/*</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>cxfServlet</servlet-name>
+		<servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
+	</servlet>
   <listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
+	<!--登陆拦截-->
 	<filter>
 		<filter-name>SessionFilter</filter-name>
 		<filter-class>com.appcrews.javaee.maicai.tool.LoginFilter</filter-class>

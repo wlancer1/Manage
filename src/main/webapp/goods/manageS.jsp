@@ -24,18 +24,22 @@
     <div class="row-fluid">
         <%@ include file="/bar.jsp" %>
         <div class="span9">
-            <div class="row-fluid">
+            <tr class="row-fluid">
                 <div class="page-header">
                     <h1>
                         商品
                         <small>所有商品</small>
                     </h1>
                 </div>
+         <div>
+                    <input type="text" class="search_key" name="key" placeholder="商品名搜索"
+                           target="_blank"  >
+
+            <button class="search_key2" >搜索</button>
+             </div>
+
                 <table class="table table-striped table-bordered table-condensed">
-                    <div class="search">
-                            <input type="text" class="search_key" name="key" placeholder="商品名搜索"
-                                   target="_blank"  ><button class="search_key2" >搜索</button>
-                    </div>
+
                     <thead>
                     <tr>
                         <th>ID</th>

@@ -8,6 +8,7 @@
 	<properties>
 		<log4j.version>2.0.2</log4j.version>
 		<spring.framework.version>3.1.4.RELEASE</spring.framework.version>
+		<cxf.version>2.7.5</cxf.version>
 	</properties>
 		<build>
 			<resources>
@@ -47,6 +48,22 @@
 	</build>
 
 	<dependencies>
+		<!--cxf-->
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-frontend-jaxws</artifactId>
+			<version>${cxf.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-transports-http</artifactId>
+			<version>${cxf.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-transports-http-jetty</artifactId>
+			<version>${cxf.version}</version>
+		</dependency>
 		<!-- log4j2 -->
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>

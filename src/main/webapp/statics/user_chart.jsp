@@ -24,7 +24,7 @@
     <div class="row-fluid">
         <%@ include file="/bar.jsp"%>
         <div class="span9">
-            <div id="container" style="min-width:400px;height:400px"></div>
+            <div id="container" style="min-width:400px;height:400px" ></div>
         </div>
     </div>
 
@@ -33,6 +33,9 @@
 
 </div>
 <script>
+    var bar = document.getElementById("bar");
+    var list = bar.getElementsByTagName("li");
+    list[6].setAttribute("class", "active");
     $(function () {
         $('#container').highcharts({
             chart: {
@@ -41,7 +44,7 @@
                 plotShadow: false
             },
             title: {
-                text: '2014 某网站各浏览器浏览量占比'
+                text: '用户激活数和有店铺的用户数 占比'
             },
             tooltip: {
                 headerFormat: '{series.name}<br>',
@@ -76,11 +79,32 @@
                     ['Opera',     6.2],
                     ['其他',   0.7]
                 ]
-            }]
+            },
+                {
+                        type: 'pie',
+                        name: 'Browser share',
+                        center: [700, null],
+                        size: 100,
+                        // dataLabels: {
+                        //     enabled: false
+                        // },
+                        showInLegend: true,
+                        data: [
+                            // ['Firefox',   45.0],
+                            // ['IE',       26.8],
+                            // {
+                            //     name: 'Chrome',
+                            //     y: 12.8,
+                            //     sliced: true,
+                            //     selected: true
+                            // },
+                            ['Safari',    8.5],
+                            // ['Opera',     6.2],
+                            ['Others',   0.7]
+                        ]
+                }]
         });
     });
-</script>
-
-<script src="<%=request.getContextPath()%>/js/bootstrap.min.js"></script>
+    </script>
 </body>
 </html>
