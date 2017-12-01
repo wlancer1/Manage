@@ -10,6 +10,7 @@ import java.util.List;
 public interface User {
     List<UserInfo> getListUser();
     List<UserInfo> getListUser(int pageNo, int pageSize);
+    UserInfo getUserInfo(String account);
 
 
 }
