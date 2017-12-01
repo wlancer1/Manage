@@ -15,7 +15,7 @@
             extends="struts-default"
             namespace="/login">
 
-        <action name="*_index" class="loginAction" method="{1}">
+        <action name="*_index" class="com.appcrews.javaee.maicai.action.LoginAction" method="{1}">
             <result name="success">
                     /index.jsp
             </result>
