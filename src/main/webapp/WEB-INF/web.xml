@@ -40,7 +40,7 @@
 		<filter-class>com.appcrews.javaee.maicai.tool.LoginFilter</filter-class>
 		<init-param>
 			<param-name>logonStrings</param-name><!-- 对登录页面不进行过滤 -->
-			<param-value>/login.jsp;/login/login_index.html</param-value>
+			<param-value>/login.jsp;/login/login_index.html;</param-value>
 		</init-param>
 		<init-param>
 			<param-name>includeStrings</param-name><!-- 只对指定过滤参数后缀进行过滤 -->

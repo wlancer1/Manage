@@ -8,5 +8,6 @@
 	<constant name="struts.devMode" value="true"></constant>
 <constant name="struts.custom.i18n.resources" value="/fileupload"></constant>
   <include file="com/appcrews/javaee/maicai/action/sc_struts.xml"></include>
+	<include file="com/appcrews/javaee/maicai/api/api_struts.xml"></include>
    
 </struts>

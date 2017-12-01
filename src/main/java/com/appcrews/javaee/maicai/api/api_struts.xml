@@ -5,26 +5,23 @@
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
+
     <package
-            name="user"
+            name="api"
             extends="struts-default"
             namespace="/api">
+        <action
+                name="*_data"
+                class="com.appcrews.javaee.maicai.api.DataAction"
+                method="{1}">
+            <result name="success">
+                /index.jsp
+            </result>
+        </action>
         <action
                 name="*_user"
                 class="com.appcrews.javaee.maicai.api.UserAction"
                 method="{1}">
         </action>
-
-    </package>
-    <package
-            name="data"
-            extends="struts-default"
-            namespace="/api">
-        <action
-                name="*_data"
-                class="com.appcrews.javaee.maicai.api.UserAction"
-                method="{1}">
-        </action>
-
     </package>
 </struts>

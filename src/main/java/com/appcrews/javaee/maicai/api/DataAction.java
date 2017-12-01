@@ -15,7 +15,7 @@ import java.util.Map;
 
 @SuppressWarnings("serial")
 @Scope("prototype")
-@Controller("apiData")
+@Controller()
 public class DataAction extends BaseAction implements ModelDriven<WareInfo> {
 
     private WareInfo info = new WareInfo();
@@ -44,6 +44,9 @@ public class DataAction extends BaseAction implements ModelDriven<WareInfo> {
         json.setMsg("成功！");
         json.setObj(map);
         writeJson(json);
+    }
+    public String test(){
+        return  "success";
     }
 
 

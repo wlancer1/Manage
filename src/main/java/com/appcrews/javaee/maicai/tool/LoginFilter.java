@@ -48,7 +48,7 @@ public class LoginFilter implements Filter{
             return;
         }
 
-        if (this.isContains(hrequest.getRequestURI(), logonList)) {// 对登录页面不进行过滤
+        if (this.isContains(hrequest.getRequestURI(), logonList)||hrequest.getRequestURI().indexOf("api")>0) {// 对登录页面不进行过滤
             chain.doFilter(request, response);
             return;
         }
