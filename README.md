@@ -13,13 +13,6 @@
 maven配置：
 
 ```
- <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.appcrews.javaee</groupId>
-	<artifactId>maicai</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
 	<properties>
 		<log4j.version>2.0.2</log4j.version>
 		<spring.framework.version>3.1.4.RELEASE</spring.framework.version>
@@ -255,11 +248,5 @@ maven配置：
 			<version>3.2.1</version>
 		</dependency>
 
-
-
 	</dependencies>
-	
-
-
-</project>
 ```
