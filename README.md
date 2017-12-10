@@ -9,16 +9,6 @@
 ### 设计思想：
 （采用了MVC的设计思想） 界面和服务器交互模式 视图层 ( V ): HTML + js HTML界面 控制层 ( C ): Servlet （struts2框架） —>Servlet(Controller,Service,Dao) 业务层 ( M ): Service 数据处理层 ( M ): Dao 功能模块：登录管理、商品信息管理、订单管理 
 
- ```
- <script src="http://flowchart.js.org/flowchart-latest.js"></script>
-        <!-- <script src="../release/flowchart.min.js"></script> -->
-        <script>
-```
-st=>start: Start
-e=>end: End
-op1=>operation: My Operation
-sub1=>subroutine: My Subroutine
-cond=>condition: Yes or No?
-io=>inputoutput: catch something...
+
 
 
