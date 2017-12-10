@@ -10,7 +10,7 @@
 （采用了MVC的设计思想） 界面和服务器交互模式 视图层 ( V ): HTML + js HTML界面 控制层 ( C ): Servlet （struts2框架） —>Servlet(Controller,Service,Dao) 业务层 ( M ): Service 数据处理层 ( M ): Dao 功能模块：登录管理、商品信息管理、订单管理 
 
 ### 所引用的包：
-maven配置
+maven配置：
 
 ```
  <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -122,9 +122,6 @@ maven配置
 			<scope>runtime</scope>
 		</dependency>
 
-
-
-
 	<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
@@ -235,16 +232,6 @@ maven配置
 			<artifactId>cglib-nodep</artifactId>
 			<version>2.1_3</version>
 		</dependency>
-
-		<!--&lt;!&ndash; https://mvnrepository.com/artifact/aspectj/aspectjrt &ndash;&gt;-->
-		<!--<dependency>-->
-			<!--<groupId>aspectj</groupId>-->
-			<!--<artifactId>aspectjrt</artifactId>-->
-			<!--<version>1.2.1</version>-->
-		<!--</dependency>-->
-
-
-
 		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
