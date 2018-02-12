@@ -23,5 +23,10 @@
                 class="com.appcrews.javaee.maicai.api.UserAction"
                 method="{1}">
         </action>
+        <action
+                name="*_order"
+                class="com.appcrews.javaee.maicai.api.OrderAction"
+                method="{1}">
+        </action>
     </package>
 </struts>

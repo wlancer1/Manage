@@ -30,6 +30,10 @@ public class orderServiceImp extends baseServiceImp<OrderInfo> implements orderS
 //        return this.order.getList(index);
 //    }
 
+    @Override
+    public List<OrderInfo> getByuserId(int uid) {
+        return order.queryUid(uid);
+    }
 
 
 //    @Override
@@ -62,4 +66,8 @@ public class orderServiceImp extends baseServiceImp<OrderInfo> implements orderS
         order.deleteDetail(id,wareid);
     }
 
+    @Override
+    public void CreateOrder(OrderInfo orderInfo) {
+
+    }
 }

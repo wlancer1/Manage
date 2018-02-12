@@ -1,8 +1,11 @@
 package com.appcrews.javaee.maicai.model.base;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -12,12 +15,11 @@ public class OrderInfo implements Serializable {
 
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public int getOnum() {
+	public String getOnum() {
 		return onum;
 	}
 
-	public void setOnum(int onum) {
+	public void setOnum(String onum) {
 		this.onum = onum;
 	}
 
@@ -47,6 +49,7 @@ public class OrderInfo implements Serializable {
 
 	@OneToMany
 	@JoinColumn(name = "onum" )
+	@Cascade(value={org.hibernate.annotations.CascadeType.ALL})
 	public Set<DetailInfo> getDetailInfo() {
 		return detailInfo;
 	}
@@ -71,8 +74,9 @@ public class OrderInfo implements Serializable {
 		this.sid = sid;
 	}
 
-	private  int uid, sid,onum;
-	private Set<DetailInfo> detailInfo;
+	private  int uid, sid;
+	private String onum;
+	private Set<DetailInfo> detailInfo=new HashSet<DetailInfo>();
 	private String oremark;
 	private Timestamp otime, stime;
 }

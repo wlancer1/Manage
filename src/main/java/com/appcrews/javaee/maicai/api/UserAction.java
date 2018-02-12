@@ -60,6 +60,14 @@ public class UserAction extends BaseAction implements ModelDriven<UserInfo> {//ç
 		writeJson(json);
 
 	}
+	public  void queryUser(){
+		Json json = new Json();
+		userInfo=((userService) service).getById(userInfo.getUid());
+		json.setSuccess(true);
+		BaseConfig.setHeader(getResponse());
+		json.setObj(userInfo);
+		writeJson(json);
+	}
 
 
 

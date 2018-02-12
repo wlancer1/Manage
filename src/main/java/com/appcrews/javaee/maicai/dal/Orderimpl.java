@@ -49,8 +49,9 @@ public class Orderimpl implements Order {
 		baseDaoI.executeHql(hql);
 	}
 
-
-
-
-
+	@Override
+	public List<OrderInfo> queryUid(int uid) {
+		String hql="from OrderInfo  WHERE uid ="+uid;
+		return baseDaoI.find(hql);
+	}
 }

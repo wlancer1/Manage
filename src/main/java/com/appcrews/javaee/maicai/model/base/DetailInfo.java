@@ -6,7 +6,8 @@ import java.io.Serializable;
 @Entity
 @Table(name = "detailorder")
 public class DetailInfo implements Serializable {
-	private int onum, wareid, warenum,id;
+	private int  wareid, warenum,id;
+	private String onum;
 	private WareInfo wareInfo;
 
 //	private OrderInfo orderInfo;
@@ -40,11 +41,13 @@ public class DetailInfo implements Serializable {
 		this.wareInfo = wareInfo;
 	}
 
-	public int getOnum() {
+//	@OneToMany
+
+	public String getOnum() {
 		return onum;
 	}
 
-	public void setOnum(int ounm) {
+	public void setOnum(String ounm) {
 		this.onum=ounm;
 	}
 

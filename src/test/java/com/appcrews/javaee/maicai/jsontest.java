@@ -1,6 +1,8 @@
 package com.appcrews.javaee.maicai;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.appcrews.javaee.maicai.model.easyui.Json;
 import com.appcrews.javaee.maicai.tool.FastjsonFilter;
@@ -17,10 +19,22 @@ public class jsontest {
 
     @Test
     public void test(){
-        Json j=new Json();
-        j.setSuccess(true);
-        j.setMsg("成功");
-        writeJsonByFilter(j,null,null);
+//        Json j=new Json();
+//        j.setSuccess(true);
+//        j.setMsg("成功");
+//        writeJsonByFilter(j,null,null);
+
+        String s="["+"{\"order\":[{\"fid\":10,\"img\":\"null\",\"name\":\"ewwqe\",\"price\":55,\"remark\":\"111\",\"type\":0,\"typeInfo\":{\"remark\":\"11\",\"type\":\"双子类\",\"typeid\":2},\"num\":2},{\"fid\":9,\"img\":\"\",\"name\":\"水果\",\"price\":15,\"remark\":\"111\",\"type\":0,\"typeInfo\":{\"remark\":\"11\",\"type\":\"双子类\",\"typeid\":2},\"num\":1}],\"uid\":\"1\"}"+"]";
+//        s=s.substring(9,s.length()-1);
+
+
+        JSONArray jsonArray = JSON.parseArray(s);//并将DS内容取出转为json数组
+        System.out.println(jsonArray.getJSONObject(0).getString("order"));
+//        for (int i = 0; i < jsonArray.size(); i++) {     //遍历json数组内容
+//            JSONObject object = jsonArray.getJSONObject(i);
+//            System.out.println(object.getString("fid")+"======"+object.getString("num"));
+//
+//        }
 
     }
     public void writeJsonByFilter(Object object, String[] includesProperties,

@@ -4,9 +4,11 @@ package com.appcrews.javaee.maicai;
 
 import com.appcrews.javaee.maicai.dal.Admin;
 import com.appcrews.javaee.maicai.dal.BaseDaoI;
+import com.appcrews.javaee.maicai.dal.Order;
 import com.appcrews.javaee.maicai.model.base.AdminInfo;
 import com.appcrews.javaee.maicai.model.base.DetailInfo;
 import com.appcrews.javaee.maicai.model.base.OrderInfo;
+import com.appcrews.javaee.maicai.model.base.WareInfo;
 import com.appcrews.javaee.maicai.tool.HqlFilter;
 import com.appcrews.javaee.maicai.tool.MD5;
 import org.apache.logging.log4j.LogManager;
@@ -24,10 +26,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 
 /**
@@ -40,6 +39,8 @@ public class testmysql{
     @Autowired
     Admin admin;
     AdminInfo adminInfo;
+    @Autowired
+    Order order;
     @Autowired
     BaseDaoI baseDaoI;
     List<OrderInfo> OrderList;
@@ -118,10 +119,32 @@ public class testmysql{
     @Test
     @Rollback(false)
     public void  ormtest(){
+        OrderInfo orderInfo=new OrderInfo();
+            DetailInfo detailInfo=new DetailInfo();
+//        Set<DetailInfo> detailInfos=new HashSet<DetailInfo>();
+        String onum=System.currentTimeMillis()%1000000+"100001";
+        orderInfo.setOnum(onum);
+        orderInfo.setUid(1);
+//        String hql = "select distinct t from OrderInfo t";
+//        OrderList=baseDaoI.find(hql,1,5);
+//        detailInfo=OrderList.get(1).getDetailInfo();
+//        log.info(detailInfo);
+        detailInfo.setOnum(onum);
+        detailInfo.setWareid(2);
+        detailInfo.setWarenum(5);
+//        detailInfo.setWareInfo((WareInfo) baseDaoI.get(WareInfo.class,2));
+        orderInfo.getDetailInfo().add(detailInfo);
+//        log.info(detailInfos);
+//        orderInfo.setDetailInfo(detailInfos);
+        baseDaoI.save(orderInfo);
 
-        String hql = "select distinct t from OrderInfo t";
-        OrderList=baseDaoI.find(hql,1,5);
-        detailInfo=OrderList.get(1).getDetailInfo();
-        log.info(detailInfo);
+    }
+
+    @Transactional
+    @Test
+    @Rollback(false)
+    public void hqltest(){
+        order.queryUid(1);
+
     }
 }

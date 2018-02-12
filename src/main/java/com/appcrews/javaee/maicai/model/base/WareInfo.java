@@ -20,6 +20,7 @@ public class WareInfo implements Serializable {
 	private float price;
 	private String img = "", remark;
 	private  TypeInfo typeInfo;
+	private  int num;
 
 	public void setTypeInfo(TypeInfo typeInfo) {
 		this.typeInfo = typeInfo;
