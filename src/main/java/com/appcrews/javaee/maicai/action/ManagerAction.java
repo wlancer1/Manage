@@ -82,6 +82,7 @@ public class ManagerAction extends BaseAction implements ModelDriven<WareInfo> {
         Json json = new Json();
         HqlFilter hqlFilter=new HqlFilter();
         hqlFilter.addFilter("QUERY_t#name_S_LK",key);
+
         WareInfoList =service.findByFilter(hqlFilter,pageInfo.getPageNo(),pageInfo.getPageSize());
         map.put("datalist", WareInfoList);
         map.put("allpage", 1);

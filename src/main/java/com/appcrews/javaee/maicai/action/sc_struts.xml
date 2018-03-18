@@ -184,4 +184,12 @@
                 </action>
 
             </package>
+    <package name="statics"  extends="struts-default" namespace="/statics">
+        <action name="*_statics" class="com.appcrews.javaee.maicai.action.StaticsAction" method="{1}">
+            <result name="success">
+                ../statics/user_chart.jsp
+            </result>
+
+        </action>
+    </package>
 </struts>

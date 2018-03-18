@@ -1,271 +1,272 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="shujub@localhost">
-  <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
-    <schema id="1" name="shujub">
-      <visible>1</visible>
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.7">
+    <root id="1"/>
+    <schema id="2" parent="1" name="shujub">
+      <Visible>1</Visible>
     </schema>
-    <schema id="2" name="information_schema"/>
-    <schema id="3" name="mysql"/>
-    <schema id="4" name="performance_schema"/>
-    <schema id="5" name="test"/>
-    <table id="6" parent="1" name="admin"/>
-    <table id="7" parent="1" name="detailorder"/>
-    <table id="8" parent="1" name="order1"/>
-    <table id="9" parent="1" name="type"/>
-    <table id="10" parent="1" name="ware"/>
-    <table id="11" parent="1" name="shop"/>
-    <table id="12" parent="1" name="user"/>
-    <column id="13" parent="6" name="id">
-      <mandatory>1</mandatory>
-      <data-type>int(11)|0</data-type>
-      <sequence-identity>1</sequence-identity>
+    <schema id="3" parent="1" name="information_schema"/>
+    <schema id="4" parent="1" name="mysql"/>
+    <schema id="5" parent="1" name="performance_schema"/>
+    <schema id="6" parent="1" name="test"/>
+    <table id="7" parent="2" name="admin"/>
+    <table id="8" parent="2" name="detailorder"/>
+    <table id="9" parent="2" name="order1"/>
+    <table id="10" parent="2" name="type"/>
+    <table id="11" parent="2" name="ware"/>
+    <table id="12" parent="2" name="shop"/>
+    <table id="13" parent="2" name="user"/>
+    <column id="14" parent="7" name="id">
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="14" parent="6" name="account">
-      <mandatory>1</mandatory>
-      <data-type>char(20)|0</data-type>
+    <column id="15" parent="7" name="account">
+      <DataType>char(20)|0</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <column id="15" parent="6" name="password">
-      <data-type>char(20)|0</data-type>
+    <column id="16" parent="7" name="password">
+      <DataType>char(20)|0</DataType>
     </column>
-    <column id="16" parent="6" name="power">
-      <data-type>int(11)|0</data-type>
+    <column id="17" parent="7" name="power">
+      <DataType>int(11)|0</DataType>
     </column>
-    <key id="17" parent="6" name="PRIMARY">
-      <columns>id
-account</columns>
-      <primary>1</primary>
+    <key id="18" parent="7" name="PRIMARY">
+      <ColNames>id
+account</ColNames>
+      <Primary>1</Primary>
     </key>
-    <column id="18" parent="7" name="onum">
-      <comment>消费记录ID</comment>
-      <mandatory>1</mandatory>
-      <data-type>int(11)|0</data-type>
+    <column id="19" parent="8" name="onum">
+      <Comment>消费记录ID</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <column id="19" parent="7" name="wareid">
-      <mandatory>1</mandatory>
-      <data-type>int(11)|0</data-type>
+    <column id="20" parent="8" name="wareid">
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <column id="20" parent="7" name="warenum">
-      <mandatory>1</mandatory>
-      <data-type>int(11)|0</data-type>
+    <column id="21" parent="8" name="warenum">
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <index id="21" parent="7" name="detailorder_ibfk_3">
-      <columns>wareid</columns>
-      <desc-columns></desc-columns>
+    <index id="22" parent="8" name="detailorder_ibfk_3">
+      <ColNames>wareid</ColNames>
     </index>
-    <key id="22" parent="7" name="PRIMARY">
-      <columns>onum</columns>
-      <primary>1</primary>
+    <key id="23" parent="8" name="PRIMARY">
+      <ColNames>onum</ColNames>
+      <Primary>1</Primary>
     </key>
-    <foreign-key id="23" parent="7" name="detailorder_ibfk_4">
-      <columns>onum</columns>
-      <ref-key>~.order1.PRIMARY</ref-key>
-      <cascade-update-rule>restrict</cascade-update-rule>
-      <cascade-delete-rule>restrict</cascade-delete-rule>
+    <foreign-key id="24" parent="8" name="detailorder_ibfk_4">
+      <ColNames>onum</ColNames>
+      <RefTableName>order1</RefTableName>
+      <RefKeyName>PRIMARY</RefKeyName>
+      <RefColNames>onum</RefColNames>
+      <OnUpdate>restrict</OnUpdate>
+      <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <foreign-key id="24" parent="7" name="detailorder_ibfk_3">
-      <columns>wareid</columns>
-      <ref-key>shujub.ware(fId)</ref-key>
-      <cascade-update-rule>restrict</cascade-update-rule>
-      <cascade-delete-rule>restrict</cascade-delete-rule>
+    <foreign-key id="25" parent="8" name="detailorder_ibfk_3">
+      <ColNames>wareid</ColNames>
+      <RefKeyName>ware</RefKeyName>
+      <OnUpdate>restrict</OnUpdate>
+      <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <column id="25" parent="8" name="onum">
-      <comment>订单号</comment>
-      <mandatory>1</mandatory>
-      <data-type>int(11)|0</data-type>
+    <column id="26" parent="9" name="onum">
+      <Comment>订单号</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <column id="26" parent="8" name="otime">
-      <comment>订单时间</comment>
-      <data-type>timestamp|0</data-type>
-      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    <column id="27" parent="9" name="otime">
+      <Comment>订单时间</Comment>
+      <DataType>timestamp|0</DataType>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
     </column>
-    <column id="27" parent="8" name="salerID">
-      <comment>卖家ID</comment>
-      <data-type>int(11)|0</data-type>
+    <column id="28" parent="9" name="salerID">
+      <Comment>卖家ID</Comment>
+      <DataType>int(11)|0</DataType>
     </column>
-    <column id="28" parent="8" name="Stime">
-      <comment>发货时间</comment>
-      <data-type>timestamp|0</data-type>
-      <default-expression>&apos;0000-00-00 00:00:00&apos;</default-expression>
+    <column id="29" parent="9" name="Stime">
+      <Comment>发货时间</Comment>
+      <DataType>timestamp|0</DataType>
+      <DefaultExpression>&apos;0000-00-00 00:00:00&apos;</DefaultExpression>
     </column>
-    <column id="29" parent="8" name="oremark">
-      <comment>订单备注</comment>
-      <data-type>varbinary(80)|0</data-type>
+    <column id="30" parent="9" name="oremark">
+      <Comment>订单备注</Comment>
+      <DataType>varbinary(80)|0</DataType>
     </column>
-    <column id="30" parent="8" name="userID">
-      <mandatory>1</mandatory>
-      <data-type>int(11)|0</data-type>
+    <column id="31" parent="9" name="userID">
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <index id="31" parent="8" name="order1_ibfk_2">
-      <columns>userID</columns>
-      <desc-columns></desc-columns>
+    <index id="32" parent="9" name="order1_ibfk_2">
+      <ColNames>userID</ColNames>
     </index>
-    <index id="32" parent="8" name="userID">
-      <columns>salerID</columns>
-      <desc-columns></desc-columns>
+    <index id="33" parent="9" name="userID">
+      <ColNames>salerID</ColNames>
     </index>
-    <key id="33" parent="8" name="PRIMARY">
-      <columns>onum</columns>
-      <primary>1</primary>
+    <key id="34" parent="9" name="PRIMARY">
+      <ColNames>onum</ColNames>
+      <Primary>1</Primary>
     </key>
-    <foreign-key id="34" parent="8" name="order1_ibfk_3">
-      <columns>salerID</columns>
-      <ref-key>shujub.shop(sid)</ref-key>
-      <cascade-update-rule>restrict</cascade-update-rule>
-      <cascade-delete-rule>restrict</cascade-delete-rule>
+    <foreign-key id="35" parent="9" name="order1_ibfk_3">
+      <ColNames>salerID</ColNames>
+      <RefKeyName>shop</RefKeyName>
+      <OnUpdate>restrict</OnUpdate>
+      <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <foreign-key id="35" parent="8" name="order1_ibfk_2">
-      <columns>userID</columns>
-      <ref-key>~.user.PRIMARY</ref-key>
-      <cascade-update-rule>restrict</cascade-update-rule>
-      <cascade-delete-rule>restrict</cascade-delete-rule>
+    <foreign-key id="36" parent="9" name="order1_ibfk_2">
+      <ColNames>userID</ColNames>
+      <RefTableName>user</RefTableName>
+      <RefKeyName>PRIMARY</RefKeyName>
+      <RefColNames>uid</RefColNames>
+      <OnUpdate>restrict</OnUpdate>
+      <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <column id="36" parent="9" name="typeid">
-      <mandatory>1</mandatory>
-      <data-type>int(11)|0</data-type>
-      <sequence-identity>1</sequence-identity>
+    <column id="37" parent="10" name="typeid">
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="37" parent="9" name="type">
-      <comment>名字</comment>
-      <mandatory>1</mandatory>
-      <data-type>varchar(8)|0</data-type>
+    <column id="38" parent="10" name="type">
+      <Comment>名字</Comment>
+      <DataType>varchar(8)|0</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <column id="38" parent="9" name="tremark">
-      <comment>备注</comment>
-      <data-type>varbinary(80)|0</data-type>
+    <column id="39" parent="10" name="tremark">
+      <Comment>备注</Comment>
+      <DataType>varbinary(80)|0</DataType>
     </column>
-    <column id="39" parent="9" name="remark">
-      <data-type>varchar(255)|0</data-type>
+    <column id="40" parent="10" name="remark">
+      <DataType>varchar(255)|0</DataType>
     </column>
-    <key id="40" parent="9" name="PRIMARY">
-      <columns>typeid
-type</columns>
-      <primary>1</primary>
+    <key id="41" parent="10" name="PRIMARY">
+      <ColNames>typeid
+type</ColNames>
+      <Primary>1</Primary>
     </key>
-    <column id="41" parent="10" name="fId">
-      <comment>菜的id</comment>
-      <mandatory>1</mandatory>
-      <data-type>int(11)|0</data-type>
-      <sequence-identity>1</sequence-identity>
+    <column id="42" parent="11" name="fId">
+      <Comment>菜的id</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="42" parent="10" name="fName">
-      <comment>名称</comment>
-      <data-type>varchar(20)|0</data-type>
+    <column id="43" parent="11" name="fName">
+      <Comment>名称</Comment>
+      <DataType>varchar(20)|0</DataType>
     </column>
-    <column id="43" parent="10" name="fPrice">
-      <comment>价格</comment>
-      <data-type>float|0</data-type>
+    <column id="44" parent="11" name="fPrice">
+      <Comment>价格</Comment>
+      <DataType>float|0</DataType>
     </column>
-    <column id="44" parent="10" name="fImg">
-      <comment>图片名称</comment>
-      <data-type>varchar(800)|0</data-type>
+    <column id="45" parent="11" name="fImg">
+      <Comment>图片名称</Comment>
+      <DataType>varchar(800)|0</DataType>
     </column>
-    <column id="45" parent="10" name="fType">
-      <comment>菜的类别</comment>
-      <mandatory>1</mandatory>
-      <data-type>int(8)|0</data-type>
+    <column id="46" parent="11" name="fType">
+      <Comment>菜的类别</Comment>
+      <DataType>int(8)|0</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <column id="46" parent="10" name="fRemark">
-      <comment>备注</comment>
-      <data-type>varchar(80)|0</data-type>
+    <column id="47" parent="11" name="fRemark">
+      <Comment>备注</Comment>
+      <DataType>varchar(80)|0</DataType>
     </column>
-    <column id="47" parent="10" name="sid">
-      <data-type>int(5)|0</data-type>
+    <column id="48" parent="11" name="sid">
+      <DataType>int(5)|0</DataType>
     </column>
-    <index id="48" parent="10" name="fType">
-      <columns>fType</columns>
-      <desc-columns></desc-columns>
+    <index id="49" parent="11" name="fType">
+      <ColNames>fType</ColNames>
     </index>
-    <index id="49" parent="10" name="sid">
-      <columns>sid</columns>
-      <desc-columns></desc-columns>
+    <index id="50" parent="11" name="sid">
+      <ColNames>sid</ColNames>
     </index>
-    <key id="50" parent="10" name="PRIMARY">
-      <columns>fId
-fType</columns>
-      <primary>1</primary>
+    <key id="51" parent="11" name="PRIMARY">
+      <ColNames>fId
+fType</ColNames>
+      <Primary>1</Primary>
     </key>
-    <foreign-key id="51" parent="10" name="ware_ibfk_1">
-      <columns>fType</columns>
-      <ref-key>shujub.type(typeid)</ref-key>
-      <cascade-update-rule>restrict</cascade-update-rule>
-      <cascade-delete-rule>restrict</cascade-delete-rule>
+    <foreign-key id="52" parent="11" name="ware_ibfk_1">
+      <ColNames>fType</ColNames>
+      <RefKeyName>type</RefKeyName>
+      <OnUpdate>restrict</OnUpdate>
+      <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <foreign-key id="52" parent="10" name="ware_ibfk_2">
-      <columns>sid</columns>
-      <ref-key>shujub.shop(sid)</ref-key>
-      <cascade-update-rule>restrict</cascade-update-rule>
-      <cascade-delete-rule>restrict</cascade-delete-rule>
+    <foreign-key id="53" parent="11" name="ware_ibfk_2">
+      <ColNames>sid</ColNames>
+      <RefKeyName>shop</RefKeyName>
+      <OnUpdate>restrict</OnUpdate>
+      <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <column id="53" parent="11" name="sid">
-      <mandatory>1</mandatory>
-      <data-type>int(5)|0</data-type>
-      <sequence-identity>1</sequence-identity>
+    <column id="54" parent="12" name="sid">
+      <DataType>int(5)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="54" parent="11" name="name">
-      <mandatory>1</mandatory>
-      <data-type>char(11)|0</data-type>
+    <column id="55" parent="12" name="name">
+      <DataType>char(11)|0</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <column id="55" parent="11" name="uid">
-      <mandatory>1</mandatory>
-      <data-type>int(5)|0</data-type>
+    <column id="56" parent="12" name="uid">
+      <DataType>int(5)|0</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <index id="56" parent="11" name="uid">
-      <columns>uid</columns>
-      <desc-columns></desc-columns>
+    <index id="57" parent="12" name="uid">
+      <ColNames>uid</ColNames>
     </index>
-    <key id="57" parent="11" name="PRIMARY">
-      <columns>sid
-uid</columns>
-      <primary>1</primary>
+    <key id="58" parent="12" name="PRIMARY">
+      <ColNames>sid
+uid</ColNames>
+      <Primary>1</Primary>
     </key>
-    <foreign-key id="58" parent="11" name="shop_ibfk_1">
-      <columns>uid</columns>
-      <ref-key>~.user.PRIMARY</ref-key>
-      <cascade-update-rule>restrict</cascade-update-rule>
-      <cascade-delete-rule>restrict</cascade-delete-rule>
+    <foreign-key id="59" parent="12" name="shop_ibfk_1">
+      <ColNames>uid</ColNames>
+      <RefTableName>user</RefTableName>
+      <RefKeyName>PRIMARY</RefKeyName>
+      <RefColNames>uid</RefColNames>
+      <OnUpdate>restrict</OnUpdate>
+      <OnDelete>restrict</OnDelete>
     </foreign-key>
-    <column id="59" parent="12" name="uid">
-      <mandatory>1</mandatory>
-      <data-type>int(5)|0</data-type>
-      <sequence-identity>1</sequence-identity>
+    <column id="60" parent="13" name="uid">
+      <DataType>int(5)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="60" parent="12" name="username">
-      <mandatory>1</mandatory>
-      <data-type>char(20)|0</data-type>
+    <column id="61" parent="13" name="username">
+      <DataType>char(20)|0</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <column id="61" parent="12" name="password">
-      <data-type>char(20)|0</data-type>
+    <column id="62" parent="13" name="password">
+      <DataType>char(20)|0</DataType>
     </column>
-    <column id="62" parent="12" name="email">
-      <data-type>char(20)|0</data-type>
+    <column id="63" parent="13" name="email">
+      <DataType>char(20)|0</DataType>
     </column>
-    <column id="63" parent="12" name="phone">
-      <data-type>int(11)|0</data-type>
+    <column id="64" parent="13" name="phone">
+      <DataType>int(11)|0</DataType>
     </column>
-    <column id="64" parent="12" name="address">
-      <data-type>char(30)|0</data-type>
+    <column id="65" parent="13" name="address">
+      <DataType>char(30)|0</DataType>
     </column>
-    <column id="65" parent="12" name="status">
-      <data-type>int(2)|0</data-type>
-      <default-expression>&apos;0&apos;</default-expression>
+    <column id="66" parent="13" name="status">
+      <DataType>int(2)|0</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
     </column>
-    <column id="66" parent="12" name="power">
-      <data-type>int(2)|0</data-type>
-      <default-expression>&apos;0&apos;</default-expression>
+    <column id="67" parent="13" name="power">
+      <DataType>int(2)|0</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
     </column>
-    <column id="67" parent="12" name="remark">
-      <data-type>varbinary(30)|0</data-type>
+    <column id="68" parent="13" name="remark">
+      <DataType>varbinary(30)|0</DataType>
     </column>
-    <column id="68" parent="12" name="name">
-      <data-type>varchar(255)|0</data-type>
+    <column id="69" parent="13" name="name">
+      <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="69" parent="12" name="sid">
-      <mandatory>1</mandatory>
-      <data-type>int(11)|0</data-type>
+    <column id="70" parent="13" name="sid">
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <key id="70" parent="12" name="PRIMARY">
-      <columns>uid</columns>
-      <primary>1</primary>
+    <key id="71" parent="13" name="PRIMARY">
+      <ColNames>uid</ColNames>
+      <Primary>1</Primary>
     </key>
   </database-model>
 </dataSource>

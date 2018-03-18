@@ -103,10 +103,14 @@ public class testmysql{
     @Test
     @Rollback(false)
     public void  testhql(){
-        HqlFilter hqlFilter=new HqlFilter();
-        hqlFilter.addFilter("QUERY_t#name_S_EQ","白菜");
-       String hql="select distinct t from com.appcrews.javaee.maicai.model.base.WareInfo t";
-        baseDaoI.find(hql + hqlFilter.getWhereAndOrderHql(), hqlFilter.getParams(), 1, 5);
+//        List<WareInfo> WareInfoList;
+//        HqlFilter hqlFilter=new HqlFilter();
+//        hqlFilter.addFilter("QUERY_t#name_S_LK","白菜");
+//       String hql="select distinct t from com.appcrews.javaee.maicai.model.base.WareInfo t ";
+//        System.out.println(hql+hqlFilter.getWhereAndOrderHql()+'\n'+hqlFilter.getParams());
+        List<WareInfo> WareInfoList;
+        String hql="select distinct t from com.appcrews.javaee.maicai.model.base.WareInfo t where t.name like '%w%'";
+        WareInfoList =baseDaoI.find(hql);
 //        String hql="from UserInfo user   where 1=1  and user.uid  =  :param47285f31f17947f38056cb3697a8c153 ";
 //        map=new HashMap();
 //        map.put("param47285f31f17947f38056cb3697a8c153",5);
@@ -114,6 +118,7 @@ public class testmysql{
 //        System.out.println( "map========"+hqlFilter.getParams());
 //       System.out.println( hql+hqlFilter.getWhereHql());
 //        baseDaoI.get(hql+hqlFilter.getWhereHql(), hqlFilter.getParams());
+        System.out.println(WareInfoList.size());
     }
     @Transactional
     @Test

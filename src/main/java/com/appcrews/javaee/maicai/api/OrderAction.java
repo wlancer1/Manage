@@ -32,15 +32,13 @@ public class OrderAction extends BaseAction {
 //	int allpage, pageSize=5;
 	List<OrderInfo> OrderInfoList;
 //	List<DetailInfo> info2;
-//	List<WareInfo> info3;
 	private  DetailInfo detailInfo;
-	private int uid,wareid,warenum;
+	private int uid;
 	private  int length=0;
 	private OrderInfo orderInfo;
 	private String order;
 	Map map;
 	private Timestamp timestamp;
-//	private Set<DetailInfo> detailInfo;
 	@Autowired
 	public void setService(orderService service) {
 		this.service = service;

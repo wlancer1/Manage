@@ -36,6 +36,8 @@
     var bar = document.getElementById("bar");
     var list = bar.getElementsByTagName("li");
     list[6].setAttribute("class", "active");
+    var sj=[['买家',${buyer}], ['卖家',${seller}]];
+
     $(function () {
         $('#container').highcharts({
             chart: {
@@ -44,7 +46,7 @@
                 plotShadow: false
             },
             title: {
-                text: '用户激活数和有店铺的用户数 占比'
+                text: '无店铺的用户数和有店铺的用户数 占比'
             },
             tooltip: {
                 headerFormat: '{series.name}<br>',
@@ -65,44 +67,9 @@
             },
             series: [{
                 type: 'pie',
-                name: '浏览器访问量占比',
-                data: [
-                    ['Firefox',   30.0],
-                    ['IE',       26.8],
-                    {
-                        name: 'Chrome',
-                        y: 12.8,
-                        sliced: true,
-                        selected: true
-                    },
-                    ['Safari',    8.5],
-                    ['Opera',     6.2],
-                    ['其他',   0.7]
-                ]
-            },
-                {
-                        type: 'pie',
-                        name: 'Browser share',
-                        center: [700, null],
-                        size: 100,
-                        // dataLabels: {
-                        //     enabled: false
-                        // },
-                        showInLegend: true,
-                        data: [
-                            // ['Firefox',   45.0],
-                            // ['IE',       26.8],
-                            // {
-                            //     name: 'Chrome',
-                            //     y: 12.8,
-                            //     sliced: true,
-                            //     selected: true
-                            // },
-                            ['Safari',    8.5],
-                            // ['Opera',     6.2],
-                            ['Others',   0.7]
-                        ]
-                }]
+                name: '用户比例',
+                data: sj
+            }]
         });
     });
     </script>

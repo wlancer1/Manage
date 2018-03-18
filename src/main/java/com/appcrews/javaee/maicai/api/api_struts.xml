@@ -28,5 +28,6 @@
                 class="com.appcrews.javaee.maicai.api.OrderAction"
                 method="{1}">
         </action>
+
     </package>
 </struts>
