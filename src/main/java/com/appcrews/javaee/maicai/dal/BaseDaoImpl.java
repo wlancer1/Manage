@@ -99,6 +99,7 @@ public class BaseDaoImpl<T> implements BaseDaoI<T> {
 
 	@Override
 	public List<T> find(String hql, Map<String, Object> params, int page, int rows) {
+		System.out.println("find::"+hql);
 		Query q = this.getCurrentSession().createQuery(hql);
 		if (params != null && !params.isEmpty()) {
 			for (String key : params.keySet()) {

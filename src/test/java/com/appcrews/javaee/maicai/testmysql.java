@@ -9,6 +9,8 @@ import com.appcrews.javaee.maicai.model.base.AdminInfo;
 import com.appcrews.javaee.maicai.model.base.DetailInfo;
 import com.appcrews.javaee.maicai.model.base.OrderInfo;
 import com.appcrews.javaee.maicai.model.base.WareInfo;
+import com.appcrews.javaee.maicai.service.baseService;
+import com.appcrews.javaee.maicai.service.impl.baseServiceImp;
 import com.appcrews.javaee.maicai.tool.HqlFilter;
 import com.appcrews.javaee.maicai.tool.MD5;
 import org.apache.logging.log4j.LogManager;
@@ -49,6 +51,8 @@ public class testmysql{
     private SessionFactory em;
     private Map map;
     private static final Logger log = LogManager.getLogger();
+
+    private baseService service;
 
     @Transactional
     @Test
@@ -103,22 +107,19 @@ public class testmysql{
     @Test
     @Rollback(false)
     public void  testhql(){
-//        List<WareInfo> WareInfoList;
-//        HqlFilter hqlFilter=new HqlFilter();
+        List<WareInfo> WareInfoList;
+        HqlFilter hqlFilter=new HqlFilter();
 //        hqlFilter.addFilter("QUERY_t#name_S_LK","白菜");
 //       String hql="select distinct t from com.appcrews.javaee.maicai.model.base.WareInfo t ";
 //        System.out.println(hql+hqlFilter.getWhereAndOrderHql()+'\n'+hqlFilter.getParams());
-        List<WareInfo> WareInfoList;
-        String hql="select distinct t from com.appcrews.javaee.maicai.model.base.WareInfo t where t.name like '%w%'";
-        WareInfoList =baseDaoI.find(hql);
-//        String hql="from UserInfo user   where 1=1  and user.uid  =  :param47285f31f17947f38056cb3697a8c153 ";
-//        map=new HashMap();
-//        map.put("param47285f31f17947f38056cb3697a8c153",5);
-//        System.out.println(map);
-//        System.out.println( "map========"+hqlFilter.getParams());
-//       System.out.println( hql+hqlFilter.getWhereHql());
-//        baseDaoI.get(hql+hqlFilter.getWhereHql(), hqlFilter.getParams());
-        System.out.println(WareInfoList.size());
+//        String hql="select distinct t from com.appcrews.javaee.maicai.model.base.WareInfo t where t.name like '%白%'";
+        service=new baseServiceImp();
+        hqlFilter.addSort("price");
+        hqlFilter.addOrder("asc");
+
+        baseDaoI.find("select distinct t from com.appcrews.javaee.maicai.model.base.WareInfo t order by t.price asc", hqlFilter.getParams(), 1, 5);
+
+
     }
     @Transactional
     @Test

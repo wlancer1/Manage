@@ -104,7 +104,9 @@ public class ManagerAction extends BaseAction implements ModelDriven<WareInfo> {
         if(sort!=null){
             HqlFilter hqlFilter=new HqlFilter();
             hqlFilter.addOrder(order);
-            hqlFilter.addOrder(sort);
+
+            hqlFilter.addSort(sort);
+
             WareInfoList = service.findByFilter(hqlFilter,pageInfo.getPageNo(),pageInfo.getPageSize());
         } else
             WareInfoList = service.find(pageInfo.getPageNo(),pageInfo.getPageSize());
