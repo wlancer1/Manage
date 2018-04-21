@@ -15,4 +15,6 @@ import java.util.List;
     List<DetailInfo> getListdetailorder(int ounm);
         void deleteDetail(int onum,int wareid);
     List<OrderInfo> queryUid(int uid);
+    List<OrderInfo> queryOnum(String onum);
+
 }

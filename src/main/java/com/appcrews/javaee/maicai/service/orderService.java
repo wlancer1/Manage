@@ -10,10 +10,9 @@ import java.util.Set;
  * Created by micheal on 2017/2/22.
  */
 public interface orderService extends baseService<OrderInfo> {
-    public OrderInfo getDetail(int id);
+    public List<OrderInfo> getDetail(String id);
     public void  wareDelete(int id,int wareid);
     public List<OrderInfo> getByuserId(int uid);
-    public void  CreateOrder(OrderInfo orderInfo);
 //    public DetailInfo getDetailInfo(int id );
 //    List<DetailInfo> getListdetailorder(int ounm);
 //    List<OrderInfo> getListorder();

@@ -144,7 +144,9 @@ public class testmysql{
     @Test
     @Rollback(false)
     public void hqltest(){
-        order.queryUid(1);
+       List<OrderInfo> s;
+        s=order.queryOnum("6836781");
+
 
     }
 }

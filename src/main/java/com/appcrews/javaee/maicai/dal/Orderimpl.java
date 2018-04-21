@@ -54,4 +54,11 @@ public class Orderimpl implements Order {
 		String hql="from OrderInfo  WHERE uid ="+uid;
 		return baseDaoI.find(hql);
 	}
+
+	@Override
+	public  List<OrderInfo> queryOnum(String onum) {
+		String hql="from OrderInfo o,DetailInfo d,WareInfo w WHERE o.onum="+onum+"AND o.onum=d.onum AND w.fid=d.wareid";
+//		String hql="from OrderInfo o,De WHERE o.onum="+onum;
+		return baseDaoI.find(hql);
+	}
 }

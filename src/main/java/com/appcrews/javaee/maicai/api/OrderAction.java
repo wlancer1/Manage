@@ -67,7 +67,7 @@ public class OrderAction extends BaseAction {
 	public  void orderquery(){
 		Json json = new Json();
 		BaseConfig.setHeader(getResponse());
-		System.out.println(uid);
+
 		OrderInfoList = ((orderService)service).getByuserId(uid);
 		map = new HashMap();
 		map.put("datalist", OrderInfoList);
@@ -123,10 +123,17 @@ public class OrderAction extends BaseAction {
 		}
 
 //
-	public String detailquery() {
-		orderInfo=((orderService)service).getDetail(getId());
-		getRequest().setAttribute("OrderDetail", orderInfo);
-		return "detail";
+	public void detailquery() {
+		Json json = new Json();
+		String onum =request.getParameter("onum");
+		OrderInfoList=((orderService)service).getDetail(onum);
+		BaseConfig.setHeader(getResponse());
+		map = new HashMap();
+		map.put("datalist", OrderInfoList);
+		json.setSuccess(true);
+		json.setMsg("查询成功！");
+		json.setObj(map);
+		writeJson(json);
 
 	}
 	//解析请求的Json数据

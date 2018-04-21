@@ -54,11 +54,9 @@ public class orderServiceImp extends baseServiceImp<OrderInfo> implements orderS
 
 
 
-   public OrderInfo getDetail(int id){
+   public List<OrderInfo> getDetail(String id){
+       return order.queryOnum(id);
 
-      orderInfo=(OrderInfo) baseDaoI.get(OrderInfo.class,id);
-       Hibernate.initialize(orderInfo.getDetailInfo());
-       return orderInfo;
    }
 
     @Override
@@ -66,8 +64,5 @@ public class orderServiceImp extends baseServiceImp<OrderInfo> implements orderS
         order.deleteDetail(id,wareid);
     }
 
-    @Override
-    public void CreateOrder(OrderInfo orderInfo) {
 
-    }
 }

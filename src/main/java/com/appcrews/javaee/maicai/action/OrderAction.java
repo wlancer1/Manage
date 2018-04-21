@@ -31,6 +31,7 @@ public class OrderAction extends BaseAction {
 	List<OrderInfo> OrderInfoList;
 //	List<DetailInfo> info2;
 //	List<WareInfo> info3;
+	private String onum;
 	private OrderInfo orderInfo;
 	Map map;
 	private Set<DetailInfo> detailInfo;
@@ -39,7 +40,13 @@ public class OrderAction extends BaseAction {
 		this.service = service;
 	}
 
+	public void setOnum(String onum) {
+		this.onum = onum;
+	}
 
+	public String getOnum() {
+		return onum;
+	}
 
 	public String query() {
 
@@ -81,9 +88,9 @@ public class OrderAction extends BaseAction {
 	public String edit() {
 
 		float sum = 0;
-		orderInfo=((orderService)service).getDetail(getId());
+		OrderInfoList=((orderService)service).getDetail(getOnum());
 
-		getRequest().setAttribute("editDetail", orderInfo);
+		getRequest().setAttribute("editDetail", OrderInfoList);
 		getRequest().setAttribute("sum", sum);
 		return "edit";
 
@@ -125,8 +132,8 @@ public class OrderAction extends BaseAction {
 //	}
 
 	public String detailquery() {
-		orderInfo=((orderService)service).getDetail(getId());
-		getRequest().setAttribute("OrderDetail", orderInfo);
+		OrderInfoList=((orderService)service).getDetail(getOnum());
+		getRequest().setAttribute("OrderDetail", OrderInfoList);
 		return "detail";
 
 	}
