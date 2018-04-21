@@ -46,7 +46,8 @@
                         <th>商品名</th>
                         <th>
                             <a  onclick="sortWare('asc','price')"><i
-                                    class="icon-arrow-up"></i> </a> <a
+                                    class="icon-arrow-up"></i> </a>
+                            <a
                                 onclick="sortWare('desc','price')"><i
                                 class="icon-arrow-down icon-blue"></i> </a>价格
                         </th>

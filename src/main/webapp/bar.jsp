@@ -20,7 +20,7 @@
             <li><a href="<%=request.getContextPath()%>/shop/query_shop.html">商铺</a></li>
 
             <li class="nav-header"><i class="icon-signal"></i>统计</li>
-            <li><a href="<%=request.getContextPath()%>/statics/user_chart.jsp">用户统计</a></li>
+            <li><a href="<%=request.getContextPath()%>/statics/userStatic_statics.html">用户统计</a></li>
             <li><a href="#">订单统计</a> </li>
             <li><a href="http://tongji.baidu.com/web/welcome/ico?s=bd50a33cf40f3755ca12255e905848cb"
                    target="view_window">访问统计</a></li>

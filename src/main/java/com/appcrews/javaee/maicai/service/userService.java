@@ -9,5 +9,6 @@ public interface userService extends baseService<UserInfo> {
         int ShopNum(int uid);
         public int validate(String account, String password);
 //    int getcountTotalPage(int pageSize);
+        public  int getcount(int x);
 
 }

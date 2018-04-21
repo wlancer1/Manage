@@ -46,5 +46,8 @@ public class userServiceImpl extends baseServiceImp<UserInfo> implements userSer
         return shop.query(uid).size();
     }
 
-
+    @Override
+    public int getcount(int x) {
+        return user.count(x);
+    }
 }

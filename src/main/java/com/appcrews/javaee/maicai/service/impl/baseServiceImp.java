@@ -65,7 +65,7 @@ baseDaoI.saveOrUpdate(o);
     public List<T> findByFilter(HqlFilter hqlFilter, int page, int rows) {
         String className = ((Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0]).getName();
         String hql = "select distinct t from " + className + " t";//去重
-       System.out.println(hql+hqlFilter.getWhereAndOrderHql());
+//       System.out.println(hql+hqlFilter.getWhereAndOrderHql());
 
         return baseDaoI.find(hql + hqlFilter.getWhereAndOrderHql(), hqlFilter.getParams(), page, rows);
     }

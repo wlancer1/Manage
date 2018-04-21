@@ -31,6 +31,9 @@ public class Userimpl implements User {
 	//
 
 
-
-
+	@Override
+	public int count(int power) {
+		String hql="select count(*) from UserInfo where power="+power;
+		return baseDaoI.count(hql);
+	}
 }
