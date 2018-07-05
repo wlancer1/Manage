@@ -8,7 +8,7 @@
 	<properties>
 		<log4j.version>2.0.2</log4j.version>
 		<spring.framework.version>3.1.4.RELEASE</spring.framework.version>
-		<cxf.version>2.7.5</cxf.version>
+		<cxf.version>3.1.16</cxf.version>
 	</properties>
 		<build>
 			<resources>
